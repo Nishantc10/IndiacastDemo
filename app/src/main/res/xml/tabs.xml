@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        drawable="@drawable/ic_homeactive_18"
+        text="@string/home" />
+
+    <tab
+        drawable="@drawable/ic_mappingactive_18"
+        text="@string/mapping" />
+
+    <tab
+        drawable="@drawable/ic_taskactive_18"
+        text="@string/task" />
+
+     <tab
+        drawable="@drawable/ic_profileactive_18"
+        text="@string/profile" />
+</tabs>

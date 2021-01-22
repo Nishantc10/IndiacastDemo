@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:background="@drawable/ic_bg_new"
+    android:padding="16dp"
+    tools:context=".TaskFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txt_comment"
+            android:layout_marginTop="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="Mapping Updating" />
+
+                <CheckBox
+                    android:id="@+id/checkBox1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/checkBox"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="IRD/CAM Installation" />
+
+                <CheckBox
+                    android:id="@+id/checkBox2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkBox1"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="Customer/LCO Survey" />
+
+                <CheckBox
+                    android:id="@+id/checkBox3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkBox2"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="To Check Landing Page" />
+
+                <CheckBox
+                    android:id="@+id/checkBox4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_below="@+id/checkBox3"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="Faulty/Old IRD Retrieval" />
+
+                <CheckBox
+                    android:id="@+id/checkBox5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkBox4"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="Faulty IRD Replacement" />
+
+                <CheckBox
+                    android:id="@+id/checkBox6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkBox5"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+
+                    android:text="Merchandise Distribution" />
+
+                <CheckBox
+                    android:id="@+id/checkBox7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkBox6"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="Displacement Correction" />
+
+                <CheckBox
+                    android:id="@+id/checkBox8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkBox7"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="To Check HD Service available" />
+
+                <CheckBox
+                    android:id="@+id/checkBox9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkBox8"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="Meeting With Ground Subscriber" />
+
+                <CheckBox
+                    android:id="@+id/checkBox10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkBox9"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="Meeting With Network Technician" />
+
+                <CheckBox
+                    android:id="@+id/checkBox11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/checkBox10"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="New Monitoring Points Generation" />
+
+                <CheckBox
+                    android:id="@+id/checkBox12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkBox11"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="To Check and Confirm on Network DA" />
+
+                <CheckBox
+                    android:id="@+id/checkBox13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkBox12"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="To Check New Network Establishment" />
+
+                <CheckBox
+                    android:id="@+id/checkBox14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/checkBox13"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="To Collect Market and Ground Information" />
+
+                <CheckBox
+                    android:id="@+id/checkBox15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkBox14"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="To Collect Information on IC channels in FTA" />
+
+                <CheckBox
+                    android:id="@+id/checkBox16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkBox15"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="To Check Status of CAS/SMS Implementation" />
+
+                <CheckBox
+                    android:id="@+id/checkBox17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkBox16"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="Meeting With Network Owner/Partner /Manager" />
+
+                <CheckBox
+                    android:id="@+id/checkBox18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkBox17"
+                    android:onClick="onCheckboxClicked"
+                    android:paddingRight="5dp"
+                    android:text="To Collect Packaging and Bouquets Information" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/comment_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/checkBox18"
+                    android:layout_margin="5dp"
+                    app:cardElevation="0dp">
+
+                    <EditText
+                        android:id="@+id/task_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_below="@+id/checkBox18"
+                        android:gravity="top"
+                        android:hint="Comment..."
+                        android:padding="5dp" />
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/task_submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/comment_card"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/btn_bg"
+                    android:paddingLeft="35dp"
+                    android:paddingRight="35dp"
+                    android:text="Submit"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+
+        </ScrollView>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

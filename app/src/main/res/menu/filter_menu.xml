@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/grp1">
+
+    <item
+        android:id="@+id/all"
+        android:title="    All"></item>
+    </group>
+    <group android:id="@+id/grp2">
+
+    <item
+        android:id="@+id/submited"
+        android:title="    Submited"></item>
+    </group>
+    <group android:id="@+id/grp3">
+
+    <item
+        android:id="@+id/rejected"
+        android:title="    Rejected"></item>
+    </group>
+    <group android:id="@+id/grp4">
+
+    <item
+        android:id="@+id/notUpdated"
+        android:title="    Not Updated"></item>
+    </group>
+    <group android:id="@+id/grp5">
+
+    <item
+        android:id="@+id/approved"
+        android:title="    Approved"></item>
+    </group>
+    <group android:id="@+id/grp6">
+
+    <item
+        android:id="@+id/updated"
+        android:title="    Updated"></item>
+    </group>
+</menu>

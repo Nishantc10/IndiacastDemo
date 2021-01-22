@@ -1,0 +1,10 @@
+package com.example.indiacastdemo;
+
+/**
+ * Created by Md Farhan Raja on 2/23/2017.
+ */
+
+public interface OnSpinerItemClick
+{
+    public void onClick(IdentifiableObject item, int position);
+}

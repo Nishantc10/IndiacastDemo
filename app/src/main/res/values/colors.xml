@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ee3539</color>
+    <color name="colorPrimaryDark">#8B0000</color>
+    <color name="colorAccent">#ed3539</color>
+    <color name="indiacastcolor">#ed3539</color>
+    <color name="indiacastbottomcolor">#373435</color>
+    <color name="indiacastFragmentBackground">#efefef</color>
+    <color name="colorBlue">#2fb4ff</color>
+    <color name="colorPurpleT">#64983cff    </color>
+    <color name="colorBlueT">#642fb4ff</color>
+    <color name="red">#ee3539</color>
+    <color name="redprimary">#FFB60105</color>
+    <color name="grey">#f7f7f7</color>
+    <color name="indiacastgrey">#373435</color>
+
+    <color name="material_deep_purple">#673ab7</color>
+    <color name="light_red">#9CECBABA</color>
+    <color name="material_green">#4caf50</color>
+    <color name="material_blue">#2196f3</color>
+    <color name="background_color">#C5C5C5</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#212121</color>
+    <color name="transarent">#00000000</color>
+    <color name="gradstart">#19aa8b</color>
+    <color name="gradend">#23a7d8</color>
+</resources>

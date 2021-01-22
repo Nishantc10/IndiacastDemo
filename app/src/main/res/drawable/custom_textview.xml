@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- pressed state -->
+    <item android:state_pressed="true">
+        <inset xmlns:android="http://schemas.android.com/apk/res/android"
+            android:insetBottom="3sp"
+            android:insetTop="3sp"
+            android:insetRight="3sp"
+            android:insetLeft="3sp">
+            <shape android:shape="rectangle">
+                <stroke
+                    android:width="0sp"
+                    android:color="@color/material_blue" />
+                <corners android:radius="3sp" />
+                <solid android:color="@color/white"/>
+                <padding android:left="2sp"
+                    android:top="2sp"
+                    android:right="2sp"
+                    android:bottom="2sp" />
+            </shape>
+        </inset>
+    </item>
+
+    <!-- focused state -->
+    <item android:state_focused="true">
+        <inset xmlns:android="http://schemas.android.com/apk/res/android"
+            android:insetBottom="-3dp"
+            android:insetLeft="0dp"
+            android:insetRight="-3dp"
+            android:insetTop="0dp"
+            >
+            <shape android:shape="rectangle">
+                <stroke
+                    android:width="1sp"
+                    android:color="@color/material_blue" />
+                <corners android:radius="3sp" />
+                <solid android:color="@color/background_color" />
+                <padding android:left="2sp"
+                    android:top="2sp"
+                    android:right="2sp"
+                    android:bottom="2sp" />
+            </shape>
+        </inset>
+    </item>
+
+    <!-- normal state -->
+    <item>
+        <inset xmlns:android="http://schemas.android.com/apk/res/android"
+            android:insetBottom="2sp"
+            android:insetTop="2sp"
+            android:insetRight="2sp"
+            android:insetLeft="2sp"
+            >
+            <shape android:shape="rectangle">
+                <stroke
+                    android:width="1sp"
+                    android:color="@color/gradend" />
+                <corners android:radius="50sp" />
+                <solid android:color="@color/white" />
+                <padding android:left="2sp"
+                    android:top="2sp"
+                    android:right="2sp"
+                    android:bottom="2sp" />
+            </shape>
+        </inset>
+    </item>
+</selector>

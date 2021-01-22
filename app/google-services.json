@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "779024789469",
+    "firebase_url": "https://indiacast-be5c7.firebaseio.com",
+    "project_id": "indiacast-be5c7",
+    "storage_bucket": "indiacast-be5c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779024789469:android:30053bc703c1a484ebd034",
+        "android_client_info": {
+          "package_name": "com.example.indiacastdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "779024789469-0p40nn7mpu117o2q0ub3mkah2uk4770t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.indiacastdemo",
+            "certificate_hash": "91f7e6119555741a222f67b34efac82c8b396692"
+          }
+        },
+        {
+          "client_id": "779024789469-cm2t4u2gnebs3111i06ej36tpmvvs6j1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOE7kBU3pocGOzyorppkTPRUSgpVBEDNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "779024789469-cm2t4u2gnebs3111i06ej36tpmvvs6j1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

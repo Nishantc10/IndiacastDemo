@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: net.steamcrafted:materialiconlib:1.1.5@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6ed1d851ec949eb1ec4145f86f22fc1b/materialiconlib-1.1.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6ed1d851ec949eb1ec4145f86f22fc1b/materialiconlib-1.1.5/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6ed1d851ec949eb1ec4145f86f22fc1b/materialiconlib-1.1.5/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1760193908a88f9b49ad0201e4953c94/jetified-materialiconlib-1.1.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1760193908a88f9b49ad0201e4953c94/jetified-materialiconlib-1.1.5/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1760193908a88f9b49ad0201e4953c94/jetified-materialiconlib-1.1.5/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.steamcrafted/materialiconlib/1.1.5/68955e4ec3044116152198a57baf0da44097c904/materialiconlib-1.1.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.steamcrafted/materialiconlib/1.1.5/e47b828e18039d3caabf8a97ffefe420e857714f/materialiconlib-1.1.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
