@@ -53,10 +53,8 @@ public class SpinnerDialog {
         AlertDialog.Builder adb = new AlertDialog.Builder(context);
         View v = context.getLayoutInflater().inflate(R.layout.dialog_layout, null);
         TextView rippleViewClose = (TextView) v.findViewById(R.id.close);
-//        TextView title = (TextView) v.findViewById(R.id.spinerTitle);
         ImageView dialogImage = (ImageView) v.findViewById(R.id.dialog_image);
         dialogImage.setImageResource(dialogImageRes);
-//        title.setText(dTitle);
         final ListView listView = (ListView) v.findViewById(R.id.list);
         searchBox = (EditText) v.findViewById(R.id.searchBox);
         final IdentifierObjAdapter adapter = new IdentifierObjAdapter(context, items, alertDialog, new OnSpinerItemClick() {

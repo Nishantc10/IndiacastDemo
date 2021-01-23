@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 public class StatusViewAdapter extends RecyclerView.Adapter<StatusViewAdapter.StatusViewHolder> {
     Context mContext;
-//    DatabaseHelper db;
     ArrayList<StatusMaster> statusMasters;
 
     public StatusViewAdapter(Context mContext, ArrayList<StatusMaster> statusMasters) {
@@ -29,7 +28,6 @@ public class StatusViewAdapter extends RecyclerView.Adapter<StatusViewAdapter.St
         View v;
         v = LayoutInflater.from(mContext).inflate(R.layout.statuscard, viewGroup, false);
         StatusViewAdapter.StatusViewHolder statusViewHolder = new StatusViewAdapter.StatusViewHolder(v);
-//        db = new DatabaseHelper(mContext);
         return statusViewHolder;
     }
 
@@ -55,12 +53,9 @@ public class StatusViewAdapter extends RecyclerView.Adapter<StatusViewAdapter.St
     private TextView txt_by;
     private TextView txt_at;
     private TextView txt_date;
-//    TextView network_name;
 
     public StatusViewHolder(@NonNull View itemView)  {
         super(itemView);
-//        network_name = itemView.findViewById(R.id.network_name);
-
         img_status = (ImageView) itemView.findViewById(R.id.img_status);
         txt_status = (TextView) itemView.findViewById(R.id.txt_status);
         txt_by = (TextView) itemView.findViewById(R.id.txt_by);

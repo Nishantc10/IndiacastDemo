@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.indiacastdemo.Database.DatabaseHelper;
+import com.example.indiacastdemo.Model.AlertDialogModel;
 
 
 public class HistoryMonitoringPointsFragment extends Fragment {
@@ -80,16 +81,7 @@ public class HistoryMonitoringPointsFragment extends Fragment {
                                     try {
                                         txt_Grd.setText(edt_Grd.getText().toString());
                                         txt_Tec.setText(edt_Tec.getText().toString());
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                                        builder.setTitle("Alert!");
-                                        builder.setMessage("Monitoring Points updated Successfully");
-                                        builder.setCancelable(false);
-                                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                            }
-                                        });
-                                        builder.show();
+                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert", "Monitoring Points updated Successfully");
                                     }catch (Exception e){
                                         e.printStackTrace();
                                     }

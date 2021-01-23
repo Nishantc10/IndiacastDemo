@@ -29,6 +29,7 @@ import android.widget.EditText;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.example.indiacastdemo.Database.DatabaseHelper;
+import com.example.indiacastdemo.Model.AlertDialogModel;
 import com.example.indiacastdemo.Model.History_Network;
 import com.trendyol.bubblescrollbarlib.BubbleScrollBar;
 import com.trendyol.bubblescrollbarlib.BubbleTextProvider;
@@ -374,17 +375,7 @@ public class HistoryFragment extends Fragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                        builder.setTitle("Alert!");
-                                        builder.setMessage("Server connection lost!");
-                                        builder.setCancelable(true);
-                                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-
-                                            }
-                                        });
-                                        builder.show();
+                                        AlertDialogModel.generateAlertDialog(getActivity(), "Alert", "Server connection lost!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -412,16 +403,7 @@ public class HistoryFragment extends Fragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                        builder.setTitle("Please Relogin !!!");
-                                        builder.setMessage("You have already logged in to another device.");
-                                        builder.setCancelable(true);
-                                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                            }
-                                        });
-                                        builder.show();
+                                        AlertDialogModel.generateAlertDialog(getActivity(), "Please Relogin!!!", "You have already logged in to another device.");
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -438,17 +420,7 @@ public class HistoryFragment extends Fragment {
         } else {
             try {
                 progress.dismiss();
-                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
-                builder.setCancelable(false);
-                builder.setTitle("Alert!");
-                builder.setMessage("No internet connection!!!");
-                builder.setCancelable(true);
-                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
-                builder.show();
+                AlertDialogModel.generateAlertDialog(getActivity(), "Alert", "No internet connection!!!");
             } catch (Exception e) {
                 e.printStackTrace();
             }

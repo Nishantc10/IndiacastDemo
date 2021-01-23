@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.indiacastdemo.Database.DatabaseHelper;
+import com.example.indiacastdemo.Model.AlertDialogModel;
 import com.example.indiacastdemo.Model.StatusMaster;
 
 import org.json.JSONArray;
@@ -62,10 +63,7 @@ public class StatusFragment extends Fragment {
         networkName = getArguments().getString("networkName");
         createdDate = getArguments().getString("createdDate");
         ABCD = getArguments().getString("ABCD");
-
-
         lst_status = new ArrayList<>();
-//        getStatusResponse();
         recyclerView = (RecyclerView) v.findViewById(R.id.status_fragment_recy);
         adapter = new StatusViewAdapter(getContext(), lst_status);
         linearLayoutManager = new LinearLayoutManager(getContext());
@@ -100,24 +98,14 @@ public class StatusFragment extends Fragment {
                             getStatusResponse();
                         } else {
                             try {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                builder.setTitle("Alert!");
-                                builder.setMessage("Internet connection not found...!");
-                                builder.setCancelable(true);
-                                builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-
-                                    }
-                                });
-                                builder.show();//            setupRecyclerView();
+                                AlertDialogModel.generateAlertDialog(getActivity(),"Alert!","No internet connection!!!");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
                     }
                 });
-                builder.show();//            setupRecyclerView();
+                builder.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -181,16 +169,7 @@ public class StatusFragment extends Fragment {
                                     public void run() {
                                         try {
                                             progress.dismiss();
-                                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                            builder.setTitle("Alert!");
-                                            builder.setMessage("Server connection lost!");
-                                            builder.setCancelable(true);
-                                            builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                }
-                                            });
-                                            builder.show();
+                                            AlertDialogModel.generateAlertDialog(getActivity(),"Alert!","Server connection lost!");
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
@@ -207,7 +186,6 @@ public class StatusFragment extends Fragment {
 
                 @Override
                 public void onResponse(Call call, okhttp3.Response response) throws IOException {
-//                Log.d("onResponse: ", response.body().string());
                     String jsonData = response.body().string();
                     lst_status.clear();
                     String Last_Status = null;
@@ -272,8 +250,6 @@ public class StatusFragment extends Fragment {
                                 Last_Status = statusObject.getString("Status_ID");
                                 db.updatePlacementStatus(networkId, createdDate, Last_Status);
                             }
-//                        lst_status.add(new StatusMaster(Network_ID, networkName, Entered_By_Username, "", statusDrawable, Created_Date, Status_ID));
-//                            Toast.makeText(getContext(), "task submitted", Toast.LENGTH_SHORT).show();
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -292,17 +268,7 @@ public class StatusFragment extends Fragment {
         } else {
             try {
                 progress.dismiss();
-                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
-                builder.setCancelable(false);
-                builder.setTitle("Alert!");
-                builder.setMessage("No internet connection!!!");
-                builder.setCancelable(true);
-                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
-                builder.show();
+                AlertDialogModel.generateAlertDialog(getContext(),"Alert!","No internet connection!!!");
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -285,17 +285,6 @@ public class Main2Activity extends AppCompatActivity {
                         public void run() {
                             try {
                                 AlertDialogModel.generateAlertDialog(Main2Activity.this,"Alert!","Error!");
-//                                AlertDialog.Builder builder = new AlertDialog.Builder(Main2Activity.this);
-//                                builder.setCancelable(false);
-//                                builder.setTitle("Alert!");
-//                                builder.setMessage("Error!");
-//                                builder.setCancelable(true);
-//                                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(DialogInterface dialog, int which) {
-//                                    }
-//                                });
-//                                builder.show();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -353,18 +342,6 @@ public class Main2Activity extends AppCompatActivity {
                                         public void run() {
                                             try {
                                                 AlertDialogModel.generateAlertDialog(Main2Activity.this,"Alert!","Error!");
-
-//                                                AlertDialog.Builder builder = new AlertDialog.Builder(Main2Activity.this);
-//                                                builder.setCancelable(false);
-//                                                builder.setTitle("Alert!");
-//                                                builder.setMessage("Error!");
-//                                                builder.setCancelable(true);
-//                                                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-//                                                    @Override
-//                                                    public void onClick(DialogInterface dialog, int which) {
-//                                                    }
-//                                                });
-//                                                builder.show();
                                             } catch (Exception e) {
                                                 e.printStackTrace();
                                             }
@@ -396,18 +373,6 @@ public class Main2Activity extends AppCompatActivity {
             try {
                 progress.dismiss();
                 AlertDialogModel.generateAlertDialog(Main2Activity.this,"Alert!","No internet connection!!!");
-
-//                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(Main2Activity.this);
-//                builder.setCancelable(false);
-//                builder.setTitle("Alert!");
-//                builder.setMessage("No internet connection!!!");
-//                builder.setCancelable(true);
-//                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                    }
-//                });
-//                builder.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -469,18 +434,6 @@ public class Main2Activity extends AppCompatActivity {
                                 public void run() {
                                     try {
                                         AlertDialogModel.generateAlertDialog(Main2Activity.this,"Alert!","Server connection lost!");
-//
-//                                        AlertDialog.Builder builder = new AlertDialog.Builder(Main2Activity.this);
-//                                        builder.setTitle("Alert!");
-//                                        builder.setMessage("Server connection lost!");
-//                                        builder.setCancelable(true);
-//                                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-//                                            @Override
-//                                            public void onClick(DialogInterface dialog, int which) {
-//
-//                                            }
-//                                        });
-//                                        builder.show();
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -512,18 +465,6 @@ public class Main2Activity extends AppCompatActivity {
         } else {
             try {
                 AlertDialogModel.generateAlertDialog(Main2Activity.this,"Alert!","No internet connection!!!");
-
-//                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(Main2Activity.this);
-//                builder.setCancelable(false);
-//                builder.setTitle("Alert!");
-//                builder.setMessage("No internet connection!!!");
-//                builder.setCancelable(true);
-//                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                    }
-//                });
-//                builder.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }

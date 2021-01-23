@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.indiacastdemo.Database.DatabaseHelper;
+import com.example.indiacastdemo.Model.AlertDialogModel;
 import com.example.indiacastdemo.Model.Channel;
 
 import java.util.ArrayList;
@@ -157,17 +158,7 @@ public class HistoryChannelViewAdapter extends RecyclerView.Adapter<HistoryChann
                             updateOnDataChange();
                         } else {
                             try {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                                builder.setTitle("Alert!");
-                                builder.setMessage("Duplicate Entry...! Trying to change LCN " + prv_lcn + " with LCN " + Chgd_lcn);
-                                builder.setCancelable(false);
-                                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                    }
-                                });
-                                builder.show();
-//                            Toast.makeText(mContext, "Duplicate Entry...", Toast.LENGTH_SHORT).show();
+                                AlertDialogModel.generateAlertDialog(mContext, "Alert", "Duplicate Entry...! Trying to change LCN " + prv_lcn + " with LCN " + Chgd_lcn);
                                 channelViewHolder.edt_lcn.setText(prv_lcn);
                             }catch (Exception e){
                                 e.printStackTrace();

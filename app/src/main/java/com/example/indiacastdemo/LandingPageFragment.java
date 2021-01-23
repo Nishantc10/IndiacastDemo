@@ -19,6 +19,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.indiacastdemo.Database.DatabaseHelper;
+import com.example.indiacastdemo.Model.AlertDialogModel;
 
 import java.util.ArrayList;
 
@@ -98,53 +99,24 @@ public class LandingPageFragment extends Fragment {
             public void onClick(View v) {
                 if ((edt_lcn.getText().toString()).equals("")) {
                     try {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setTitle("Alert!");
-                        builder.setMessage("Please select LCN!");
-                        builder.setCancelable(false);
-                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        });
-                        builder.show();
+                        AlertDialogModel.generateAlertDialog(getContext(), "Alert", "Please select LCN!");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 } else if ((edt_channelName.getText().toString()).equals(" ") || (edt_genreName.getText().toString()).equals(" ")) {
                     try {
                         String CHANNELNAME = edt_channelName.getText().toString();
-                        Log.d("CHANNELNAME: ", CHANNELNAME);
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setTitle("Alert!");
-                        builder.setMessage("Please check LCN!");
-                        builder.setCancelable(false);
-                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        });
-                        builder.show();
+                        AlertDialogModel.generateAlertDialog(getContext(), "Alert", "Please check LCN!");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 } else {
                     try {
                         db.setLandingPage(networkId, edt_lcn.getText().toString());
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setTitle("Alert!");
-                        builder.setMessage("Landing Page Updated Successfully");
-                        builder.setCancelable(false);
-                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        });
-                        builder.show();
+                        AlertDialogModel.generateAlertDialog(getContext(), "Alert", "Landing Page Updated Successfully");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-//                    Toast.makeText(getContext(), "Landing Page Updated Successfully", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -169,16 +141,7 @@ public class LandingPageFragment extends Fragment {
                     edt_position.setText(Position);
                 } else {
                     try {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setTitle("Alert!");
-                        builder.setMessage("No LCN Found!");
-                        builder.setCancelable(false);
-                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        });
-                        builder.show();
+                        AlertDialogModel.generateAlertDialog(getContext(), "Alert", "No LCN Found!");
                         edt_channelName.setText(" ");
 //                    edt_lcn.setText(LCN_No);
                         edt_genreName.setText(" ");

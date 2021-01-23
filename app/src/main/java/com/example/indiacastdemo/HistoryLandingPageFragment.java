@@ -18,6 +18,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.indiacastdemo.Database.DatabaseHelper;
+import com.example.indiacastdemo.Model.AlertDialogModel;
 
 import java.util.ArrayList;
 
@@ -100,48 +101,21 @@ public class HistoryLandingPageFragment extends Fragment {
 
                 if ((edt_lcn.getText().toString()).equals("")) {
                     try {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setTitle("Alert!");
-                        builder.setMessage("Please select LCN!");
-                        builder.setCancelable(false);
-                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        });
-                        builder.show();
+                        AlertDialogModel.generateAlertDialog(getContext(), "Alert", "Please select LCN!");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
                 if ((edt_channelName.getText().toString()).equals(null)) {
                     try {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setTitle("Alert!");
-                        builder.setMessage("Please check LCN!");
-                        builder.setCancelable(false);
-                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        });
-                        builder.show();
+                        AlertDialogModel.generateAlertDialog(getContext(), "Alert", "Please check LCN!");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 } else {
                     try {
                         db.setLandingPageFromPlacement(networkId, edt_lcn.getText().toString(), createdDate);
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setTitle("Alert!");
-                        builder.setMessage("Landing Page Updated Successfully");
-                        builder.setCancelable(false);
-                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        });
-                        builder.show();
+                        AlertDialogModel.generateAlertDialog(getContext(), "Alert", "Landing Page Updated Successfully!");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

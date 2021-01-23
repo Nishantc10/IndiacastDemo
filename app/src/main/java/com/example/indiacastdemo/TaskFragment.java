@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import com.example.indiacastdemo.Model.AlertDialogModel;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,14 +33,12 @@ import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 
 public class TaskFragment extends Fragment implements View.OnClickListener {
-    ConnectionCheck connectionCheck;
     EditText task_comment;
     String comment, task;
     Button task_submit;
     CheckBox checkBox, checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6, checkBox7, checkBox8, checkBox9, checkBox10, checkBox11, checkBox12, checkBox13, checkBox14, checkBox15, checkBox16, checkBox17, checkBox18;
     final ArrayList<String> selchkboxlist = new ArrayList<String>();
     String User_ID;
-    Bundle bundle;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -50,7 +50,6 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_task, container, false);
 
-//        User_ID = bundle.getString("User_ID");
         try {
             User_ID = getArguments().getString("User_ID");
             checkBox = v.findViewById(R.id.checkBox);
@@ -128,13 +127,9 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
         if (((CheckBox) view).isChecked()) {
             String checkbox = (String) ((CheckBox) view).getText();
             selchkboxlist.add(checkbox);
-//            Log.d("onCheckboxClicked: ", selchkboxlist + "");
-
         } else {
             String checkbox = (String) ((CheckBox) view).getText();
             selchkboxlist.remove(checkbox);
-//            Log.d("onCheckboxClicked: ", selchkboxlist + "");
-
         }
     }
 
@@ -240,7 +235,6 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
                     .addHeader("content-type", "application/json")
                     .put(body)
                     .build();
-//        Log.d("postRequest: ", postBody + "");
             client.newCall(request).enqueue(new Callback() {
 
                 @Override
@@ -250,17 +244,7 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
                             getActivity().runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                        builder.setCancelable(false);
-                                        builder.setTitle("Alert!");
-                                        builder.setMessage("Server connection lost!");
-                                        builder.setCancelable(true);
-                                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                            }
-                                        });
-                                        builder.show();
+                                        AlertDialogModel.generateAlertDialog(getActivity(),"Alert!","Server connection lost!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -278,7 +262,6 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
                         jsonData = response.body().string();
                         Log.d("submitResponse: ", jsonData);
                         JSONArray jsonArray = new JSONArray(jsonData);
-//                    JSONArray taskarray = jsonArray.getJSONArray(0);
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject taskObject = jsonArray.getJSONObject(i);
                             String taskresponse = taskObject.getString("Name");
@@ -286,23 +269,12 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
                                 getActivity().runOnUiThread(new Runnable() {
                                     public void run() {
                                         try {
-                                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                            builder.setCancelable(false);
-                                            builder.setTitle("Alert!");
-                                            builder.setMessage("Task submitted Successfully");
-                                            builder.setCancelable(true);
-                                            builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                }
-                                            });
-                                            builder.show();
+                                            AlertDialogModel.generateAlertDialog(getActivity(),"Alert!","Task submitted Successfully");
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
                                     }
                                 });
-//                            Toast.makeText(getContext(), "task submitted", Toast.LENGTH_SHORT).show();
                             }
                         }
                     } catch (Exception e) {
@@ -312,18 +284,7 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
             });
         } else {
             try {
-//        progress.dismiss();
-                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
-                builder.setCancelable(false);
-                builder.setTitle("Alert!");
-                builder.setMessage("No internet connection!!!");
-                builder.setCancelable(true);
-                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
-                builder.show();
+                AlertDialogModel.generateAlertDialog(getActivity(),"Alert!","No internet connection!!!");
             } catch (Exception e) {
                 e.printStackTrace();
             }

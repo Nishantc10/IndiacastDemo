@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.indiacastdemo.Database.DatabaseHelper;
+import com.example.indiacastdemo.Model.AlertDialogModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -81,7 +82,6 @@ public class MonitoringPointsFragment extends Fragment {
                     builder.setMessage("Are you sure, you want to submit?")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-
                                     if (db.setMonitoringPoint(networkId, edt_Tec.getText().toString(), edt_Grd.getText().toString())) {
                                         txt_Grd.setText(edt_Grd.getText().toString());
                                         txt_Tec.setText(edt_Tec.getText().toString());
@@ -96,7 +96,6 @@ public class MonitoringPointsFragment extends Fragment {
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
-//                                    Toast.makeText(getContext(), "Monitoring Points updated Successfully", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             })
@@ -144,17 +143,7 @@ public class MonitoringPointsFragment extends Fragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                        builder.setCancelable(false);
-                                        builder.setTitle("Alert!");
-                                        builder.setMessage("Server connection lost!");
-                                        builder.setCancelable(true);
-                                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                            }
-                                        });
-                                        builder.show();
+                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert", "Server connection lost!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -178,18 +167,7 @@ public class MonitoringPointsFragment extends Fragment {
             });
         } else {
             try {
-//        progress.dismiss();
-                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
-                builder.setCancelable(false);
-                builder.setTitle("Alert!");
-                builder.setMessage("No internet connection!!!");
-                builder.setCancelable(true);
-                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
-                builder.show();
+                AlertDialogModel.generateAlertDialog(getContext(), "Alert", "No internet connection!!!");
             } catch (Exception e) {
                 e.printStackTrace();
             }
