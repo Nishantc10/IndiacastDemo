@@ -2100,6 +2100,7 @@ id edt_lcn
 id edt_networkId
 id edt_position
 id edt_search
+id edt_search_indiacast_channel
 id eject
 id elephant
 id elevation_decline
@@ -2601,6 +2602,7 @@ id inbox_arrow_down
 id inbox_arrow_up
 id inbox_multiple
 id incognito
+id indiacast_channel_fragment_recy
 id infinity
 id info
 id information
@@ -3142,7 +3144,6 @@ id radar
 id radiator
 id radio
 id radio_goup
-id radio_group
 id radio_handheld
 id radio_tower
 id radioactive

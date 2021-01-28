@@ -7,42 +7,43 @@
     android:orientation="horizontal"
     android:paddingRight="3dp"
     tools:context=".ChannelPageFragment">
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/searchLL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
         android:paddingLeft="15dp"
         android:paddingRight="6dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="4dp"
-        >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:orientation="horizontal"
-    android:paddingRight="8dp"
-    android:layout_below="@+id/network_name"
-    android:paddingLeft="6dp"
-    android:layout_height="wrap_content">
+        app:cardCornerRadius="10dp">
 
-    <ImageView
-        android:id="@+id/img_search"
-        android:layout_width="37dp"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/ic_search_black_24dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/network_name"
+            android:orientation="horizontal"
+            android:paddingLeft="6dp"
+            android:paddingRight="8dp">
 
-    <EditText
-        android:id="@+id/edt_search"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:maxLines="1"
-        android:hint="Search Channel..." />
-</LinearLayout>
+            <ImageView
+                android:id="@+id/img_search"
+                android:layout_width="37dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_search_black_24dp" />
+
+            <EditText
+                android:id="@+id/edt_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="Search Channel..."
+                android:maxLines="1" />
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
@@ -91,8 +92,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="90dp"
-        app:srcCompat="@drawable/ic_add"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        app:srcCompat="@drawable/ic_add" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_send"
@@ -103,19 +104,18 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="160dp"
-        app:srcCompat="@drawable/ic_send"
         android:visibility="invisible"
+        app:srcCompat="@drawable/ic_send"
         tools:ignore="NotSibling" />
 
     <ProgressBar
+        android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/progress_bar"
+        android:layout_centerVertical="true"
         android:minWidth="50dp"
         android:minHeight="50dp"
         android:translationZ="2dp"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 </RelativeLayout>

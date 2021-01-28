@@ -113,6 +113,7 @@ public class ChannelPageFragment extends Fragment {
                 animateFab();
             }
         });
+        //region FAB Add
         fab_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -220,11 +221,13 @@ public class ChannelPageFragment extends Fragment {
                 dialogBuilder.show();
             }
         });
+
+        //endregion
+        //region FAB Send
         fab_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new Fragment();
-                fragment = new ChannelSubmitFragment();
+               Fragment fragment = new IndiaCastChannelFragment();
                 fragment.setArguments(bundle);
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
 
@@ -390,6 +393,7 @@ public class ChannelPageFragment extends Fragment {
 //                animateFab();
             }
         });
+        //endregion
         fabOpen = AnimationUtils.loadAnimation(getContext(), R.anim.fab_open);
         fabClose = AnimationUtils.loadAnimation(getContext(), R.anim.fab_close);
         rotateBackward = AnimationUtils.loadAnimation(getContext(), R.anim.rotate_backward);
