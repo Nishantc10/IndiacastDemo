@@ -101,7 +101,7 @@ public class ChannelPageFragment extends Fragment {
         bundle.putString("networkId", networkId);
         progressBar = v.findViewById(R.id.progress_bar);
         lst_channel = new ArrayList<>();
-        db = new DatabaseHelper(getContext());
+            db = new DatabaseHelper(getContext());
         getChannelsFromNetwork();
         recyclerView = (RecyclerView) v.findViewById(R.id.channel_fragment_recy);
         fab_add = v.findViewById(R.id.fab_add);

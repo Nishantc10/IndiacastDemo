@@ -300,6 +300,10 @@
         "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/network_sumbit.xml"
     },
     {
+        "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/layout_item_indiacast_channel.xml.flat",
+        "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/item_indiacast_channel.xml"
+    },
+    {
         "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/drawable_ic_status_orange.xml.flat",
         "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/drawable/ic_status_orange.xml"
     },

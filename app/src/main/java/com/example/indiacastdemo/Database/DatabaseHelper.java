@@ -50,6 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String isValid = "isValid";
     public static final String Assigned_Town = "Assigned_Town";
     public static final String Created_Date = "Created_Date";
+    public static final String CreatedDate = "CreatedDate";
     public static final String Updated_Date = "Updated_Date";
     public static final String Token = "Token";
     public static final String IMAGE = "image";
@@ -77,10 +78,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "MAC_Address text" +
             "            )";
     // endregion
+
     //region tbl_update_checker_phone
     public static final String tbl_update_checker_phone = "tbl_update_checker_phone";
     public static final String Updt_Chckr_ID_P = "Updt_Chckr_ID_P";
-
     public static final String Netwrk_ID = "Netwrk_ID";
     public static final String Netwrk_Change_Flag = "Netwrk_Change_Flag";
     public static final String Netwrk_Date = "Netwrk_Date";
@@ -107,6 +108,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "    Update_Date text" +
             ")";
     //endregion
+
     //region tbl_network_monitors
     public static final String tbl_network_monitors = "tbl_network_monitors";
     public static final String Ntwrk_Monitor_ID = "Ntwrk_Monitor_ID";
@@ -115,8 +117,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String Technicians = "Technicians";
     public static final String Created_date = "Created_date";
     public static final String Updated_date = "Updated_date";
-
-
     public String create_tbl_network_monitors = "   create table tbl_network_monitors" +
             "            (" +
             "                    Ntwrk_Monitor_ID text Primary Key NOT NULL," +
@@ -127,11 +127,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "    Updated_date text" +
             ")";
     //endregion
+
     //region tbl_network_to_channel_mapping
     public static final String tbl_network_to_channel_mapping = "tbl_network_to_channel_mapping";
     public static final String Ntwrk_Chnnl_ID = "Ntwrk_Chnnl_ID";
     public static final String isActive = "isActive";
-
     public String create_tbl_network_to_channel_mapping = "   create table tbl_network_to_channel_mapping" +
             "            (" +
             "                    Ntwrk_Chnnl_ID text Primary Key NOT NULL," +
@@ -142,6 +142,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "    Updated_Date text" +
             ")";
     //endregion
+
     //region tbl_network_details
     public static final String tbl_network_details = "tbl_network_details";
     public static final String Network_Name = "Network_Name";
@@ -154,7 +155,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String Status_ID = "Status_ID";
     public static final String Landing_Page_Flag = "Landing_Page_Flag";
     public static final String Landing_Page_ID = "Landing_Page_ID";
-
     public String create_tbl_network_details = "    create table tbl_network_details" +
             "            (" +
             "                    Network_ID text Primary Key," +
@@ -172,13 +172,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "    Updated_Date text" +
             ")";
     //endregion
+
     //region tbl_channel_master
     public static final String tbl_channel_master = "tbl_channel_master";
     public static final String Channel_Name = "Channel_Name";
     public static final String SD_HD_Type = "SD_HD_Type";
     public static final String Genre = "Genre";
-    public String create_tbl_channel_master = "" +
-            "    create table tbl_channel_master" +
+    public String create_tbl_channel_master = " create table tbl_channel_master" +
             "            (" +
             "                    Channel_ID char(255) Primary Key," +
             "    Channel_Name text," +
@@ -189,6 +189,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "    Updated_Date text" +
             ")";
     //endregion
+
     //region tbl_tasks
     public static final String tbl_tasks = "tbl_tasks";
     public static final String ID = "ID";
@@ -207,6 +208,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "[Year] integer" +
             ")";
     //endregion
+
+    //region tbl_indiacast_channels_details
+    public String create_tbl_indiacast_channels_details = " create table tbl_indiacast_channels_details" +
+            "(" +
+            "ICDID INTEGER primary key autoincrement," +
+            "    ChannelID text," +
+            "    Others text" +
+            ")";
+    //endregion
+
+  //region tbl_indiacast_channels_status
+    public String create_tbl_indiacast_channels_status = " create table tbl_indiacast_channels_status" +
+            "(" +
+            "ID	INTEGER primary key," +
+            "IStatus	TEXT," +
+            "IStatusDesc	TEXT," +
+            "Comments	TEXT," +
+            "Others	TEXT" +
+            ")";
+    //endregion
+
+    // region tbl_placement_indiacast_channels_details
+    public String create_tbl_placement_indiacast_channels_details = " create table tbl_placement_indiacast_channels_details" +
+            "(" +
+            "ICPID	INTEGER  primary key," +
+            "ChannelID	TEXT," +
+            "LCN	INTEGER," +
+            "Position	INTEGER," +
+            "CPosition	INTEGER," +
+            "IStatusID	INTEGER," +
+            "NetworkID	TEXT," +
+            "Others	TEXT," +
+            "Status_ID	TEXT" +
+            ")";
+    //endregion
+
     //region tbl_status_master
     public static final String tbl_status_master = "tbl_status_master";
     public static final String Status = "Status";
@@ -307,6 +344,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(create_tbl_network_details);
         db.execSQL(create_tbl_channel_master);
+        db.execSQL(create_tbl_indiacast_channels_details);
+        db.execSQL(create_tbl_indiacast_channels_status);
+        db.execSQL(create_tbl_placement_indiacast_channels_details);
         db.execSQL(create_tbl_network_to_channel_mapping);
         db.execSQL(create_tbl_status_master);
         db.execSQL(create_tbl_tasks);

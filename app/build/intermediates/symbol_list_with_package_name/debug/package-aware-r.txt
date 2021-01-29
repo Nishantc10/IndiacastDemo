@@ -2096,6 +2096,11 @@ id edt_email
 id edt_empid
 id edt_empname
 id edt_genreName
+id edt_indiaCastlcn
+id edt_indiacastChannelName
+id edt_indiacastNetworkId
+id edt_indiacastgenreName
+id edt_indiacastposition
 id edt_lcn
 id edt_networkId
 id edt_position
@@ -4013,6 +4018,7 @@ layout homepage_table_item
 layout item_channel
 layout item_he_network
 layout item_history_network
+layout item_indiacast_channel
 layout items_view
 layout layout_bottombar_item
 layout mtrl_layout_snackbar
