@@ -92,8 +92,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String Placement_Date = "Placement_Date";
     public static final String Update_Date = "Update_Date";
 
-    public String
-            create_tbl_update_checker_phone = " create table tbl_update_checker_phone" +
+    public String create_tbl_update_checker_phone = " create table tbl_update_checker_phone" +
             "            (" +
             "                    Updt_Chckr_ID_P text Primary Key NOT NULL," +
             "[User_ID] text References tbl_user_details([User_ID])," +
@@ -210,6 +209,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //endregion
 
     //region tbl_indiacast_channels_details
+    public static final String tbl_indiacast_channels_details = "tbl_indiacast_channels_details";
+    public static final String ICDID = "ICDID";
+    public static final String ChannelID = "ChannelID";
+    public static final String Others = "Others";
     public String create_tbl_indiacast_channels_details = " create table tbl_indiacast_channels_details" +
             "(" +
             "ICDID INTEGER primary key autoincrement," +
@@ -219,6 +222,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //endregion
 
   //region tbl_indiacast_channels_status
+  public static final String tbl_indiacast_channels_status = "tbl_indiacast_channels_status";
+    public static final String IStatus = "IStatus";
+    public static final String IStatusDesc = "IStatusDesc";
     public String create_tbl_indiacast_channels_status = " create table tbl_indiacast_channels_status" +
             "(" +
             "ID	INTEGER primary key," +
@@ -230,6 +236,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //endregion
 
     // region tbl_placement_indiacast_channels_details
+    public static final String tbl_placement_indiacast_channels_details = "tbl_placement_indiacast_channels_details";
+    public static final String ICPID = "ICPID";
+    public static final String CPosition = "CPosition";
+    public static final String IStatusID = "IStatusID";
     public String create_tbl_placement_indiacast_channels_details = " create table tbl_placement_indiacast_channels_details" +
             "(" +
             "ICPID	INTEGER  primary key," +
@@ -558,6 +568,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.delete(tbl_status_master, null, null);
         db.delete(tbl_tasks, null, null);
         db.delete(tbl_update_checker_phone, null, null);
+        db.delete(tbl_indiacast_channels_details, null, null);
+        db.delete(tbl_indiacast_channels_status, null, null);
+        db.delete(tbl_placement_indiacast_channels_details, null, null);
         db.setTransactionSuccessful();
         db.endTransaction();
         db.close();
@@ -640,7 +653,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //    count(CASE WHEN Status_ID='STS0003' THEN Status_ID END) AS 'Submitted',
 //    count(CASE WHEN Status_ID='STS0004' THEN Status_ID END) AS 'Approved'
 //    from (SELECT Network_ID,Status_ID FROM tbl_network_channel_placement GROUP BY Network_ID,Created_date) as cp GROUP BY Network_ID
-
 
     public Cursor getHomePageNetworkCount() { // getNetworkCount on home page
         SQLiteDatabase db = this.getReadableDatabase();

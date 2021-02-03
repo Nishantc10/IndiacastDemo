@@ -45,7 +45,6 @@
                     android:id="@+id/edt_indiacastChannelName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/textview_underline_bg"
                     android:layout_marginLeft="10sp"
                     android:text="Channel Name"
                     android:textColor="@color/black"
@@ -91,7 +90,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:background="@drawable/textview_underline_bg"
                         android:gravity="bottom"
                         android:hint="--------"
                         android:inputType="number"
@@ -123,7 +121,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:background="@drawable/textview_underline_bg"
                         android:gravity="bottom"
                         android:hint="--------"
                         android:inputType="number"
@@ -142,18 +139,18 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/genre"
+                    android:id="@+id/indiacast_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
                     android:gravity="top"
                     android:layout_marginLeft="10sp"
-                    android:text="Genre : "
+                    android:text="Istatus : "
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/edt_indiacastgenreName"
+                    android:id="@+id/edt_indiacast_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

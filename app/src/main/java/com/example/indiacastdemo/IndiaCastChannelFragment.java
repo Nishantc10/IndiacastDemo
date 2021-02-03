@@ -46,7 +46,6 @@ public class IndiaCastChannelFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-
         }
     }
 
@@ -127,4 +126,5 @@ public class IndiaCastChannelFragment extends Fragment {
         }
         db.close();
     }
+
 }

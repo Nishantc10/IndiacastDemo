@@ -2099,7 +2099,7 @@ id edt_genreName
 id edt_indiaCastlcn
 id edt_indiacastChannelName
 id edt_indiacastNetworkId
-id edt_indiacastgenreName
+id edt_indiacast_status
 id edt_indiacastposition
 id edt_lcn
 id edt_networkId
@@ -2608,6 +2608,7 @@ id inbox_arrow_up
 id inbox_multiple
 id incognito
 id indiacast_channel_fragment_recy
+id indiacast_status
 id infinity
 id info
 id information

@@ -15,6 +15,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -101,7 +103,7 @@ public class ChannelPageFragment extends Fragment {
         bundle.putString("networkId", networkId);
         progressBar = v.findViewById(R.id.progress_bar);
         lst_channel = new ArrayList<>();
-            db = new DatabaseHelper(getContext());
+        db = new DatabaseHelper(getContext());
         getChannelsFromNetwork();
         recyclerView = (RecyclerView) v.findViewById(R.id.channel_fragment_recy);
         fab_add = v.findViewById(R.id.fab_add);
@@ -221,15 +223,18 @@ public class ChannelPageFragment extends Fragment {
                 dialogBuilder.show();
             }
         });
-
         //endregion
         //region FAB Send
         fab_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Fragment fragment = new IndiaCastChannelFragment();
+                Fragment fragment = new IndiaCastChannelFragment();
                 fragment.setArguments(bundle);
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.fragment_container, fragment, "FragmentTag");
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                ft.commit();
 
                 //                progressBar.setVisibility(View.VISIBLE);
 //                final AlertDialog dialogBuilder = new AlertDialog.Builder(getContext()).create();

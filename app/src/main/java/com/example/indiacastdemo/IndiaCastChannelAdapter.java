@@ -49,7 +49,7 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
         indiaCastChannelHolder.edt_networkId.setText(indiaCastChannel.getNetworkId());
         indiaCastChannelHolder.edt_lcn.setText(indiaCastChannel.getLCN());
         indiaCastChannelHolder.edt_position.setText(indiaCastChannel.getPosition());
-        indiaCastChannelHolder.edt_genreName.setText(indiaCastChannel.getGenre());
+        indiaCastChannelHolder.edt_indiacast_status.setText(indiaCastChannel.getIndiacast_status());
         networkid = indiaCastChannel.getNetworkId();
         indiaCastChannelHolder.setIsRecyclable(false);
     }
@@ -61,7 +61,7 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
 
     public static class IndiaCastChannelHolder extends RecyclerView.ViewHolder {
 
-        private TextView edt_channelName, edt_networkId, edt_genreName, network_name,edt_lcn, edt_position;
+        private TextView edt_channelName, edt_networkId, edt_indiacast_status, network_name,edt_lcn, edt_position;
         String networkId;
 
         public IndiaCastChannelHolder(@NonNull View itemView) {
@@ -71,7 +71,7 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
             edt_networkId = (TextView) itemView.findViewById(R.id.edt_indiacastNetworkId);
             edt_lcn = (TextView) itemView.findViewById(R.id.edt_indiaCastlcn);
             edt_position = (TextView) itemView.findViewById(R.id.edt_indiacastposition);
-            edt_genreName = itemView.findViewById(R.id.edt_indiacastgenreName);
+            edt_indiacast_status = itemView.findViewById(R.id.edt_indiacast_status);
         }
     }
 }

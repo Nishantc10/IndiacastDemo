@@ -4,7 +4,7 @@ public class IndiaCastChannel {
     private String IndiaCastChannelName;
     private String LCN;
     private String  Position;
-    private String Genre;
+    private String Indiacast_status;
     private String NetworkId;
     private String createdDate;
 
@@ -32,6 +32,14 @@ public class IndiaCastChannel {
         IndiaCastChannelName = indiaCastChannelName;
     }
 
+    public String getIndiacast_status() {
+        return Indiacast_status;
+    }
+
+    public void setIndiacast_status(String indiacast_status) {
+        Indiacast_status = indiacast_status;
+    }
+
     public String getLCN() {
         return LCN;
     }
@@ -48,20 +56,13 @@ public class IndiaCastChannel {
         Position = position;
     }
 
-    public String getGenre() {
-        return Genre;
-    }
 
-    public void setGenre(String genre) {
-        Genre = genre;
-    }
-
-    public IndiaCastChannel(String indiaCastChannelName, String LCN, String position, String genre, String networkId, String createdDate) {
+    public IndiaCastChannel(String indiaCastChannelName, String LCN, String position, String indiacast_status, String networkId, String createdDate) {
         IndiaCastChannelName = indiaCastChannelName;
         this.LCN = LCN;
         Position = position;
-        Genre = genre;
         NetworkId = networkId;
+        Indiacast_status = indiacast_status;
         this.createdDate = createdDate;
     }
 
