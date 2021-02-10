@@ -60,7 +60,6 @@ public class ChannelViewAdapter extends RecyclerView.Adapter<ChannelViewAdapter.
         channelViewHolder.edt_channelName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 cursor = db.getAllChannels();
                 channelist.clear();
                 if (cursor.moveToFirst()) {
@@ -135,7 +134,6 @@ public class ChannelViewAdapter extends RecyclerView.Adapter<ChannelViewAdapter.
                     }
                 }
                 db.close();
-
                 chanels = new SpinnerDialog((Activity) mContext, channelist, "Select or Search City", R.drawable.ic_edit_location_black_24dp, R.drawable.ic_my_location_black_2dp);
                 chanels.showSpinerDialog();
                 chanels.bindOnSpinerListener(new OnSpinerItemClick() {

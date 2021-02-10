@@ -1,4 +1,5 @@
 package com.example.indiacastdemo;
+
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -7,12 +8,15 @@ import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.widget.TextView;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -23,12 +27,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.iammert.library.readablebottombar.ReadableBottomBar;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -39,12 +46,10 @@ public class Main2Activity extends AppCompatActivity {
     TextView customtitle;
     Toolbar toolbar;
     ReadableBottomBar bottomnav;
-    HomeFragment homeFragment;
     DatabaseHelper db;
     ConnectionCheck connectionCheck;
     private ProgressDialog progress;
     Bundle bundle;
-    String checkbundle = null;
     String Login_ID, User_ID, Token, ABCD = null;
     //Firebase notification
     final private String FCM_API = "https://fcm.googleapis.com/fcm/send";
@@ -61,12 +66,11 @@ public class Main2Activity extends AppCompatActivity {
     //------------------------
     @SuppressLint("WrongConstant")
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         db = new DatabaseHelper(this);
         try {
             try {
@@ -102,7 +106,8 @@ public class Main2Activity extends AppCompatActivity {
             networkCount = cursor.getString(0);
         }
         db.close();
-
+        getIndiaCastChannelsStatus();
+        getIndiaCastChannels();
         bundle = new Bundle();
         bundle.putString("User_ID", User_ID);
         bundle.putString("Login_ID", Login_ID);
@@ -132,6 +137,7 @@ public class Main2Activity extends AppCompatActivity {
         customtitle.setText(R.string.home);
         bottomnav = findViewById(R.id.navigation);
         fragment = new Fragment();
+        // region bottom navigation bar
         bottomnav.setOnItemSelectListener(new ReadableBottomBar.ItemSelectListener() {
             @Override
             public void onItemSelected(int i) {
@@ -144,7 +150,7 @@ public class Main2Activity extends AppCompatActivity {
                     case 1:
                         try {
                             bundle.putString("ABCD", "asdfghjk");
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                         fragment = new HEFragment();
@@ -159,8 +165,8 @@ public class Main2Activity extends AppCompatActivity {
                     case 3:
                         fragment = new ProfileFragment();
                         fragment.setArguments(bundle);
-                        //firebase notification
 
+                        //firebase notification
 //                        try {
 //                            Cursor cursor = db.getUserDetails();
 //                            if (cursor.moveToFirst()) {
@@ -194,6 +200,8 @@ public class Main2Activity extends AppCompatActivity {
                 }
             }
         });
+        //endregion
+        //default fragment is HomeFragment
         fragment = new HomeFragment();
         fragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
@@ -220,8 +228,7 @@ public class Main2Activity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-    //Firebase notification
+    // region Firebase notification
     private void sendNotification(JSONObject notification) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(FCM_API, notification,
                 new Response.Listener<JSONObject>() {
@@ -246,12 +253,158 @@ public class Main2Activity extends AppCompatActivity {
         };
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
     }
+//endregion
     //-------------------------------------
     @Override
     public void onBackPressed() {
         super.onBackPressed();
     }
 
+    //region get indiacast channel status master
+    private void getIndiaCastChannelsStatus() {
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("loginid", Login_ID);
+            indiacastChannelsStatusPostRequest(postData.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void indiacastChannelsStatusPostRequest(String postBody) throws IOException {
+        ConnectivityManager cm =
+                (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        if (isConnected) {
+            String postUrl = getString(R.string.api) + "/api/list/list/icchannelstatus";
+            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+            OkHttpClient client = new OkHttpClient();
+            RequestBody body = RequestBody.create(JSON, postBody);
+            okhttp3.Request request = new okhttp3.Request.Builder()
+                    .url(postUrl)
+                    .addHeader("content-type", "application/json")
+                    .post(body)
+                    .build();
+            client.newCall(request).enqueue(new Callback() {
+
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    progress.dismiss();
+                    Main2Activity.this.runOnUiThread(new Runnable() {
+                        public void run() {
+                            Main2Activity.this.runOnUiThread(new Runnable() {
+                                public void run() {
+                                    try {
+                                        AlertDialogModel.generateAlertDialog(getApplicationContext(), "Alert!", "Server connection lost!");
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                        }
+                    });
+                    call.cancel();
+                }
+
+                @Override
+                public void onResponse(Call call, okhttp3.Response response) throws IOException {
+                    try {
+                        if (db.setIndiaCastChannelStatusResponse(response.body().string())) {
+//                            progress.dismiss();
+                        } else {
+                            progress.dismiss();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } else {
+            try {
+                AlertDialogModel.generateAlertDialog(getApplicationContext(), "Alert!", "No internet connection!!!");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    //endregion
+    //region get indiacast channel master
+    private void getIndiaCastChannels() {
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("loginid", Login_ID);
+            indiacastChannelsPostRequest(postData.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void indiacastChannelsPostRequest(String postBody) throws IOException {
+        ConnectivityManager cm =
+                (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        if (isConnected) {
+            String postUrl = getString(R.string.api) + "/api/list/list/icchannellist";
+            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+            OkHttpClient client = new OkHttpClient();
+            RequestBody body = RequestBody.create(JSON, postBody);
+            okhttp3.Request request = new okhttp3.Request.Builder()
+                    .url(postUrl)
+                    .addHeader("content-type", "application/json")
+                    .post(body)
+                    .build();
+            client.newCall(request).enqueue(new Callback() {
+
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Main2Activity.this.runOnUiThread(new Runnable() {
+                        public void run() {
+                            Main2Activity.this.runOnUiThread(new Runnable() {
+                                public void run() {
+                                    try {
+                                        progress.dismiss();
+                                        AlertDialogModel.generateAlertDialog(getApplicationContext(), "Alert!", "Server connection lost!");
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                        }
+                    });
+                    call.cancel();
+                }
+
+                @Override
+                public void onResponse(Call call, okhttp3.Response response) throws IOException {
+                    try {
+                        if (db.setIndiaCastChannelsResponse(response.body().string())) {
+//                            progress.dismiss();
+                        } else {
+//                            progress.dismiss();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } else {
+            try {
+                AlertDialogModel.generateAlertDialog(getApplicationContext(), "Alert!", "No internet connection!!!");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //endregion
     // region Token Authentication
     void postRequest(String postBody) throws IOException {
         progress = new ProgressDialog(Main2Activity.this);
@@ -284,7 +437,7 @@ public class Main2Activity extends AppCompatActivity {
                     Main2Activity.this.runOnUiThread(new Runnable() {
                         public void run() {
                             try {
-                                AlertDialogModel.generateAlertDialog(Main2Activity.this,"Alert!","Error!");
+                                AlertDialogModel.generateAlertDialog(Main2Activity.this, "Alert!", "Error!");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -341,7 +494,7 @@ public class Main2Activity extends AppCompatActivity {
                                     Main2Activity.this.runOnUiThread(new Runnable() {
                                         public void run() {
                                             try {
-                                                AlertDialogModel.generateAlertDialog(Main2Activity.this,"Alert!","Error!");
+                                                AlertDialogModel.generateAlertDialog(Main2Activity.this, "Alert!", "Error!");
                                             } catch (Exception e) {
                                                 e.printStackTrace();
                                             }
@@ -372,13 +525,14 @@ public class Main2Activity extends AppCompatActivity {
         } else {
             try {
                 progress.dismiss();
-                AlertDialogModel.generateAlertDialog(Main2Activity.this,"Alert!","No internet connection!!!");
+                AlertDialogModel.generateAlertDialog(Main2Activity.this, "Alert!", "No internet connection!!!");
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
-//endregion
+
+    //endregion
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //call super
@@ -387,7 +541,7 @@ public class Main2Activity extends AppCompatActivity {
 
     public void refreshManu() {
         ConnectivityManager cm =
-                (ConnectivityManager)Main2Activity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
+                (ConnectivityManager) Main2Activity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         final boolean isConnected = activeNetwork != null &&
                 activeNetwork.isConnectedOrConnecting();
@@ -433,7 +587,7 @@ public class Main2Activity extends AppCompatActivity {
                             Main2Activity.this.runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
-                                        AlertDialogModel.generateAlertDialog(Main2Activity.this,"Alert!","Server connection lost!");
+                                        AlertDialogModel.generateAlertDialog(Main2Activity.this, "Alert!", "Server connection lost!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -464,7 +618,7 @@ public class Main2Activity extends AppCompatActivity {
             });
         } else {
             try {
-                AlertDialogModel.generateAlertDialog(Main2Activity.this,"Alert!","No internet connection!!!");
+                AlertDialogModel.generateAlertDialog(Main2Activity.this, "Alert!", "No internet connection!!!");
             } catch (Exception e) {
                 e.printStackTrace();
             }

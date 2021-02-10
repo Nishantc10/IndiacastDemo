@@ -1,9 +1,6 @@
 <component name="libraryTable">
   <library name="Gradle: net.steamcrafted:materialiconlib:1.1.5@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6ed1d851ec949eb1ec4145f86f22fc1b/materialiconlib-1.1.5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6ed1d851ec949eb1ec4145f86f22fc1b/materialiconlib-1.1.5/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6ed1d851ec949eb1ec4145f86f22fc1b/materialiconlib-1.1.5/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1760193908a88f9b49ad0201e4953c94/jetified-materialiconlib-1.1.5/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1760193908a88f9b49ad0201e4953c94/jetified-materialiconlib-1.1.5/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1760193908a88f9b49ad0201e4953c94/jetified-materialiconlib-1.1.5/AndroidManifest.xml" />

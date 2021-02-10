@@ -20,12 +20,16 @@
         "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/dialog_layout.xml"
     },
     {
+        "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/drawable_table_border.xml.flat",
+        "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/drawable/table_border.xml"
+    },
+    {
         "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/layout_table_item.xml.flat",
         "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/table_item.xml"
     },
     {
-        "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/drawable_table_border.xml.flat",
-        "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/drawable/table_border.xml"
+        "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/layout_indiacastchannels_table_item.xml.flat",
+        "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/indiacastchannels_table_item.xml"
     },
     {
         "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/layout_activity_main2.xml.flat",
@@ -48,12 +52,12 @@
         "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/drawable-v24/ic_location_on_black_24dp.xml"
     },
     {
-        "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/drawable_ic_filter_list.xml.flat",
-        "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/drawable/ic_filter_list.xml"
-    },
-    {
         "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/layout_fragment_channel_submit.xml.flat",
         "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/fragment_channel_submit.xml"
+    },
+    {
+        "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/drawable_ic_filter_list.xml.flat",
+        "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/drawable/ic_filter_list.xml"
     },
     {
         "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/drawable_ic_profileactive_18.xml.flat",
@@ -104,20 +108,20 @@
         "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/drawable/edittext_bg.xml"
     },
     {
-        "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/layout_fragment_history_landing_page.xml.flat",
-        "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/fragment_history_landing_page.xml"
-    },
-    {
         "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/drawable-v24_ic_launcher_foreground.xml.flat",
         "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml"
     },
     {
-        "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/drawable_ic_logout.xml.flat",
-        "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/drawable/ic_logout.xml"
+        "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/layout_fragment_history_landing_page.xml.flat",
+        "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/fragment_history_landing_page.xml"
     },
     {
         "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/layout_channel_master.xml.flat",
         "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/channel_master.xml"
+    },
+    {
+        "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/drawable_ic_logout.xml.flat",
+        "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/drawable/ic_logout.xml"
     },
     {
         "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
@@ -390,6 +394,10 @@
     {
         "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/drawable_ic_home1.xml.flat",
         "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/drawable/ic_home1.xml"
+    },
+    {
+        "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/drawable_ic_next.xml.flat",
+        "source": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/src/main/res/drawable/ic_next.xml"
     },
     {
         "merged": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/res/merged/debug/layout_fragment_channel_page.xml.flat",

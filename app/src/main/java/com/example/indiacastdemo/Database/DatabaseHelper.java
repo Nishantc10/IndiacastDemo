@@ -23,6 +23,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     JSONArray networkdetailsarray = null;
     JSONArray networkchannelmappingarray = null;
     JSONArray networkchannelmappedarray = null;
+    JSONArray indiaCastChannelarray = null;
+    JSONArray indiaCastChannelStatusarray = null;
     JSONArray networkmonitorsarray = null;
     JSONObject channelmasterobject = null;
     JSONObject statusmasterobject = null;
@@ -30,6 +32,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     JSONObject networkdetailsobject = null;
     JSONObject networkchannelmappingobject = null;
     JSONObject networkchannelmappedobject = null;
+    JSONObject indiaCastChannelobject = null;
+    JSONObject indiaCastChannelStatusobject = null;
     JSONObject networkmonitorsobject = null;
 
     Cursor c;
@@ -51,6 +55,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String Assigned_Town = "Assigned_Town";
     public static final String Created_Date = "Created_Date";
     public static final String CreatedDate = "CreatedDate";
+    public static final String UpdatedDate = "UpdatedDate";
     public static final String Updated_Date = "Updated_Date";
     public static final String Token = "Token";
     public static final String IMAGE = "image";
@@ -213,6 +218,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String ICDID = "ICDID";
     public static final String ChannelID = "ChannelID";
     public static final String Others = "Others";
+    public static final String Comment = "Comment";
     public String create_tbl_indiacast_channels_details = " create table tbl_indiacast_channels_details" +
             "(" +
             "ICDID INTEGER primary key autoincrement," +
@@ -221,8 +227,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ")";
     //endregion
 
-  //region tbl_indiacast_channels_status
-  public static final String tbl_indiacast_channels_status = "tbl_indiacast_channels_status";
+    //region tbl_indiacast_channels_status
+    public static final String tbl_indiacast_channels_status = "tbl_indiacast_channels_status";
     public static final String IStatus = "IStatus";
     public static final String IStatusDesc = "IStatusDesc";
     public String create_tbl_indiacast_channels_status = " create table tbl_indiacast_channels_status" +
@@ -244,11 +250,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "(" +
             "ICPID	INTEGER  primary key," +
             "ChannelID	TEXT," +
+            "Channel_Name	TEXT," +
             "LCN	INTEGER," +
             "Position	INTEGER," +
             "CPosition	INTEGER," +
             "IStatusID	INTEGER," +
             "NetworkID	TEXT," +
+            "Created_Date text," +
             "Others	TEXT," +
             "Status_ID	TEXT" +
             ")";
@@ -257,6 +265,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //region tbl_status_master
     public static final String tbl_status_master = "tbl_status_master";
     public static final String Status = "Status";
+    public static final String StatusDesc = "StatusDesc";
     public static final String Description = "Description";
     public String create_tbl_status_master = "create table tbl_status_master" +
             "            (" +
@@ -615,6 +624,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getAllIndiaCastStatus() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * from tbl_indiacast_channels_status", null);
+        return res;
+    }
+
     public Cursor getAllNetworksByStatus(String status) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select nd.[Network_ID],nd.[Network_Name],sm.[Status],nd.Created_Date ,(select count(ncm.Channel_Name) from tbl_network_channel_mapped as ncm where ncm.Network_ID=nd.Network_ID) as Number_of_channels from tbl_network_channel_mapped  nd left join tbl_status_master sm where sm.ID=nd.Status_ID and nd.Status_ID =  " + "'" + status + "'group by Network_Name", null);
@@ -702,6 +717,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getIndiaCastChannels(String networkid) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * from tbl_placement_indiacast_channels_details where NetworkID = " + "'" + networkid + "' ", null);
+        return res;
+    }
+
+    public Cursor getChannelsFromIndiaCastPlacement(String networkid) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM (Select x.IndiaCast, x.Channel_Name,coalesce(y.Network_ID,z.Network_ID) " +
+                "as Network_ID,coalesce(y.Network_Name,z.Network_Name) as Network_Name,y.LCN_No,y.Position,y.Status_ID ," +
+                "y.Created_date ,null as Others,CASE WHEN LCN_No IS NULL  THEN 'NONE' ELSE 'OK' END as IStatusID " +
+                "from (select a.ChannelID as IndiaCast,b.Channel_ID as Master,b.Channel_Name, NULL as Network_ID," +
+                "NULL as Network_Name from tbl_indiacast_channels_details a inner join tbl_channel_master b " +
+                "on a.ChannelID = b.Channel_ID) x LEFT JOIN (select a.ChannelID as IndiaCast, b.Channel_ID as Master, " +
+                "b.Channel_Name,c.Network_ID, c.Network_Name, c.LCN_No, c.Position, c.Status_ID, c.Created_date " +
+                "from tbl_indiacast_channels_details a left join tbl_channel_master b " +
+                "on a.ChannelID = b.Channel_ID left join tbl_network_channel_mapped c on c.Channel_Name = b.Channel_Name " +
+                "where c.Network_ID = " + " '" + networkid + "')as y on x.IndiaCast = y.IndiaCast left join " +
+                "tbl_network_details z where z.Network_ID = " + " '" + networkid + "')A ORDER BY LCN_No ", null);
+        return res;
+    }
+
     public boolean updateByLcn(String channelname, String gnr, String prv_lcn, String Chgd_lcn, String pos, String networkId) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from tbl_network_channel_mapped where LCN_No = " + "'" + Chgd_lcn + "' " + "and Network_ID = " + "'" + networkId + "' ", null);
@@ -720,6 +757,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.update(tbl_network_channel_mapped, contentValues, "Network_ID = " + "'" + networkId + "'", null);
             return true;
         }
+    }
+
+    public boolean AddplacementIndiacastChannelsDetails(String Channel_Name, String ChannelID, String LCN, String Position, String CPosition, String IStatusID, String NetworkID, String Others, String Created_date, String Status_ID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+//        Cursor res = db.rawQuery("select * from tbl_placement_indiacast_channels_details where NetworkID = " + "'" + NetworkID + "' ", null);
+//        if (res.getCount() > 0) {
+//            ContentValues cv = new ContentValues();
+//            ContentValues contentValues = new ContentValues();
+//            cv.put("ChannelID", ChannelID); //These Fields should be your String values of actual column names
+//            cv.put("LCN", LCN);
+//            cv.put("Position", Position);
+//            cv.put("CPosition", CPosition);
+//            cv.put("IStatusID", IStatusID);
+//            cv.put("NetworkID", NetworkID);
+//            cv.put("Others", Others);
+//            cv.put("Created_date", Created_date);
+//            cv.put("Status_ID", "Status_ID");
+////            contentValues.put("Status_ID", "STS0002");
+//            db.update(tbl_placement_indiacast_channels_details, cv, "Network_ID = " + "'" + NetworkID , null);
+////            db.update(tbl_placement_indiacast_channels_details, contentValues, "Network_ID = " + "'" + networkId + "'", null);
+//            return true;
+//        } else {
+        ContentValues cv = new ContentValues();
+        cv.put("ChannelID", ChannelID); //These Fields should be your String values of actual column names
+        cv.put("Channel_Name", Channel_Name);
+        cv.put("LCN", LCN);
+        cv.put("Position", Position);
+        cv.put("CPosition", CPosition);
+        cv.put("IStatusID", IStatusID);
+        cv.put("NetworkID", NetworkID);
+        cv.put("Others", Others);
+        cv.put("Created_date", Created_date);
+        cv.put("Status_ID", Status_ID);
+        db.insertOrThrow(DatabaseHelper.tbl_placement_indiacast_channels_details, null, cv);
+        //db.update(tbl_placement_indiacast_channels_details, contentValues, "Network_ID = " + "'" + networkId + "'", null);
+        return true;
+//        }
     }
 
     public boolean updateByLcnFromPlacement(String channelname, String gnr, String prv_lcn, String Chgd_lcn, String pos, String networkId, String createdDate) {
@@ -1122,6 +1196,68 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public boolean setIndiaCastChannelsResponse(String jsonData) {
+        try {
+            JSONArray jsonArray = new JSONArray(jsonData);
+            indiaCastChannelarray = jsonArray.getJSONArray(0);
+            SQLiteDatabase db = this.getWritableDatabase();
+            try {
+                for (int i = 0; i < indiaCastChannelarray.length(); i++) {
+                    indiaCastChannelobject = indiaCastChannelarray.getJSONObject(i);
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put(DatabaseHelper.ICDID, indiaCastChannelobject.getInt("ICDID"));
+                    contentValues.put(DatabaseHelper.ChannelID, indiaCastChannelobject.getString("ChannelID"));
+//                    contentValues.put(DatabaseHelper.Created_Date, indiaCastChannelobject.getString("CreatedDate"));
+//                    contentValues.put(DatabaseHelper.UpdatedDate, indiaCastChannelobject.getString("UpdatedDate"));
+                    contentValues.put(DatabaseHelper.Others, indiaCastChannelobject.getString("Others"));
+                    try {
+                        db.insertOrThrow(DatabaseHelper.tbl_indiacast_channels_details, null, contentValues);
+                    } catch (Exception e) {
+                        db.insert(DatabaseHelper.tbl_indiacast_channels_details, null, contentValues);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean setIndiaCastChannelStatusResponse(String jsonData) {
+        try {
+            JSONArray jsonArray = new JSONArray(jsonData);
+            indiaCastChannelStatusarray = jsonArray.getJSONArray(0);
+            SQLiteDatabase db = this.getWritableDatabase();
+            try {
+                for (int i = 0; i < indiaCastChannelStatusarray.length(); i++) {
+                    indiaCastChannelStatusobject = indiaCastChannelStatusarray.getJSONObject(i);
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put(DatabaseHelper.ID, indiaCastChannelStatusobject.getInt("ID"));
+                    contentValues.put(DatabaseHelper.IStatus, indiaCastChannelStatusobject.getString("Status"));
+                    contentValues.put(DatabaseHelper.IStatusDesc, indiaCastChannelStatusobject.getString("StatusDesc"));
+                    contentValues.put(DatabaseHelper.Others, indiaCastChannelStatusobject.getString("Others"));
+                    contentValues.put(DatabaseHelper.Comments, indiaCastChannelStatusobject.getString("Comment"));
+                    try {
+                        db.insertOrThrow(DatabaseHelper.tbl_indiacast_channels_status, null, contentValues);
+                    } catch (Exception e) {
+                        db.insert(DatabaseHelper.tbl_indiacast_channels_status, null, contentValues);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
     public boolean getResponse(String jsonData) {
         try {
             JSONArray jsonArray = new JSONArray(jsonData);
@@ -1420,5 +1556,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(IMAGE, imageBytes);
         db.insert(tbl_user_details, null, cv);
+    }
+
+    public Boolean updateByIStatus(String indiacastChannelName, String iStatus, String lcn, String position, String networkid) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("LCN", lcn); //These Fields should be your String values of actual column names
+        cv.put("Channel_Name", indiacastChannelName);
+        cv.put("Position", position);
+        cv.put("IStatusID", iStatus);
+        db.update(tbl_placement_indiacast_channels_details, cv, "NetworkID = " + "'" + networkid + "'and Channel_Name = " + "'" + indiacastChannelName + "' ", null);
+        return true;
     }
 }

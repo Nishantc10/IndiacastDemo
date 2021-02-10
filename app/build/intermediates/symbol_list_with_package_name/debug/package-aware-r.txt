@@ -1154,6 +1154,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_my_location_black_2dp
+drawable ic_next
 drawable ic_notification_approved
 drawable ic_notification_rejected
 drawable ic_person
@@ -1208,6 +1209,7 @@ font roboto_regular
 id ALT
 id CTRL
 id FUNCTION
+id IndiaCastChannelsTableLayout
 id META
 id SHIFT
 id SYM
@@ -2105,7 +2107,6 @@ id edt_lcn
 id edt_networkId
 id edt_position
 id edt_search
-id edt_search_indiacast_channel
 id eject
 id elephant
 id elevation_decline
@@ -2170,6 +2171,7 @@ id eyedropper
 id eyedropper_variant
 id fab_add
 id fab_more
+id fab_next
 id fab_send
 id face
 id face_profile
@@ -2572,6 +2574,7 @@ id human_male
 id human_male_female
 id human_pregnant
 id humble_bundle
+id iStatus
 id ice_cream
 id icon
 id icon_group
@@ -3254,6 +3257,8 @@ id scroll
 id scrollBar
 id scrollIndicatorDown
 id scrollIndicatorUp
+id scrollTable1
+id scrollTable2
 id scrollView
 id scrollable
 id sd
@@ -4016,6 +4021,7 @@ layout fragment_status
 layout fragment_submit_channel_list
 layout fragment_task
 layout homepage_table_item
+layout indiacastchannels_table_item
 layout item_channel
 layout item_he_network
 layout item_history_network

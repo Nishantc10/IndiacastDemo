@@ -66,12 +66,11 @@ public class ChannelPageFragment extends Fragment {
     private ArrayList<JSONObject> tbl_network_channel_placement = new ArrayList<>();
     Animation fabOpen, fabClose, rotateForward, rotateBackward;
     boolean isOpen = false;
-    FloatingActionButton fab_add, fab_more, fab_send;
+    FloatingActionButton fab_add, fab_more, fab_next;
     private LinearLayoutManager linearLayoutManager;
     private DividerItemDecoration dividerItemDecoration;
     private RecyclerView.Adapter adapter;
     DatabaseHelper db;
-    ConnectionCheck connectionCheck;
     Cursor cursor;
     SpinnerDialog chanels;
     ArrayList<IdentifiableObject> channelist = new ArrayList<>();
@@ -104,11 +103,26 @@ public class ChannelPageFragment extends Fragment {
         progressBar = v.findViewById(R.id.progress_bar);
         lst_channel = new ArrayList<>();
         db = new DatabaseHelper(getContext());
+        try {
+            db = new DatabaseHelper(getContext());
+            Cursor cursor = db.getUserDetails();
+            if (cursor.moveToFirst()) {
+                while (!cursor.isAfterLast()) {
+                    Login_ID = cursor.getString(cursor.getColumnIndex("Login_ID"));
+                    Token = cursor.getString(cursor.getColumnIndex("Token"));
+                    User_ID = cursor.getString(cursor.getColumnIndex("User_ID"));
+                    cursor.moveToNext();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         getChannelsFromNetwork();
+        getChannelsFromIndiaCastPlacement(networkId);
         recyclerView = (RecyclerView) v.findViewById(R.id.channel_fragment_recy);
         fab_add = v.findViewById(R.id.fab_add);
         fab_more = v.findViewById(R.id.fab_more);
-        fab_send = v.findViewById(R.id.fab_send);
+        fab_next = v.findViewById(R.id.fab_next);
         fab_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -225,7 +239,7 @@ public class ChannelPageFragment extends Fragment {
         });
         //endregion
         //region FAB Send
-        fab_send.setOnClickListener(new View.OnClickListener() {
+        fab_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new IndiaCastChannelFragment();
@@ -461,6 +475,25 @@ public class ChannelPageFragment extends Fragment {
         return v;
     }
 
+    private void getChannelsFromIndiaCastPlacement(String NetworkID) {
+        Cursor cursor = db.getChannelsFromIndiaCastPlacement(NetworkID);
+        if (cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+                Network_ID = cursor.getString(cursor.getColumnIndex("Network_ID"));
+                String Channel_Name = cursor.getString(cursor.getColumnIndex("Channel_Name"));
+                String ChannelID = cursor.getString(cursor.getColumnIndex("IndiaCast"));
+                String LCN = cursor.getString(cursor.getColumnIndex("LCN_No"));
+                String Status_ID = cursor.getString(cursor.getColumnIndex("Status_ID"));
+                String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
+                String Created_date = cursor.getString(cursor.getColumnIndex("Created_date"));
+                String Position = cursor.getString(cursor.getColumnIndex("Position"));
+                db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, "", IStatusID, Network_ID, "Others", Created_date, Status_ID);
+                cursor.moveToNext();
+            }
+        }
+        db.close();
+    }
+
     private void setupRecyclerView() {
         swipeControllerChannel = new SwipeControllerChannel(new SwipeControllerActions() {
             @Override
@@ -501,148 +534,148 @@ public class ChannelPageFragment extends Fragment {
         if (isOpen) {
             fab_more.startAnimation(rotateForward);
             fab_add.startAnimation(fabClose);
-            fab_send.startAnimation(fabClose);
+            fab_next.startAnimation(fabClose);
             fab_add.setClickable(false);
-            fab_send.setClickable(false);
+            fab_next.setClickable(false);
             isOpen = false;
         } else {
             fab_more.startAnimation(rotateBackward);
             fab_add.startAnimation(fabOpen);
-            fab_send.startAnimation(fabOpen);
+            fab_next.startAnimation(fabOpen);
             fab_add.setClickable(true);
-            fab_send.setClickable(true);
+            fab_next.setClickable(true);
             isOpen = true;
         }
     }
 
-    void postRequest(String postBody) throws IOException {
-        ConnectivityManager cm =
-                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        boolean isConnected = activeNetwork != null &&
-                activeNetwork.isConnectedOrConnecting();
-        if (isConnected) {
-            String postUrl = getString(R.string.api) + "/api/setlist/placement";
-            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-            OkHttpClient client = new OkHttpClient();
-            RequestBody body = RequestBody.create(JSON, postBody);
-            okhttp3.Request request = new okhttp3.Request.Builder()
-                    .url(postUrl)
-                    .addHeader("content-type", "application/json")
-                    .put(body)
-                    .build();
-            client.newCall(request).enqueue(new Callback() {
-
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    getActivity().runOnUiThread(new Runnable() {
-                        public void run() {
-                            getActivity().runOnUiThread(new Runnable() {
-                                public void run() {
-                                    try {
-                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Server connection lost!");
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            });
-                        }
-                    });
-                    call.cancel();
-                }
-
-                @Override
-                public void onResponse(Call call, okhttp3.Response response) throws IOException {
-                    String jsonData = response.body().string();
-                    String name = null;
-                    JSONArray jsonArray = null;
-                    try {
-                        jsonArray = new JSONArray(jsonData);
-                        JSONObject Name = jsonArray.getJSONObject(0);
-                        name = Name.getString("Name");
-                        if (name.equals("Data Updated Successfully")) {
-                            getActivity().runOnUiThread(new Runnable() {
-                                public void run() {
-                                    try {
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                                        builder.setTitle("Alert!");
-                                        builder.setMessage("Submitted");
-                                        builder.setCancelable(false);
-                                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                progress = new ProgressDialog(getActivity());
-                                                progress.setCancelable(false);
-                                                progress.setTitle("Please wait....");
-                                                progress.setMessage("Fetching details");
-                                                progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                                                progress.show();
-                                                try {
-                                                    db = new DatabaseHelper(getContext());
-                                                    Cursor cursor = db.getUserDetails();
-                                                    if (cursor.moveToFirst()) {
-                                                        while (!cursor.isAfterLast()) {
-                                                            Login_ID = cursor.getString(cursor.getColumnIndex("Login_ID"));
-                                                            Token = cursor.getString(cursor.getColumnIndex("Token"));
-                                                            User_ID = cursor.getString(cursor.getColumnIndex("User_ID"));
-                                                            cursor.moveToNext();
-                                                        }
-                                                    }
-                                                } catch (Exception e) {
-                                                    e.printStackTrace();
-                                                }
-                                                ConnectivityManager cm =
-                                                        (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-                                                NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-                                                final boolean isConnected = activeNetwork != null &&
-                                                        activeNetwork.isConnectedOrConnecting();
-                                                if (isConnected) {
-                                                    JSONObject postData = new JSONObject();
-                                                    try {
-                                                        postData.put("loginid", Login_ID);
-                                                        postData.put("token", Token);
-                                                        networkCountPostRequest(postData.toString());
-                                                    } catch (JSONException e) {
-                                                        e.printStackTrace();
-                                                    } catch (Exception e) {
-                                                        e.printStackTrace();
-                                                    }
-                                                } else {
-
-                                                }
-
-                                            }
-                                        });
-                                        builder.show();
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            });
-                        } else {
-                            getActivity().runOnUiThread(new Runnable() {
-                                public void run() {
-                                    try {
-                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Error occured during submission!");
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            });
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-        } else {
-            try {
-                AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "No internet connection!!!");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//    void postRequest(String postBody) throws IOException {
+//        ConnectivityManager cm =
+//                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+//        boolean isConnected = activeNetwork != null &&
+//                activeNetwork.isConnectedOrConnecting();
+//        if (isConnected) {
+//            String postUrl = getString(R.string.api) + "/api/setlist/placement";
+//            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+//            OkHttpClient client = new OkHttpClient();
+//            RequestBody body = RequestBody.create(JSON, postBody);
+//            okhttp3.Request request = new okhttp3.Request.Builder()
+//                    .url(postUrl)
+//                    .addHeader("content-type", "application/json")
+//                    .put(body)
+//                    .build();
+//            client.newCall(request).enqueue(new Callback() {
+//
+//                @Override
+//                public void onFailure(Call call, IOException e) {
+//                    getActivity().runOnUiThread(new Runnable() {
+//                        public void run() {
+//                            getActivity().runOnUiThread(new Runnable() {
+//                                public void run() {
+//                                    try {
+//                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Server connection lost!");
+//                                    } catch (Exception e) {
+//                                        e.printStackTrace();
+//                                    }
+//                                }
+//                            });
+//                        }
+//                    });
+//                    call.cancel();
+//                }
+//
+//                @Override
+//                public void onResponse(Call call, okhttp3.Response response) throws IOException {
+//                    String jsonData = response.body().string();
+//                    String name = null;
+//                    JSONArray jsonArray = null;
+//                    try {
+//                        jsonArray = new JSONArray(jsonData);
+//                        JSONObject Name = jsonArray.getJSONObject(0);
+//                        name = Name.getString("Name");
+//                        if (name.equals("Data Updated Successfully")) {
+//                            getActivity().runOnUiThread(new Runnable() {
+//                                public void run() {
+//                                    try {
+//                                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//                                        builder.setTitle("Alert!");
+//                                        builder.setMessage("Submitted");
+//                                        builder.setCancelable(false);
+//                                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+//                                            @Override
+//                                            public void onClick(DialogInterface dialog, int which) {
+//                                                progress = new ProgressDialog(getActivity());
+//                                                progress.setCancelable(false);
+//                                                progress.setTitle("Please wait....");
+//                                                progress.setMessage("Fetching details");
+//                                                progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//                                                progress.show();
+//                                                try {
+//                                                    db = new DatabaseHelper(getContext());
+//                                                    Cursor cursor = db.getUserDetails();
+//                                                    if (cursor.moveToFirst()) {
+//                                                        while (!cursor.isAfterLast()) {
+//                                                            Login_ID = cursor.getString(cursor.getColumnIndex("Login_ID"));
+//                                                            Token = cursor.getString(cursor.getColumnIndex("Token"));
+//                                                            User_ID = cursor.getString(cursor.getColumnIndex("User_ID"));
+//                                                            cursor.moveToNext();
+//                                                        }
+//                                                    }
+//                                                } catch (Exception e) {
+//                                                    e.printStackTrace();
+//                                                }
+//                                                ConnectivityManager cm =
+//                                                        (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+//                                                NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+//                                                final boolean isConnected = activeNetwork != null &&
+//                                                        activeNetwork.isConnectedOrConnecting();
+//                                                if (isConnected) {
+//                                                    JSONObject postData = new JSONObject();
+//                                                    try {
+//                                                        postData.put("loginid", Login_ID);
+//                                                        postData.put("token", Token);
+//                                                        networkCountPostRequest(postData.toString());
+//                                                    } catch (JSONException e) {
+//                                                        e.printStackTrace();
+//                                                    } catch (Exception e) {
+//                                                        e.printStackTrace();
+//                                                    }
+//                                                } else {
+//
+//                                                }
+//
+//                                            }
+//                                        });
+//                                        builder.show();
+//                                    } catch (Exception e) {
+//                                        e.printStackTrace();
+//                                    }
+//                                }
+//                            });
+//                        } else {
+//                            getActivity().runOnUiThread(new Runnable() {
+//                                public void run() {
+//                                    try {
+//                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Error occured during submission!");
+//                                    } catch (Exception e) {
+//                                        e.printStackTrace();
+//                                    }
+//                                }
+//                            });
+//                        }
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
+//        } else {
+//            try {
+//                AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "No internet connection!!!");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
     public void getChannelsFromNetwork() {
         cursor = db.getChannelsFromNetwork(networkId);
@@ -660,63 +693,63 @@ public class ChannelPageFragment extends Fragment {
         db.close();
     }
 
-    void networkCountPostRequest(String postBody) throws IOException {
-        ConnectivityManager cm =
-                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        boolean isConnected = activeNetwork != null &&
-                activeNetwork.isConnectedOrConnecting();
-        if (isConnected) {
-            String postUrl = getString(R.string.api) + "/api/list/history/placement";
-            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-            OkHttpClient client = new OkHttpClient();
-            RequestBody body = RequestBody.create(JSON, postBody);
-            okhttp3.Request request = new okhttp3.Request.Builder()
-                    .url(postUrl)
-                    .addHeader("content-type", "application/json")
-                    .post(body)
-                    .build();
-            client.newCall(request).enqueue(new Callback() {
-
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    progress.dismiss();
-                    getActivity().runOnUiThread(new Runnable() {
-                        public void run() {
-                            getActivity().runOnUiThread(new Runnable() {
-                                public void run() {
-                                    try {
-                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Server connection lost!");
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            });
-                        }
-                    });
-                    call.cancel();
-                }
-
-                @Override
-                public void onResponse(Call call, okhttp3.Response response) throws IOException {
-                    try {
-                        if (db.getPlacement(response.body().string())) {
-                            progress.dismiss();
-                        } else {
-                            progress.dismiss();
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-        } else {
-            try {
-                AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "No internet connection!!!");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//    void networkCountPostRequest(String postBody) throws IOException {
+//        ConnectivityManager cm =
+//                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+//        boolean isConnected = activeNetwork != null &&
+//                activeNetwork.isConnectedOrConnecting();
+//        if (isConnected) {
+//            String postUrl = getString(R.string.api) + "/api/list/history/placement";
+//            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+//            OkHttpClient client = new OkHttpClient();
+//            RequestBody body = RequestBody.create(JSON, postBody);
+//            okhttp3.Request request = new okhttp3.Request.Builder()
+//                    .url(postUrl)
+//                    .addHeader("content-type", "application/json")
+//                    .post(body)
+//                    .build();
+//            client.newCall(request).enqueue(new Callback() {
+//
+//                @Override
+//                public void onFailure(Call call, IOException e) {
+//                    progress.dismiss();
+//                    getActivity().runOnUiThread(new Runnable() {
+//                        public void run() {
+//                            getActivity().runOnUiThread(new Runnable() {
+//                                public void run() {
+//                                    try {
+//                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Server connection lost!");
+//                                    } catch (Exception e) {
+//                                        e.printStackTrace();
+//                                    }
+//                                }
+//                            });
+//                        }
+//                    });
+//                    call.cancel();
+//                }
+//
+//                @Override
+//                public void onResponse(Call call, okhttp3.Response response) throws IOException {
+//                    try {
+//                        if (db.getPlacement(response.body().string())) {
+//                            progress.dismiss();
+//                        } else {
+//                            progress.dismiss();
+//                        }
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
+//        } else {
+//            try {
+//                AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "No internet connection!!!");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
 }

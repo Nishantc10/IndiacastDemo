@@ -48,9 +48,9 @@
         android:gravity="top"
         android:hint="Comment..."
         android:maxLines="7"
+        android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
@@ -92,78 +92,133 @@
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/landing_page_ll"
         android:layout_marginTop="5dp">
 
-        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/tableLayout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="@drawable/table_border"
-            android:orientation="vertical"
-            android:padding="5dp"
-            android:scrollbars="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <TableRow>
+            <ScrollView
+                android:id="@+id/scrollTable1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.45"
+                <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/tableLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
                     android:background="@drawable/table_border"
-                    android:gravity="center"
-                    android:text="Channel Name"
-                    android:textStyle="bold" />
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:scrollbars="vertical">
 
-                <TextView
-                    android:layout_width="0dp"
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.45"
+                            android:background="@drawable/table_border"
+                            android:gravity="center"
+                            android:text="Channel Name"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.15"
+                            android:background="@drawable/table_border"
+                            android:gravity="center"
+                            android:text="LCN"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.15"
+                            android:background="@drawable/table_border"
+                            android:gravity="center"
+                            android:text="Pos"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.25"
+                            android:background="@drawable/table_border"
+                            android:gravity="center"
+                            android:text="Genre"
+                            android:textStyle="bold"></TextView>
+                    </TableRow>
+                </TableLayout>
+            </ScrollView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:text="INDIACAST CHANNELS:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <ScrollView
+                android:id="@+id/scrollTable2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/IndiaCastChannelsTableLayout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.15"
                     android:background="@drawable/table_border"
-                    android:gravity="center"
-                    android:text="LCN"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:scrollbars="vertical">
 
-                    android:textStyle="bold"></TextView>
+                    <TableRow>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.15"
-                    android:background="@drawable/table_border"
-                    android:gravity="center"
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.45"
+                            android:background="@drawable/table_border"
+                            android:gravity="center"
+                            android:text="Channel Name"
+                            android:textStyle="bold" />
 
-                    android:text="Pos"
-                    android:textStyle="bold"></TextView>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.50"
+                            android:background="@drawable/table_border"
+                            android:gravity="center"
+                            android:text="IStatus"
+                            android:textStyle="bold"></TextView>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.25"
-                    android:background="@drawable/table_border"
-                    android:gravity="center"
-                    android:text="Genre"
+                    </TableRow>
+                </TableLayout>
+            </ScrollView>
 
-                    android:textStyle="bold"></TextView>
-            </TableRow>
-        </TableLayout>
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/btn_bg"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Submit"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
     </ScrollView>
-
-    <Button
-        android:id="@+id/btn_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_below="@+id/scroll"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/btn_bg"
-        android:gravity="center"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="Submit"
-        android:textColor="@color/white"
-        android:textSize="22dp" />
-
-
 </RelativeLayout>

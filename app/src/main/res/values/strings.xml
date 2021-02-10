@@ -16,9 +16,10 @@
     <string name="fcm_token">FCM Token: %s</string>
 
     <!-- <string name="api">http://122.179.136.81:8975</string>-->
-    <!--    <string name="api">http://10.102.32.221:8975</string>-->
+    <!-- <string name="api">http://10.102.32.221:8975</string>-->
 <!--    <string name="api">http://182.71.62.87:80</string>-->
-         <string name="api">http://10.102.32.153:8975</string>
+    <!-- <string name="api">http://10.102.32.153:8975</string>-->
+     <string name="api">http://fc84a4b6aaf1.ngrok.io</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

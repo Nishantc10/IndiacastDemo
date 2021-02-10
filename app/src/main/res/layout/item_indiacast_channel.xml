@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_marginLeft="12dp"
     android:layout_marginTop="5dp"
     android:layout_marginRight="12dp"
     android:layout_marginBottom="0dp"
-    card_view:cardElevation="5dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    card_view:cardElevation="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_margin="5dp"
+        android:orientation="horizontal"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
@@ -143,8 +141,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
-                    android:gravity="top"
                     android:layout_marginLeft="10sp"
+                    android:gravity="top"
                     android:text="Istatus : "
                     android:textColor="@color/black"
                     android:textSize="15sp" />
@@ -156,11 +154,11 @@
                     android:layout_gravity="center"
                     android:background="@drawable/textview_underline_bg"
                     android:gravity="bottom"
-                    android:hint="Select Genre"
-                    android:textSize="16sp"
+                    android:hint="Select Status"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:textColor="@color/indiacastgrey"
+                    android:textSize="16sp"
                     android:tooltipText="Select" />
             </LinearLayout>
         </LinearLayout>
