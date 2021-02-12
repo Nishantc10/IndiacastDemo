@@ -17,6 +17,8 @@ import com.example.indiacastdemo.Model.IndiaCastChannel;
 
 import java.util.ArrayList;
 
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
+
 public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChannelAdapter.IndiaCastChannelHolder> {
 
     Context mContext;
@@ -125,6 +127,12 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
                 String LCN_No = cursor.getString(cursor.getColumnIndex("LCN"));
                 String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
                 String Position = cursor.getString(cursor.getColumnIndex("Position"));
+                Cursor IStatusIdcrs = db.getIndiaCastChannelStatusById(IStatusID);
+                if (IStatusIdcrs.moveToFirst()) {
+                    IStatusID = IStatusIdcrs.getString(IStatusIdcrs.getColumnIndex("IStatus"));
+                } else {
+                    IStatusID = null;
+                }
                 indiaCastChannels.add(new IndiaCastChannel(Channel_Name, LCN_No, Position, IStatusID, Network_ID, ""));
                 cursor.moveToNext();
             }

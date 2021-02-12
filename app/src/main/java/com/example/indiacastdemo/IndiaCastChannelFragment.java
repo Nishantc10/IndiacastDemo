@@ -52,6 +52,8 @@ import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
+
 public class IndiaCastChannelFragment extends Fragment {
 
     private RecyclerView.Adapter adapter;
@@ -60,11 +62,11 @@ public class IndiaCastChannelFragment extends Fragment {
     private ArrayList<JSONObject> tbl_network_channel_placement = new ArrayList<>();
     private ArrayList<JSONObject> tbl_placement_indiacast_channels_details_lst = new ArrayList<>();
     BubbleScrollBar scrollBar;
-//    EditText edt_searcedt_search_indiacast_channel;
+    //    EditText edt_searcedt_search_indiacast_channel;
     TextView txt_comment;
     SpinnerDialog statusSpinnerDialog;
     Bundle bundle;
-    String networkId, Login_ID, Token, User_ID, Network_ID, Channel_name,LCN_No = null;
+    String networkId, Login_ID, Token, User_ID, Network_ID, Channel_name, LCN_No = null;
     RadioGroup radio_goup;
     RadioButton radio_Button;
     DatabaseHelper db;
@@ -152,7 +154,14 @@ public class IndiaCastChannelFragment extends Fragment {
                         TextView channelname = (TextView) tableRow.findViewById(R.id.channelname);
                         TextView iStatus = (TextView) tableRow.findViewById(R.id.iStatus);
                         channelname.setText(cursor.getString(cursor.getColumnIndex("Channel_Name")));
-                        iStatus.setText(cursor.getString(cursor.getColumnIndex("IStatusID")));
+                        String iStatusValue =cursor.getString(cursor.getColumnIndex("IStatusID"));
+//                        iStatus.setText(cursor.getString(cursor.getColumnIndex("IStatusID")));
+                        Cursor IStatusIdcrs = db.getIndiaCastChannelStatusById(iStatusValue);
+                        if (IStatusIdcrs.moveToFirst()) {
+                            iStatus.setText(IStatusIdcrs.getString(IStatusIdcrs.getColumnIndex("IStatus")));
+                        } else {
+                            iStatus.setText(null);
+                        }
                         IndiaCastChannelsTableLayout.addView(tableRow);
                         cursor.moveToNext();
                     }
@@ -335,6 +344,12 @@ public class IndiaCastChannelFragment extends Fragment {
                 String LCN_No = cursor.getString(cursor.getColumnIndex("LCN"));
                 String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
                 String Position = cursor.getString(cursor.getColumnIndex("Position"));
+                Cursor IStatusIdcrs = db.getIndiaCastChannelStatusById(IStatusID);
+                if (IStatusIdcrs.moveToFirst()) {
+                    IStatusID = IStatusIdcrs.getString(IStatusIdcrs.getColumnIndex("IStatus"));
+                } else {
+                    IStatusID = null;
+                }
                 lst_indiacast_channel.add(new IndiaCastChannel(Channel_Name, LCN_No, Position, IStatusID, Network_ID, ""));
                 cursor.moveToNext();
             }
@@ -472,6 +487,7 @@ public class IndiaCastChannelFragment extends Fragment {
             }
         }
     }
+
     void postRequestICPL(String postBody) throws IOException {
         ConnectivityManager cm =
                 (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);

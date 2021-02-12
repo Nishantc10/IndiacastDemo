@@ -59,6 +59,8 @@ import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
+
 public class ChannelPageFragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -487,7 +489,7 @@ public class ChannelPageFragment extends Fragment {
                 String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
                 String Created_date = cursor.getString(cursor.getColumnIndex("Created_date"));
                 String Position = cursor.getString(cursor.getColumnIndex("Position"));
-                db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, "", IStatusID, Network_ID, "Others", Created_date, Status_ID);
+                db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, null, IStatusID, Network_ID, "Others", Created_date, Status_ID);
                 cursor.moveToNext();
             }
         }

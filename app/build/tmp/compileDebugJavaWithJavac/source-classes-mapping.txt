@@ -108,8 +108,9 @@ com/example/indiacastdemo/IdentifierObjAdapter.java
  com.example.indiacastdemo.IdentifierObjAdapter
  com.example.indiacastdemo.IdentifierObjAdapter$1
  com.example.indiacastdemo.IdentifierObjAdapter$2
-com/example/indiacastdemo/MyAdapter.java
- com.example.indiacastdemo.MyAdapter
+com/example/indiacastdemo/ChannelSubmitFragment.java
+ com.example.indiacastdemo.ChannelSubmitFragment
+ com.example.indiacastdemo.ChannelSubmitFragment$1
 com/example/indiacastdemo/ProfileFragment.java
  com.example.indiacastdemo.ProfileFragment
  com.example.indiacastdemo.ProfileFragment$1
@@ -211,9 +212,28 @@ com/example/indiacastdemo/ChannelViewAdapter.java
  com.example.indiacastdemo.ChannelViewAdapter$3$1
  com.example.indiacastdemo.ChannelViewAdapter$4
  com.example.indiacastdemo.ChannelViewAdapter$ChannelViewHolder
-com/example/indiacastdemo/MappingFragment.java
- com.example.indiacastdemo.MappingFragment
- com.example.indiacastdemo.MappingFragment$1
+com/example/indiacastdemo/IndiaCastChannelFragment.java
+ com.example.indiacastdemo.IndiaCastChannelFragment
+ com.example.indiacastdemo.IndiaCastChannelFragment$1
+ com.example.indiacastdemo.IndiaCastChannelFragment$2
+ com.example.indiacastdemo.IndiaCastChannelFragment$2$1
+ com.example.indiacastdemo.IndiaCastChannelFragment$2$2
+ com.example.indiacastdemo.IndiaCastChannelFragment$2$2$1
+ com.example.indiacastdemo.IndiaCastChannelFragment$2$2$2
+ com.example.indiacastdemo.IndiaCastChannelFragment$2$2$3
+ com.example.indiacastdemo.IndiaCastChannelFragment$3
+ com.example.indiacastdemo.IndiaCastChannelFragment$3$1
+ com.example.indiacastdemo.IndiaCastChannelFragment$3$1$1
+ com.example.indiacastdemo.IndiaCastChannelFragment$3$2
+ com.example.indiacastdemo.IndiaCastChannelFragment$3$2$1
+ com.example.indiacastdemo.IndiaCastChannelFragment$3$3
+ com.example.indiacastdemo.IndiaCastChannelFragment$4
+ com.example.indiacastdemo.IndiaCastChannelFragment$4$1
+ com.example.indiacastdemo.IndiaCastChannelFragment$4$1$1
+ com.example.indiacastdemo.IndiaCastChannelFragment$4$2
+ com.example.indiacastdemo.IndiaCastChannelFragment$5
+ com.example.indiacastdemo.IndiaCastChannelFragment$5$1
+ com.example.indiacastdemo.IndiaCastChannelFragment$5$1$1
 com/example/indiacastdemo/TaskFragment.java
  com.example.indiacastdemo.TaskFragment
  com.example.indiacastdemo.TaskFragment$1
@@ -240,9 +260,6 @@ com/example/indiacastdemo/HistoryMonitoringPointsFragment.java
  com.example.indiacastdemo.HistoryMonitoringPointsFragment$1
  com.example.indiacastdemo.HistoryMonitoringPointsFragment$1$1
  com.example.indiacastdemo.HistoryMonitoringPointsFragment$1$2
-com/example/indiacastdemo/ChannelSubmitFragment.java
- com.example.indiacastdemo.ChannelSubmitFragment
- com.example.indiacastdemo.ChannelSubmitFragment$1
 com/example/indiacastdemo/ChannelPageFragment.java
  com.example.indiacastdemo.ChannelPageFragment
  com.example.indiacastdemo.ChannelPageFragment$1
@@ -260,25 +277,8 @@ com/example/indiacastdemo/ChannelPageFragment.java
  com.example.indiacastdemo.ChannelPageFragment$7
  com.example.indiacastdemo.ChannelPageFragment$7$1
  com.example.indiacastdemo.ChannelPageFragment$8
-com/example/indiacastdemo/IndiaCastChannelFragment.java
- com.example.indiacastdemo.IndiaCastChannelFragment
- com.example.indiacastdemo.IndiaCastChannelFragment$1
- com.example.indiacastdemo.IndiaCastChannelFragment$2
- com.example.indiacastdemo.IndiaCastChannelFragment$2$1
- com.example.indiacastdemo.IndiaCastChannelFragment$2$2
- com.example.indiacastdemo.IndiaCastChannelFragment$2$2$1
- com.example.indiacastdemo.IndiaCastChannelFragment$2$2$2
- com.example.indiacastdemo.IndiaCastChannelFragment$2$2$3
- com.example.indiacastdemo.IndiaCastChannelFragment$3
- com.example.indiacastdemo.IndiaCastChannelFragment$3$1
- com.example.indiacastdemo.IndiaCastChannelFragment$3$1$1
- com.example.indiacastdemo.IndiaCastChannelFragment$3$2
- com.example.indiacastdemo.IndiaCastChannelFragment$3$2$1
- com.example.indiacastdemo.IndiaCastChannelFragment$3$3
- com.example.indiacastdemo.IndiaCastChannelFragment$4
- com.example.indiacastdemo.IndiaCastChannelFragment$4$1
- com.example.indiacastdemo.IndiaCastChannelFragment$4$1$1
- com.example.indiacastdemo.IndiaCastChannelFragment$4$2
- com.example.indiacastdemo.IndiaCastChannelFragment$5
- com.example.indiacastdemo.IndiaCastChannelFragment$5$1
- com.example.indiacastdemo.IndiaCastChannelFragment$5$1$1
+com/example/indiacastdemo/MappingFragment.java
+ com.example.indiacastdemo.MappingFragment
+ com.example.indiacastdemo.MappingFragment$1
+com/example/indiacastdemo/MyAdapter.java
+ com.example.indiacastdemo.MyAdapter
