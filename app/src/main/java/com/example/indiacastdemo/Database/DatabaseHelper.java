@@ -790,8 +790,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put("Others", Others);
         cv.put("Created_date", Created_date);
         cv.put("Status_ID", Status_ID);
+
+        Cursor cursor = db.rawQuery("select * from tbl_placement_indiacast_channels_details where ChannelID = " + "'" + ChannelID + "' " + "and NetworkID = " + "'" + NetworkID + "' ", null);
+        if (cursor.getCount()<=0) {
         db.insertOrThrow(DatabaseHelper.tbl_placement_indiacast_channels_details, null, cv);
-        //db.update(tbl_placement_indiacast_channels_details, contentValues, "Network_ID = " + "'" + networkId + "'", null);
+        }
+        else {
+            db.update(tbl_placement_indiacast_channels_details, cv, "NetworkID = " + "'" + NetworkID + "' and ChannelID = " + "'" + ChannelID + "'", null);  // number 1 is the _id here, update to variable for your code
+        }
         return true;
 //        }
     }
@@ -1094,16 +1100,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         ContentValues cv = new ContentValues();
+        ContentValues ICPL = new ContentValues();
         cv.put("Comments", comments);
         cv.put("On_Call_Site_Flag", onCallSite);
         cv.put("Status_ID", "STS0003");
         cv.put("Entered_By", User_ID);
         cv.put("Updated_Date", df.format(date));
         cv.put("Created_Date", df.format(date));
+        ICPL.put("Created_Date", df.format(date));
         db.update(tbl_network_channel_mapped, cv, "Network_ID = " + "'" + networkId + "'", null);
         db.delete(tbl_network_channel_placement, null, null);
         db.execSQL("insert into tbl_network_channel_placement (ID,Network_ID,Network_Name,Channel_Name,LCN_No,Genre,Position,Landing_Page_Flag,Dual_LCN_Flag,Triple_LCN_Flag,Multiple_LCN,Year,Status_ID,Week_no,On_Call_Site,Location,Entered_By,Created_date,Updated_Date,Comments) select ID,Network_ID,Network_Name,Channel_Name,LCN_No,Genre,Position,Landing_Page_Flag,Dual_LCN_Flag,Triple_LCN_Flag,Multiple_LCN,Year,Status_ID,Week_no,On_Call_Site_Flag,Location,Entered_By,Created_date,Updated_Date,Comments from tbl_network_channel_mapped where Network_ID = " + "'" + networkId + "'");
+        db.update(tbl_placement_indiacast_channels_details, ICPL, "NetworkID = " + "'" + networkId + "'", null);
         return true;
     }
 
@@ -1126,6 +1136,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor tbl_network_channel_mapping() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("Select * from tbl_network_channel_placement", null);
+        return res;
+    }
+  public Cursor tbl_placement_indiacast_channels_details(String network_ID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("Select * from tbl_placement_indiacast_channels_details where NetworkID = " + "'" + network_ID + "'", null);
         return res;
     }
 

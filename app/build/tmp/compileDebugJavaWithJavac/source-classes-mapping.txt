@@ -25,6 +25,8 @@ com/example/indiacastdemo/SpinnerDialog.java
 com/example/indiacastdemo/slider.java
  com.example.indiacastdemo.slider
  com.example.indiacastdemo.slider$1
+com/example/indiacastdemo/cls_tbl_network_channel_mapped.java
+ com.example.indiacastdemo.cls_tbl_network_channel_mapped
 com/example/indiacastdemo/Main2Activity.java
  com.example.indiacastdemo.Main2Activity
  com.example.indiacastdemo.Main2Activity$1
@@ -51,12 +53,12 @@ com/example/indiacastdemo/SwipeControllerChannel.java
  com.example.indiacastdemo.SwipeControllerChannel$2
  com.example.indiacastdemo.SwipeControllerChannel$3
  com.example.indiacastdemo.SwipeControllerChannel$3$1
+com/example/indiacastdemo/Model/cls_tbl_network_channel_mapped.java
+ com.example.indiacastdemo.Model.cls_tbl_network_channel_mapped
 com/example/indiacastdemo/RecyclerViewAdapter.java
  com.example.indiacastdemo.RecyclerViewAdapter
  com.example.indiacastdemo.RecyclerViewAdapter$1
  com.example.indiacastdemo.RecyclerViewAdapter$MyViewHolder
-com/example/indiacastdemo/Model/cls_tbl_network_channel_mapped.java
- com.example.indiacastdemo.Model.cls_tbl_network_channel_mapped
 com/example/indiacastdemo/MonitoringPointsFragment.java
  com.example.indiacastdemo.MonitoringPointsFragment
  com.example.indiacastdemo.MonitoringPointsFragment$1
@@ -124,14 +126,16 @@ com/example/indiacastdemo/HistoryNetworkAdapter.java
  com.example.indiacastdemo.HistoryNetworkAdapter$MyViewHolder
 com/example/indiacastdemo/MyFirebaseMessagingService.java
  com.example.indiacastdemo.MyFirebaseMessagingService
-com/example/indiacastdemo/StatusViewAdapter.java
- com.example.indiacastdemo.StatusViewAdapter
- com.example.indiacastdemo.StatusViewAdapter$StatusViewHolder
 com/example/indiacastdemo/HistoryLandingPageFragment.java
  com.example.indiacastdemo.HistoryLandingPageFragment
  com.example.indiacastdemo.HistoryLandingPageFragment$1
  com.example.indiacastdemo.HistoryLandingPageFragment$2
  com.example.indiacastdemo.HistoryLandingPageFragment$3
+com/example/indiacastdemo/StatusViewAdapter.java
+ com.example.indiacastdemo.StatusViewAdapter
+ com.example.indiacastdemo.StatusViewAdapter$StatusViewHolder
+com/example/indiacastdemo/cls_tbl_network_channel_placement.java
+ com.example.indiacastdemo.cls_tbl_network_channel_placement
 com/example/indiacastdemo/SwipeControllerNetwork.java
  com.example.indiacastdemo.ButtonsState
  com.example.indiacastdemo.SwipeController
@@ -148,17 +152,17 @@ com/example/indiacastdemo/IdentifiableObjectImpl.java
 com/example/indiacastdemo/HistoryMappingFragment.java
  com.example.indiacastdemo.HistoryMappingFragment
  com.example.indiacastdemo.HistoryMappingFragment$1
-com/example/indiacastdemo/RegisterActivity.java
- com.example.indiacastdemo.RegisterActivity
- com.example.indiacastdemo.RegisterActivity$1
-com/example/indiacastdemo/Model/cls_tbl_network_channel_placement.java
- com.example.indiacastdemo.Model.cls_tbl_network_channel_placement
 com/example/indiacastdemo/IndiaCastChannelAdapter.java
  com.example.indiacastdemo.IndiaCastChannelAdapter
  com.example.indiacastdemo.IndiaCastChannelAdapter$1
  com.example.indiacastdemo.IndiaCastChannelAdapter$1$1
  com.example.indiacastdemo.IndiaCastChannelAdapter$2
  com.example.indiacastdemo.IndiaCastChannelAdapter$IndiaCastChannelHolder
+com/example/indiacastdemo/Model/cls_tbl_network_channel_placement.java
+ com.example.indiacastdemo.Model.cls_tbl_network_channel_placement
+com/example/indiacastdemo/RegisterActivity.java
+ com.example.indiacastdemo.RegisterActivity
+ com.example.indiacastdemo.RegisterActivity$1
 com/example/indiacastdemo/SplashScreenActivity.java
  com.example.indiacastdemo.SplashScreenActivity
  com.example.indiacastdemo.SplashScreenActivity$1
@@ -274,3 +278,7 @@ com/example/indiacastdemo/IndiaCastChannelFragment.java
  com.example.indiacastdemo.IndiaCastChannelFragment$4
  com.example.indiacastdemo.IndiaCastChannelFragment$4$1
  com.example.indiacastdemo.IndiaCastChannelFragment$4$1$1
+ com.example.indiacastdemo.IndiaCastChannelFragment$4$2
+ com.example.indiacastdemo.IndiaCastChannelFragment$5
+ com.example.indiacastdemo.IndiaCastChannelFragment$5$1
+ com.example.indiacastdemo.IndiaCastChannelFragment$5$1$1

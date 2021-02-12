@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
+            "outputFile": "C:\\Users\\nishant.chaudhari\\Desktop\\IndiacastDemo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/nishantchaudhari/.gradle/caches/transforms-2/files-2.1/441157cb04abaeafe87b920c2382b695/appcompat-1.0.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\nishant.chaudhari\\.gradle\\caches\\transforms-2\\files-2.1\\441157cb04abaeafe87b920c2382b695\\appcompat-1.0.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/nishantchaudhari/.gradle/caches/transforms-2/files-2.1/ce397163aa6bb94a0ffa3509d12d2a22/material-1.0.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\nishant.chaudhari\\.gradle\\caches\\transforms-2\\files-2.1\\ce397163aa6bb94a0ffa3509d12d2a22\\material-1.0.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",

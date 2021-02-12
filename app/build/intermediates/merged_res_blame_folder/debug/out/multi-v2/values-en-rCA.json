@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/nishantchaudhari/Desktop/IndiacastDemo/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rCA/values-en-rCA.xml",
+            "outputFile": "C:\\Users\\nishant.chaudhari\\Desktop\\IndiacastDemo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rCA\\values-en-rCA.xml",
             "map": [
                 {
-                    "source": "/Users/nishantchaudhari/.gradle/caches/transforms-2/files-2.1/441157cb04abaeafe87b920c2382b695/appcompat-1.0.0/res/values-en-rCA/values-en-rCA.xml",
+                    "source": "C:\\Users\\nishant.chaudhari\\.gradle\\caches\\transforms-2\\files-2.1\\441157cb04abaeafe87b920c2382b695\\appcompat-1.0.0\\res\\values-en-rCA\\values-en-rCA.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/nishantchaudhari/.gradle/caches/transforms-2/files-2.1/f60f5c8ca182ff040719f06e4df17498/core-1.0.0/res/values-en-rCA/values-en-rCA.xml",
+                    "source": "C:\\Users\\nishant.chaudhari\\.gradle\\caches\\transforms-2\\files-2.1\\f60f5c8ca182ff040719f06e4df17498\\core-1.0.0\\res\\values-en-rCA\\values-en-rCA.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
