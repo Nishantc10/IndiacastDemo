@@ -30,6 +30,7 @@ import android.widget.EditText;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.example.indiacastdemo.Database.DatabaseHelper;
 import com.example.indiacastdemo.Model.AlertDialogModel;
+import com.example.indiacastdemo.Model.ConnectionCheck;
 import com.example.indiacastdemo.Model.History_Network;
 import com.trendyol.bubblescrollbarlib.BubbleScrollBar;
 import com.trendyol.bubblescrollbarlib.BubbleTextProvider;

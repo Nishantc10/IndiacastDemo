@@ -17,6 +17,7 @@ import android.widget.ScrollView;
 
 import com.example.indiacastdemo.Database.DatabaseHelper;
 import com.example.indiacastdemo.Model.AlertDialogModel;
+import com.example.indiacastdemo.Model.ConnectionCheck;
 
 import org.json.JSONArray;
 import org.json.JSONException;

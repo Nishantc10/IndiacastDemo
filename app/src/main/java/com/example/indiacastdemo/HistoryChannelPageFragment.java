@@ -11,6 +11,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import com.example.indiacastdemo.Model.AlertDialogModel;
+import com.example.indiacastdemo.Model.ConnectionCheck;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AlertDialog;

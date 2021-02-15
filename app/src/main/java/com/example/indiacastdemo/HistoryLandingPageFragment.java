@@ -1,11 +1,10 @@
 package com.example.indiacastdemo;
 
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AlertDialog;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -19,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.indiacastdemo.Database.DatabaseHelper;
 import com.example.indiacastdemo.Model.AlertDialogModel;
+import com.example.indiacastdemo.Model.ConnectionCheck;
 
 import java.util.ArrayList;
 

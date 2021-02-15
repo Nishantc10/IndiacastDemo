@@ -1,4 +1,4 @@
-package com.example.indiacastdemo;
+package com.example.indiacastdemo.Model;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

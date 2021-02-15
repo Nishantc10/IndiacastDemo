@@ -4,6 +4,8 @@ import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.RequiresApi;
+
+import com.example.indiacastdemo.Model.ConnectionCheck;
 import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
