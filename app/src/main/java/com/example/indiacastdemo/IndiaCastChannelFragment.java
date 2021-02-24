@@ -107,7 +107,6 @@ public class IndiaCastChannelFragment extends Fragment {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), linearLayoutManager.getOrientation());
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setAdapter(adapter);
         scrollBar = v.findViewById(R.id.bubbleScrollBar);
         scrollBar.attachToRecyclerView(recyclerView);
@@ -122,164 +121,61 @@ public class IndiaCastChannelFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
-                final AlertDialog dialogBuilder = new AlertDialog.Builder(getContext()).create();
-                dialogBuilder.setCancelable(false);
-                LayoutInflater inflater = getActivity().getLayoutInflater();
-                final View dialogView = inflater.inflate(R.layout.network_sumbit, null);
-                txt_comment = dialogView.findViewById(R.id.txt_comment);
-                Button btn_submit = (Button) dialogView.findViewById(R.id.btn_submit);
-                ImageView btn_cancel = (ImageView) dialogView.findViewById(R.id.btn_cancel);
-                TextView channelname_tv = (TextView) dialogView.findViewById(R.id.channelname_tv);
-                TextView lcn_tv = (TextView) dialogView.findViewById(R.id.lcn_tv);
-                Cursor res = db.getLandingPage(networkId);
-                if (res.getCount() == 1) {
-                    if (res.moveToFirst()) {
-                        Channel_name = res.getString(res.getColumnIndex("Channel_Name")).trim();
-                        LCN_No = res.getString(res.getColumnIndex("LCN_No"));
-                        res.moveToNext();
-                        channelname_tv.setText(Channel_name);
-                        if (LCN_No.equals(null)) {
-                            lcn_tv.setText("");
-                        } else {
-                            lcn_tv.setText("(" + LCN_No + ")");
-                        }
-                    }
-                }
-
-                TableLayout IndiaCastChannelsTableLayout = (TableLayout) dialogView.findViewById(R.id.IndiaCastChannelsTableLayout);
                 Cursor cursor = db.getIndiaCastChannels(networkId);
                 if (cursor.moveToFirst()) {
                     while (!cursor.isAfterLast()) {
-                        View tableRow = LayoutInflater.from(getActivity()).inflate(R.layout.indiacastchannels_table_item, null, false);
-                        TextView channelname = (TextView) tableRow.findViewById(R.id.channelname);
-                        TextView iStatus = (TextView) tableRow.findViewById(R.id.iStatus);
-                        channelname.setText(cursor.getString(cursor.getColumnIndex("Channel_Name")));
-                        String iStatusValue =cursor.getString(cursor.getColumnIndex("IStatusID"));
-//                        iStatus.setText(cursor.getString(cursor.getColumnIndex("IStatusID")));
-                        Cursor IStatusIdcrs = db.getIndiaCastChannelStatusById(iStatusValue);
-                        if (IStatusIdcrs.moveToFirst()) {
-                            iStatus.setText(IStatusIdcrs.getString(IStatusIdcrs.getColumnIndex("IStatus")));
+                        String iStatusValue = cursor.getString(cursor.getColumnIndex("IStatusID"));
+                        if (iStatusValue == null) {
+                            progressBar.setVisibility(View.GONE);
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                            builder.setTitle("Alert!");
+                            builder.setMessage("Status cannot be empty!");
+                            builder.setCancelable(false);
+                            builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            });
+                            builder.show();
+                            break;
                         } else {
-                            iStatus.setText(null);
-                        }
-                        IndiaCastChannelsTableLayout.addView(tableRow);
-                        cursor.moveToNext();
-                    }
-                }
-                db.close();
-
-                TableLayout tableLayout = (TableLayout) dialogView.findViewById(R.id.tableLayout);
-                cursor = db.getChannelsFromNetwork(networkId);
-                if (cursor.moveToFirst()) {
-                    while (!cursor.isAfterLast()) {
-                        View tableRow = LayoutInflater.from(getActivity()).inflate(R.layout.table_item, null, false);
-                        TextView channelname = (TextView) tableRow.findViewById(R.id.channelname);
-                        TextView lcnno = (TextView) tableRow.findViewById(R.id.lcnno);
-                        TextView position = (TextView) tableRow.findViewById(R.id.position);
-                        TextView genre = (TextView) tableRow.findViewById(R.id.genre);
-                        channelname.setText(cursor.getString(cursor.getColumnIndex("Channel_Name")));
-                        lcnno.setText(cursor.getString(cursor.getColumnIndex("LCN_No")));
-                        position.setText(cursor.getString(cursor.getColumnIndex("Position")));
-                        genre.setText(cursor.getString(cursor.getColumnIndex("Genre")));
-                        tableLayout.addView(tableRow);
-                        cursor.moveToNext();
-                    }
-                }
-                db.close();
-
-                btn_cancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        progressBar.setVisibility(View.GONE);
-                        dialogBuilder.dismiss();
-                    }
-                });
-                btn_submit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ConnectivityManager cm =
-                                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-                        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-                        boolean isConnected = activeNetwork != null &&
-                                activeNetwork.isConnectedOrConnecting();
-                        progressBar.setVisibility(View.VISIBLE);
-                        radio_goup = (RadioGroup) dialogView.findViewById(R.id.radio_goup);
-                        int selectedId = radio_goup.getCheckedRadioButtonId();
-                        radio_Button = (RadioButton) dialogView.findViewById(selectedId);
-                        String comment = txt_comment.getText().toString();
-                        if (selectedId != -1) {
-                            String radio = radio_Button.getText().toString();
-                            if (isConnected) {
-                                if (db.submitNetwork(networkId, comment, radio)) {
-                                    Cursor res = db.tbl_network_channel_mapping();
-                                    Cursor ICPLcrs = db.tbl_placement_indiacast_channels_details(networkId);
-                                    tbl_network_channel_placement.clear();
-                                    tbl_placement_indiacast_channels_details_lst.clear();
-                                    res.moveToFirst();
-                                    while (!res.isAfterLast()) {
-                                        try {
-                                            JSONObject postData = new JSONObject();
-                                            postData.put("Id", res.getString(res.getColumnIndex("ID")));
-                                            postData.put("Network_ID", res.getString(res.getColumnIndex("Network_ID")));
-                                            postData.put("Network_Name", res.getString(res.getColumnIndex("Network_Name")));
-                                            postData.put("Channel_Name", res.getString(res.getColumnIndex("Channel_Name")));
-                                            postData.put("LCN_No", res.getString(res.getColumnIndex("LCN_No")));
-                                            postData.put("Genre", res.getString(res.getColumnIndex("Genre")));
-                                            postData.put("Position", res.getString(res.getColumnIndex("Position")));
-                                            postData.put("Landing_Page_Flag", res.getString(res.getColumnIndex("Landing_Page_Flag")));
-                                            postData.put("Dual_LCN_Flag", res.getString(res.getColumnIndex("Dual_LCN_Flag")));
-                                            postData.put("Triple_LCN_Flag", res.getString(res.getColumnIndex("Triple_LCN_Flag")));
-                                            postData.put("Multiple_LCN", res.getString(res.getColumnIndex("Multiple_LCN")));
-                                            postData.put("Week_no", res.getString(res.getColumnIndex("Week_no")));
-                                            postData.put("Year", res.getString(res.getColumnIndex("Year")));
-                                            postData.put("On_Call_Site", res.getString(res.getColumnIndex("On_Call_Site")));
-                                            postData.put("Location", res.getString(res.getColumnIndex("Location")));
-                                            postData.put("Entered_By", res.getString(res.getColumnIndex("Entered_By")));
-                                            postData.put("Status_ID", res.getString(res.getColumnIndex("Status_ID")));
-                                            postData.put("Created_Date", res.getString(res.getColumnIndex("Created_Date")));
-                                            postData.put("Updated_Date", res.getString(res.getColumnIndex("Updated_Date")));
-                                            postData.put("Comments", res.getString(res.getColumnIndex("Comments")));
-
-                                            tbl_network_channel_placement.add(postData);
-                                            res.moveToNext();
-                                        } catch (JSONException e) {
-                                            progressBar.setVisibility(View.GONE);
-                                            e.printStackTrace();
-                                        }
+                            final AlertDialog dialogBuilder = new AlertDialog.Builder(getContext()).create();
+                            dialogBuilder.setCancelable(false);
+                            LayoutInflater inflater = getActivity().getLayoutInflater();
+                            final View dialogView = inflater.inflate(R.layout.network_sumbit, null);
+                            txt_comment = dialogView.findViewById(R.id.txt_comment);
+                            Button btn_submit = (Button) dialogView.findViewById(R.id.btn_submit);
+                            ImageView btn_cancel = (ImageView) dialogView.findViewById(R.id.btn_cancel);
+                            TextView channelname_tv = (TextView) dialogView.findViewById(R.id.channelname_tv);
+                            TextView lcn_tv = (TextView) dialogView.findViewById(R.id.lcn_tv);
+                            Cursor res = db.getLandingPage(networkId);
+                            if (res.getCount() == 1) {
+                                if (res.moveToFirst()) {
+                                    Channel_name = res.getString(res.getColumnIndex("Channel_Name")).trim();
+                                    LCN_No = res.getString(res.getColumnIndex("LCN_No"));
+                                    res.moveToNext();
+                                    channelname_tv.setText(Channel_name);
+                                    if (LCN_No.equals(null)) {
+                                        lcn_tv.setText("");
+                                    } else {
+                                        lcn_tv.setText("(" + LCN_No + ")");
                                     }
-                                    ICPLcrs.moveToFirst();
-                                    while (!ICPLcrs.isAfterLast()) {
-                                        try {
-                                            JSONObject postICPLData = new JSONObject();
-                                            postICPLData.put("ICPID", ICPLcrs.getString(ICPLcrs.getColumnIndex("ICPID")));
-                                            postICPLData.put("ChannelID", ICPLcrs.getString(ICPLcrs.getColumnIndex("ChannelID")));
-                                            postICPLData.put("LCN", ICPLcrs.getString(ICPLcrs.getColumnIndex("LCN")));
-                                            postICPLData.put("Position", ICPLcrs.getString(ICPLcrs.getColumnIndex("Position")));
-                                            postICPLData.put("CPosition", ICPLcrs.getString(ICPLcrs.getColumnIndex("CPosition")));
-                                            postICPLData.put("StatusID", ICPLcrs.getString(ICPLcrs.getColumnIndex("IStatusID")));
-                                            postICPLData.put("Network_ID", ICPLcrs.getString(ICPLcrs.getColumnIndex("NetworkID")));
-                                            postICPLData.put("Created_Date", ICPLcrs.getString(ICPLcrs.getColumnIndex("Created_Date")));
-                                            postICPLData.put("Others", ICPLcrs.getString(ICPLcrs.getColumnIndex("Others")));
-                                            tbl_placement_indiacast_channels_details_lst.add(postICPLData);
-                                            ICPLcrs.moveToNext();
-                                        } catch (JSONException e) {
-//                                            progressBar.setVisibility(View.GONE);
-                                            e.printStackTrace();
-                                        }
-                                    }
-                                    try {
-                                        postRequestICPL(tbl_placement_indiacast_channels_details_lst.toString());
-                                        postRequest(tbl_network_channel_placement.toString());
-                                    } catch (IOException e) {
-                                        progressBar.setVisibility(View.GONE);
-                                        e.printStackTrace();
-                                    }
-                                    dialogBuilder.dismiss();
-                                } else {
-                                    try {
+                                }
+                            }
+
+                            TableLayout IndiaCastChannelsTableLayout = (TableLayout) dialogView.findViewById(R.id.IndiaCastChannelsTableLayout);
+                            cursor = db.getIndiaCastChannels(networkId);
+                            if (cursor.moveToFirst()) {
+                                while (!cursor.isAfterLast()) {
+                                    View tableRow = LayoutInflater.from(getActivity()).inflate(R.layout.indiacastchannels_table_item, null, false);
+                                    TextView channelname = (TextView) tableRow.findViewById(R.id.channelname);
+                                    TextView iStatus = (TextView) tableRow.findViewById(R.id.iStatus);
+                                    channelname.setText(cursor.getString(cursor.getColumnIndex("Channel_Name")));
+                                    iStatusValue = cursor.getString(cursor.getColumnIndex("IStatusID"));
+                                    if (iStatusValue == null) {
                                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                                         builder.setTitle("Alert!");
-                                        builder.setMessage("Network can not be submitted twice in a day!");
+                                        builder.setMessage("Status cannot be empty!");
                                         builder.setCancelable(false);
                                         builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                                             @Override
@@ -287,49 +183,195 @@ public class IndiaCastChannelFragment extends Fragment {
                                             }
                                         });
                                         builder.show();
-                                        dialogBuilder.dismiss();
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
+                                        break;
+                                    } else {
+
                                     }
+//                        iStatus.setText(cursor.getString(cursor.getColumnIndex("IStatusID")));
+                                    Cursor IStatusIdcrs = db.getIndiaCastChannelStatusById(iStatusValue);
+                                    if (IStatusIdcrs.moveToFirst()) {
+                                        String istatusText = IStatusIdcrs.getString(IStatusIdcrs.getColumnIndex("IStatus"));
+                                        iStatus.setText(istatusText);
+
+                                    } else {
+                                        iStatus.setText(null);
+                                    }
+
+                                    IndiaCastChannelsTableLayout.addView(tableRow);
+                                    cursor.moveToNext();
                                 }
-                            } else {
-                                try {
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                                    builder.setTitle("Alert!");
-                                    builder.setMessage("No Internet Connection! Network can not be submitted");
-                                    builder.setCancelable(false);
-                                    builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                        }
-                                    });
-                                    builder.show();
+                            }
+                            db.close();
+
+                            TableLayout tableLayout = (TableLayout) dialogView.findViewById(R.id.tableLayout);
+                            cursor = db.getChannelsFromNetwork(networkId);
+                            if (cursor.moveToFirst()) {
+                                while (!cursor.isAfterLast()) {
+                                    View tableRow = LayoutInflater.from(getActivity()).inflate(R.layout.table_item, null, false);
+                                    TextView channelname = (TextView) tableRow.findViewById(R.id.channelname);
+                                    TextView lcnno = (TextView) tableRow.findViewById(R.id.lcnno);
+                                    TextView position = (TextView) tableRow.findViewById(R.id.position);
+                                    TextView genre = (TextView) tableRow.findViewById(R.id.genre);
+                                    channelname.setText(cursor.getString(cursor.getColumnIndex("Channel_Name")));
+                                    lcnno.setText(cursor.getString(cursor.getColumnIndex("LCN_No")));
+                                    position.setText(cursor.getString(cursor.getColumnIndex("Position")));
+                                    genre.setText(cursor.getString(cursor.getColumnIndex("Genre")));
+                                    tableLayout.addView(tableRow);
+                                    cursor.moveToNext();
+                                }
+                            }
+                            db.close();
+
+                            btn_cancel.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    progressBar.setVisibility(View.GONE);
                                     dialogBuilder.dismiss();
-                                } catch (Exception e) {
-                                    e.printStackTrace();
                                 }
-                            }
-                        } else {
-                            try {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                                builder.setTitle("Alert!");
-                                builder.setMessage("Select On Call or On Site!");
-                                builder.setCancelable(false);
-                                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
+                            });
+                            btn_submit.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ConnectivityManager cm =
+                                            (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                                    NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+                                    boolean isConnected = activeNetwork != null &&
+                                            activeNetwork.isConnectedOrConnecting();
+                                    progressBar.setVisibility(View.VISIBLE);
+                                    radio_goup = (RadioGroup) dialogView.findViewById(R.id.radio_goup);
+                                    int selectedId = radio_goup.getCheckedRadioButtonId();
+                                    radio_Button = (RadioButton) dialogView.findViewById(selectedId);
+                                    String comment = txt_comment.getText().toString();
+                                    if (selectedId != -1) {
+                                        String radio = radio_Button.getText().toString();
+                                        if (isConnected) {
+                                            if (db.submitNetwork(networkId, comment, radio)) {
+                                                Cursor res = db.tbl_network_channel_mapping();
+                                                Cursor ICPLcrs = db.tbl_placement_indiacast_channels_details(networkId);
+                                                tbl_network_channel_placement.clear();
+                                                tbl_placement_indiacast_channels_details_lst.clear();
+                                                res.moveToFirst();
+                                                while (!res.isAfterLast()) {
+                                                    try {
+                                                        JSONObject postData = new JSONObject();
+                                                        postData.put("Id", res.getString(res.getColumnIndex("ID")));
+                                                        postData.put("Network_ID", res.getString(res.getColumnIndex("Network_ID")));
+                                                        postData.put("Network_Name", res.getString(res.getColumnIndex("Network_Name")));
+                                                        postData.put("Channel_Name", res.getString(res.getColumnIndex("Channel_Name")));
+                                                        postData.put("LCN_No", res.getString(res.getColumnIndex("LCN_No")));
+                                                        postData.put("Genre", res.getString(res.getColumnIndex("Genre")));
+                                                        postData.put("Position", res.getString(res.getColumnIndex("Position")));
+                                                        postData.put("Landing_Page_Flag", res.getString(res.getColumnIndex("Landing_Page_Flag")));
+                                                        postData.put("Dual_LCN_Flag", res.getString(res.getColumnIndex("Dual_LCN_Flag")));
+                                                        postData.put("Triple_LCN_Flag", res.getString(res.getColumnIndex("Triple_LCN_Flag")));
+                                                        postData.put("Multiple_LCN", res.getString(res.getColumnIndex("Multiple_LCN")));
+                                                        postData.put("Week_no", res.getString(res.getColumnIndex("Week_no")));
+                                                        postData.put("Year", res.getString(res.getColumnIndex("Year")));
+                                                        postData.put("On_Call_Site", res.getString(res.getColumnIndex("On_Call_Site")));
+                                                        postData.put("Location", res.getString(res.getColumnIndex("Location")));
+                                                        postData.put("Entered_By", res.getString(res.getColumnIndex("Entered_By")));
+                                                        postData.put("Status_ID", res.getString(res.getColumnIndex("Status_ID")));
+                                                        postData.put("Created_Date", res.getString(res.getColumnIndex("Created_Date")));
+                                                        postData.put("Updated_Date", res.getString(res.getColumnIndex("Updated_Date")));
+                                                        postData.put("Comments", res.getString(res.getColumnIndex("Comments")));
+
+                                                        tbl_network_channel_placement.add(postData);
+                                                        res.moveToNext();
+                                                    } catch (JSONException e) {
+                                                        progressBar.setVisibility(View.GONE);
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                                ICPLcrs.moveToFirst();
+                                                while (!ICPLcrs.isAfterLast()) {
+                                                    try {
+                                                        JSONObject postICPLData = new JSONObject();
+                                                        postICPLData.put("ICPID", ICPLcrs.getString(ICPLcrs.getColumnIndex("ICPID")));
+                                                        postICPLData.put("ChannelID", ICPLcrs.getString(ICPLcrs.getColumnIndex("ChannelID")));
+                                                        postICPLData.put("LCN", ICPLcrs.getString(ICPLcrs.getColumnIndex("LCN")));
+                                                        postICPLData.put("Position", ICPLcrs.getString(ICPLcrs.getColumnIndex("Position")));
+                                                        postICPLData.put("CPosition", ICPLcrs.getString(ICPLcrs.getColumnIndex("CPosition")));
+                                                        postICPLData.put("StatusID", ICPLcrs.getString(ICPLcrs.getColumnIndex("IStatusID")));
+                                                        postICPLData.put("Network_ID", ICPLcrs.getString(ICPLcrs.getColumnIndex("NetworkID")));
+                                                        postICPLData.put("Created_Date", ICPLcrs.getString(ICPLcrs.getColumnIndex("Created_Date")));
+                                                        postICPLData.put("Others", ICPLcrs.getString(ICPLcrs.getColumnIndex("Others")));
+                                                        tbl_placement_indiacast_channels_details_lst.add(postICPLData);
+                                                        ICPLcrs.moveToNext();
+                                                    } catch (JSONException e) {
+//                                            progressBar.setVisibility(View.GONE);
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                                try {
+                                                    postRequestICPL(tbl_placement_indiacast_channels_details_lst.toString());
+                                                    postRequest(tbl_network_channel_placement.toString());
+                                                } catch (IOException e) {
+                                                    progressBar.setVisibility(View.GONE);
+                                                    e.printStackTrace();
+                                                }
+                                                dialogBuilder.dismiss();
+                                            } else {
+                                                try {
+                                                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                                                    builder.setTitle("Alert!");
+                                                    builder.setMessage("Network can not be submitted twice in a day!");
+                                                    builder.setCancelable(false);
+                                                    builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                        }
+                                                    });
+                                                    builder.show();
+                                                    dialogBuilder.dismiss();
+                                                } catch (Exception e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        } else {
+                                            try {
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                                                builder.setTitle("Alert!");
+                                                builder.setMessage("No Internet Connection! Network can not be submitted");
+                                                builder.setCancelable(false);
+                                                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                    }
+                                                });
+                                                builder.show();
+                                                dialogBuilder.dismiss();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    } else {
+                                        try {
+                                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                                            builder.setTitle("Alert!");
+                                            builder.setMessage("Select On Call or On Site!");
+                                            builder.setCancelable(false);
+                                            builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                }
+                                            });
+                                            builder.show();
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
                                     }
-                                });
-                                builder.show();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                                }
+                            });
+                            dialogBuilder.setView(dialogView);
+                            dialogBuilder.show();
                         }
+                        }
+                        cursor.moveToNext();
                     }
-                });
-                dialogBuilder.setView(dialogView);
-                dialogBuilder.show();
-            }
+                else {
+                }
+                db.close();
+                }
         });
         //endregion
         return v;
@@ -677,5 +719,4 @@ public class IndiaCastChannelFragment extends Fragment {
             }
         }
     }
-
 }

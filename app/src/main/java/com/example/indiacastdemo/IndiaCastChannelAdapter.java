@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -49,8 +50,10 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
         IndiaCastChannel indiaCastChannel = indiaCastChannels.get(position);
         indiaCastChannelHolder.edt_indiacastChannelName.setText(indiaCastChannel.getIndiaCastChannelName());
         indiaCastChannelHolder.edt_networkId.setText(indiaCastChannel.getNetworkId());
+        indiaCastChannelHolder.edt_indiacastcposition.setText(indiaCastChannel.getCPosition());
         indiaCastChannelHolder.edt_lcn.setText(indiaCastChannel.getLCN());
         indiaCastChannelHolder.edt_position.setText(indiaCastChannel.getPosition());
+        indiaCastChannelHolder.edt_indiacastcposition.setText(indiaCastChannel.getPosition());
         indiaCastChannelHolder.edt_indiacast_status.setText(indiaCastChannel.getIndiacast_status());
         networkid = indiaCastChannel.getNetworkId();
         indiaCastChannelHolder.setIsRecyclable(false);
@@ -104,6 +107,7 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
     public static class IndiaCastChannelHolder extends RecyclerView.ViewHolder {
 
         private TextView edt_indiacastChannelName, edt_networkId, edt_indiacast_status, network_name, edt_lcn, edt_position;
+        EditText edt_indiacastcposition;
         String networkId;
 
         public IndiaCastChannelHolder(@NonNull View itemView) {
@@ -112,6 +116,7 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
             edt_indiacastChannelName = (TextView) itemView.findViewById(R.id.edt_indiacastChannelName);
             edt_networkId = (TextView) itemView.findViewById(R.id.edt_indiacastNetworkId);
             edt_lcn = (TextView) itemView.findViewById(R.id.edt_indiaCastlcn);
+            edt_indiacastcposition = (EditText) itemView.findViewById(R.id.edt_indiacastcposition);
             edt_position = (TextView) itemView.findViewById(R.id.edt_indiacastposition);
             edt_indiacast_status = itemView.findViewById(R.id.edt_indiacast_status);
         }

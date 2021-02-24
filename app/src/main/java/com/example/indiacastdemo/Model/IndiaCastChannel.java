@@ -4,9 +4,18 @@ public class IndiaCastChannel {
     private String IndiaCastChannelName;
     private String LCN;
     private String  Position;
+    private String  CPosition;
     private String Indiacast_status;
     private String NetworkId;
     private String createdDate;
+
+    public String getCPosition() {
+        return CPosition;
+    }
+
+    public void setCPosition(String CPosition) {
+        this.CPosition = CPosition;
+    }
 
     public String getCreatedDate() {
         return createdDate;
@@ -56,6 +65,15 @@ public class IndiaCastChannel {
         Position = position;
     }
 
+    public IndiaCastChannel(String indiaCastChannelName, String LCN, String position, String CPosition, String indiacast_status, String networkId, String createdDate) {
+        IndiaCastChannelName = indiaCastChannelName;
+        this.LCN = LCN;
+        Position = position;
+        this.CPosition = CPosition;
+        Indiacast_status = indiacast_status;
+        NetworkId = networkId;
+        this.createdDate = createdDate;
+    }
 
     public IndiaCastChannel(String indiaCastChannelName, String LCN, String position, String indiacast_status, String networkId, String createdDate) {
         IndiaCastChannelName = indiaCastChannelName;

@@ -229,6 +229,7 @@ public class Main2Activity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     // region Firebase notification
     private void sendNotification(JSONObject notification) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(FCM_API, notification,
@@ -254,11 +255,16 @@ public class Main2Activity extends AppCompatActivity {
         };
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
     }
-//endregion
+
+    //endregion
     //-------------------------------------
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (getFragmentManager().getBackStackEntryCount() == 0) {
+            super.onBackPressed();
+        } else {
+            getFragmentManager().popBackStack();
+        }
     }
 
     //region get indiacast channel status master
@@ -294,12 +300,12 @@ public class Main2Activity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    progress.dismiss();
                     Main2Activity.this.runOnUiThread(new Runnable() {
                         public void run() {
                             Main2Activity.this.runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
+                                        progress.dismiss();
                                         AlertDialogModel.generateAlertDialog(getApplicationContext(), "Alert!", "Server connection lost!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
@@ -332,6 +338,7 @@ public class Main2Activity extends AppCompatActivity {
             }
         }
     }
+
     //endregion
     //region get indiacast channel master
     private void getIndiaCastChannels() {
