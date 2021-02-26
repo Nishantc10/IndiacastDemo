@@ -338,7 +338,6 @@ public class Main2Activity extends AppCompatActivity {
             }
         }
     }
-
     //endregion
     //region get indiacast channel master
     private void getIndiaCastChannels() {

@@ -192,11 +192,9 @@ public class IndiaCastChannelFragment extends Fragment {
                                     if (IStatusIdcrs.moveToFirst()) {
                                         String istatusText = IStatusIdcrs.getString(IStatusIdcrs.getColumnIndex("IStatus"));
                                         iStatus.setText(istatusText);
-
                                     } else {
                                         iStatus.setText(null);
                                     }
-
                                     IndiaCastChannelsTableLayout.addView(tableRow);
                                     cursor.moveToNext();
                                 }
@@ -221,7 +219,6 @@ public class IndiaCastChannelFragment extends Fragment {
                                 }
                             }
                             db.close();
-
                             btn_cancel.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {

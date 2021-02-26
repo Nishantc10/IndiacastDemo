@@ -857,17 +857,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //        }
     }
 
-    public Boolean updateByIStatus(String indiacastChannelName, String iStatus, String lcn, String position, String networkid) {
+    public Boolean updateByIStatus(String indiacastChannelName, String iStatus, String lcn, String position,String CPosition, String networkid) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("LCN", lcn); //These Fields should be your String values of actual column names
         cv.put("Channel_Name", indiacastChannelName);
         cv.put("Position", position);
+        cv.put("CPosition", CPosition);
         Cursor IStatuscur = db.rawQuery("SELECT ID FROM tbl_indiacast_channels_status WHERE IStatus= " + "'" + iStatus + "' ", null);
         if (IStatuscur.moveToFirst()) {
             iStatus = IStatuscur.getString(IStatuscur.getColumnIndex("ID"));
         } else {
-            iStatus = NULL;
+            iStatus = null;
         }
         cv.put("IStatusID", iStatus);
         db.update(tbl_placement_indiacast_channels_details, cv, "NetworkID = " + "'" + networkid + "'and Channel_Name = " + "'" + indiacastChannelName + "' ", null);

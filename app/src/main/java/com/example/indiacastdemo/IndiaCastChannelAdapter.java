@@ -28,7 +28,7 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
     ArrayList<IdentifiableObject> indiaCastchannelist = new ArrayList<>();
     Cursor cursor = null;
     SpinnerDialog chanels;
-    String indiacastChannelName, IStatus, Lcn, Position, networkid;
+    String indiacastChannelName, IStatus, Lcn, Position, CPosition, networkid;
 
     public IndiaCastChannelAdapter(Context context, ArrayList<IndiaCastChannel> indiaCastChannels) {
         this.mContext = context;
@@ -58,6 +58,24 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
         networkid = indiaCastChannel.getNetworkId();
         indiaCastChannelHolder.setIsRecyclable(false);
 
+        indiaCastChannelHolder.edt_indiacastcposition.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (!hasFocus) {
+                    Lcn = indiaCastChannelHolder.edt_lcn.getText().toString();
+                    indiacastChannelName = indiaCastChannelHolder.edt_indiacastChannelName.getText().toString();
+                    CPosition = indiaCastChannelHolder.edt_indiacastcposition.getText().toString();
+                    IStatus = indiaCastChannelHolder.edt_indiacast_status.getText().toString();
+                    Position = indiaCastChannelHolder.edt_position.getText().toString();
+                    if (db.updateByIStatus(indiacastChannelName, IStatus, Lcn, Position, CPosition, networkid)) {
+                        updateOnDataChange();
+                    } else {
+
+                    }
+                }
+            }
+        });
+
         indiaCastChannelHolder.edt_indiacast_status.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,21 +98,16 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
                         indiaCastChannelHolder.edt_indiacast_status.setText(getGenre);
                         Lcn = indiaCastChannelHolder.edt_lcn.getText().toString();
                         indiacastChannelName = indiaCastChannelHolder.edt_indiacastChannelName.getText().toString();
+                        CPosition = indiaCastChannelHolder.edt_indiacastcposition.getText().toString();
                         IStatus = indiaCastChannelHolder.edt_indiacast_status.getText().toString();
                         Position = indiaCastChannelHolder.edt_position.getText().toString();
-                        if (db.updateByIStatus(indiacastChannelName, IStatus, Lcn, Position, networkid)) {
+                        if (db.updateByIStatus(indiacastChannelName, IStatus, Lcn, Position, CPosition, networkid)) {
                             updateOnDataChange();
                         } else {
 
                         }
                     }
                 });
-            }
-        });
-        indiaCastChannelHolder.edt_indiacast_status.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-
             }
         });
     }
@@ -131,6 +144,7 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
                 String Channel_Name = cursor.getString(cursor.getColumnIndex("Channel_Name"));
                 String LCN_No = cursor.getString(cursor.getColumnIndex("LCN"));
                 String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
+                String CPosition = cursor.getString(cursor.getColumnIndex("CPosition"));
                 String Position = cursor.getString(cursor.getColumnIndex("Position"));
                 Cursor IStatusIdcrs = db.getIndiaCastChannelStatusById(IStatusID);
                 if (IStatusIdcrs.moveToFirst()) {
@@ -138,7 +152,7 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
                 } else {
                     IStatusID = null;
                 }
-                indiaCastChannels.add(new IndiaCastChannel(Channel_Name, LCN_No, Position, IStatusID, Network_ID, ""));
+                indiaCastChannels.add(new IndiaCastChannel(Channel_Name, LCN_No, Position, CPosition, IStatusID, Network_ID, ""));
                 cursor.moveToNext();
             }
         }

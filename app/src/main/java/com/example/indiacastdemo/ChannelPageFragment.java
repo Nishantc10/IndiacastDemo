@@ -120,7 +120,6 @@ public class ChannelPageFragment extends Fragment {
             e.printStackTrace();
         }
         getChannelsFromNetwork();
-        getChannelsFromIndiaCastPlacement(networkId);
         recyclerView = (RecyclerView) v.findViewById(R.id.channel_fragment_recy);
         fab_add = v.findViewById(R.id.fab_add);
         fab_more = v.findViewById(R.id.fab_more);
@@ -244,6 +243,7 @@ public class ChannelPageFragment extends Fragment {
         fab_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getChannelsFromIndiaCastPlacement(networkId);
                 Fragment fragment = new IndiaCastChannelFragment();
                 fragment.setArguments(bundle);
                 FragmentManager fm = getFragmentManager();
