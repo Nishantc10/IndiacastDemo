@@ -110,8 +110,8 @@ com/example/indiacastdemo/IdentifierObjAdapter.java
  com.example.indiacastdemo.IdentifierObjAdapter
  com.example.indiacastdemo.IdentifierObjAdapter$1
  com.example.indiacastdemo.IdentifierObjAdapter$2
-com/example/indiacastdemo/MyFirebaseMessagingService.java
- com.example.indiacastdemo.MyFirebaseMessagingService
+com/example/indiacastdemo/MyAdapter.java
+ com.example.indiacastdemo.MyAdapter
 com/example/indiacastdemo/ProfileFragment.java
  com.example.indiacastdemo.ProfileFragment
  com.example.indiacastdemo.ProfileFragment$1
@@ -173,9 +173,23 @@ com/example/indiacastdemo/MessagingService.java
  com.example.indiacastdemo.MessagingService
 com/example/indiacastdemo/IdentifiableObjectImpl.java
  com.example.indiacastdemo.IdentifiableObjectImpl
-com/example/indiacastdemo/Model/AlertDialogModel.java
- com.example.indiacastdemo.Model.AlertDialogModel
- com.example.indiacastdemo.Model.AlertDialogModel$1
+com/example/indiacastdemo/ChannelPageFragment.java
+ com.example.indiacastdemo.ChannelPageFragment
+ com.example.indiacastdemo.ChannelPageFragment$1
+ com.example.indiacastdemo.ChannelPageFragment$2
+ com.example.indiacastdemo.ChannelPageFragment$2$1
+ com.example.indiacastdemo.ChannelPageFragment$2$2
+ com.example.indiacastdemo.ChannelPageFragment$2$2$1
+ com.example.indiacastdemo.ChannelPageFragment$2$3
+ com.example.indiacastdemo.ChannelPageFragment$2$3$1
+ com.example.indiacastdemo.ChannelPageFragment$2$4
+ com.example.indiacastdemo.ChannelPageFragment$3
+ com.example.indiacastdemo.ChannelPageFragment$4
+ com.example.indiacastdemo.ChannelPageFragment$5
+ com.example.indiacastdemo.ChannelPageFragment$6
+ com.example.indiacastdemo.ChannelPageFragment$7
+ com.example.indiacastdemo.ChannelPageFragment$7$1
+ com.example.indiacastdemo.ChannelPageFragment$8
 com/example/indiacastdemo/IndiaCastChannelAdapter.java
  com.example.indiacastdemo.IndiaCastChannelAdapter
  com.example.indiacastdemo.IndiaCastChannelAdapter$1
@@ -233,9 +247,9 @@ com/example/indiacastdemo/ChannelViewAdapter.java
  com.example.indiacastdemo.ChannelViewAdapter$3$1
  com.example.indiacastdemo.ChannelViewAdapter$4
  com.example.indiacastdemo.ChannelViewAdapter$ChannelViewHolder
-com/example/indiacastdemo/HistoryMappingFragment.java
- com.example.indiacastdemo.HistoryMappingFragment
- com.example.indiacastdemo.HistoryMappingFragment$1
+com/example/indiacastdemo/MappingFragment.java
+ com.example.indiacastdemo.MappingFragment
+ com.example.indiacastdemo.MappingFragment$1
 com/example/indiacastdemo/TaskFragment.java
  com.example.indiacastdemo.TaskFragment
  com.example.indiacastdemo.TaskFragment$1
@@ -262,25 +276,11 @@ com/example/indiacastdemo/HistoryMonitoringPointsFragment.java
  com.example.indiacastdemo.HistoryMonitoringPointsFragment$1
  com.example.indiacastdemo.HistoryMonitoringPointsFragment$1$1
  com.example.indiacastdemo.HistoryMonitoringPointsFragment$1$2
-com/example/indiacastdemo/ChannelPageFragment.java
- com.example.indiacastdemo.ChannelPageFragment
- com.example.indiacastdemo.ChannelPageFragment$1
- com.example.indiacastdemo.ChannelPageFragment$2
- com.example.indiacastdemo.ChannelPageFragment$2$1
- com.example.indiacastdemo.ChannelPageFragment$2$2
- com.example.indiacastdemo.ChannelPageFragment$2$2$1
- com.example.indiacastdemo.ChannelPageFragment$2$3
- com.example.indiacastdemo.ChannelPageFragment$2$3$1
- com.example.indiacastdemo.ChannelPageFragment$2$4
- com.example.indiacastdemo.ChannelPageFragment$3
- com.example.indiacastdemo.ChannelPageFragment$4
- com.example.indiacastdemo.ChannelPageFragment$5
- com.example.indiacastdemo.ChannelPageFragment$6
- com.example.indiacastdemo.ChannelPageFragment$7
- com.example.indiacastdemo.ChannelPageFragment$7$1
- com.example.indiacastdemo.ChannelPageFragment$8
-com/example/indiacastdemo/MappingFragment.java
- com.example.indiacastdemo.MappingFragment
- com.example.indiacastdemo.MappingFragment$1
-com/example/indiacastdemo/MyAdapter.java
- com.example.indiacastdemo.MyAdapter
+com/example/indiacastdemo/MyFirebaseMessagingService.java
+ com.example.indiacastdemo.MyFirebaseMessagingService
+com/example/indiacastdemo/HistoryMappingFragment.java
+ com.example.indiacastdemo.HistoryMappingFragment
+ com.example.indiacastdemo.HistoryMappingFragment$1
+com/example/indiacastdemo/Model/AlertDialogModel.java
+ com.example.indiacastdemo.Model.AlertDialogModel
+ com.example.indiacastdemo.Model.AlertDialogModel$1

@@ -387,7 +387,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void insert_tbl_user_details(String MAC_Addresse, String Login_ID, String Token, String Updated_Date, String Created_Date,
                                         String Assigned_Town, String isValid, String User_Type_ID, String Address, String PhoneNo, String EmailID,
                                         String DOB, String Lastname, String Firstname, String EMP_ID, String User_ID) {
-        SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-d H:m:S.SSS");
+//        SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-d H:m:S.SSS");
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHelper.MAC_Address, MAC_Addresse);
@@ -654,6 +654,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "count(CASE WHEN Status='Approved' THEN Status END) AS 'Approved' \n" +
                 "from (SELECT Network_ID,Network_Name,Status FROM \n" +
                 "tbl_network_channel_placement ncp left join tbl_status_master sm on ncp.Status_ID=sm.id \n" +
+                "where Created_Date between datetime('now', '-90 days') AND datetime('now', 'localtime') \n"+
                 "GROUP BY Network_ID,Created_date\t\n" +
                 ") as cp GROUP BY Network_ID) as map on nd.Network_ID=map.Network_ID", null);
         return res;

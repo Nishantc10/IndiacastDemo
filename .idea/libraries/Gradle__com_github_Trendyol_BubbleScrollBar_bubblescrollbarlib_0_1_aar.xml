@@ -4,6 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6b4353a3d9b91dddd9d033b2d412e2e9/jetified-bubblescrollbarlib-0.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6b4353a3d9b91dddd9d033b2d412e2e9/jetified-bubblescrollbarlib-0.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6b4353a3d9b91dddd9d033b2d412e2e9/jetified-bubblescrollbarlib-0.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/70e81b9db126f6bf7330c314206689c9/jetified-bubblescrollbarlib-0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/70e81b9db126f6bf7330c314206689c9/jetified-bubblescrollbarlib-0.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/70e81b9db126f6bf7330c314206689c9/jetified-bubblescrollbarlib-0.1/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

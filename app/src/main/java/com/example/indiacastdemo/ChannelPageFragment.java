@@ -251,7 +251,6 @@ public class ChannelPageFragment extends Fragment {
                 ft.replace(R.id.fragment_container, fragment, "FragmentTag");
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 ft.commit();
-
                 //                progressBar.setVisibility(View.VISIBLE);
 //                final AlertDialog dialogBuilder = new AlertDialog.Builder(getContext()).create();
 //                dialogBuilder.setCancelable(false);

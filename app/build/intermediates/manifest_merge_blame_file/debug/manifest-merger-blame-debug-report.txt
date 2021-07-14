@@ -37,11 +37,11 @@
 21-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:14:5-76
 21-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:14:22-73
 22    <uses-permission android:name="android.permission.WAKE_LOCK" />
-22-->[com.google.firebase:firebase-iid:21.0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-2\files-2.1\328fede2273c8cd467bbb6c1f1a1e07d\jetified-firebase-iid-21.0.1\AndroidManifest.xml:24:5-68
-22-->[com.google.firebase:firebase-iid:21.0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-2\files-2.1\328fede2273c8cd467bbb6c1f1a1e07d\jetified-firebase-iid-21.0.1\AndroidManifest.xml:24:22-65
+22-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-2\files-2.1\7838687da1029a750588249cd498b592\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:23:5-68
+22-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-2\files-2.1\7838687da1029a750588249cd498b592\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:23:22-65
 23    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-23-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\nishant.chaudhari\.gradle\caches\transforms-2\files-2.1\1293d1a82e6bc83572820c25f2613223\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:26:5-110
-23-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\nishant.chaudhari\.gradle\caches\transforms-2\files-2.1\1293d1a82e6bc83572820c25f2613223\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:26:22-107
+23-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-2\files-2.1\7a932206e01044542a0bb101bb382edd\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:26:5-110
+23-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-2\files-2.1\7a932206e01044542a0bb101bb382edd\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:26:22-107
 24
 25    <application
 25-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:16:5-73:19
