@@ -70,6 +70,7 @@ public class ChannelSubmitFragment extends Fragment {
                 FragmentTransaction ft = fm.beginTransaction();
                 ft.replace(R.id.viewPager2, fragment, "FragmentTag");
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                ft.addToBackStack(null);
                 ft.commit();
             }
 

@@ -119,6 +119,7 @@ public class HistoryMappingFragment extends Fragment {
                 FragmentTransaction ft = fm.beginTransaction();
                 ft.replace(R.id.viewPager, fragment, "FragmentTag");
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                ft.addToBackStack(null);
                 ft.commit();
 //                try {
 //                    String createdDate = getArguments().getString("createdDate");

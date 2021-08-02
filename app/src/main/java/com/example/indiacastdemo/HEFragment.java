@@ -136,7 +136,7 @@ public class HEFragment extends Fragment {
                 HistoryMappingFragment historyMappingFragment = new HistoryMappingFragment();
                 historyMappingFragment.setArguments(bundle);
                 Fragment fragment = historyMappingFragment;
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null). commit();
             }
         } catch (Exception e) {
             e.printStackTrace();

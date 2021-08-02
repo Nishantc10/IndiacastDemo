@@ -87,6 +87,7 @@ public class ChannelPageFragment extends Fragment {
     ProgressBar progressBar;
     private ProgressDialog progress;
     Bundle bundle;
+    boolean flag = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -239,19 +240,27 @@ public class ChannelPageFragment extends Fragment {
             }
         });
         //endregion
-        //region FAB Send
+        //region FAB Send\
+
         fab_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getChannelsFromIndiaCastPlacement(networkId);
                 Fragment fragment = new IndiaCastChannelFragment();
                 fragment.setArguments(bundle);
-                FragmentManager fm = getFragmentManager();
+                FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.fragment_container, fragment, "FragmentTag");
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                ft.replace(R.id.fragment_container, fragment);
+                ft.addToBackStack(null);
                 ft.commit();
-                //                progressBar.setVisibility(View.VISIBLE);
+//                Fragment fragment = new IndiaCastChannelFragment();
+//                fragment.setArguments(bundle);
+//                FragmentManager fm = getFragmentManager();
+//                FragmentTransaction ft = fm.beginTransaction();
+//                ft.replace(R.id.fragment_container, fragment, "FragmentTag");
+//                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//                ft.commit();
+//                progressBar.setVisibility(View.VISIBLE);
 //                final AlertDialog dialogBuilder = new AlertDialog.Builder(getContext()).create();
 //                dialogBuilder.setCancelable(false);
 //                LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -520,7 +529,6 @@ public class ChannelPageFragment extends Fragment {
                         .show();
             }
         });
-
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeControllerChannel);
         itemTouchhelper.attachToRecyclerView(recyclerView);
         recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
@@ -693,7 +701,6 @@ public class ChannelPageFragment extends Fragment {
         }
         db.close();
     }
-
 //    void networkCountPostRequest(String postBody) throws IOException {
 //        ConnectivityManager cm =
 //                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -752,5 +759,4 @@ public class ChannelPageFragment extends Fragment {
 //            }
 //        }
 //    }
-
 }

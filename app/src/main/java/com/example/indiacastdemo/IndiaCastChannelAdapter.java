@@ -67,11 +67,8 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
                     CPosition = indiaCastChannelHolder.edt_indiacastcposition.getText().toString();
                     IStatus = indiaCastChannelHolder.edt_indiacast_status.getText().toString();
                     Position = indiaCastChannelHolder.edt_position.getText().toString();
-                    if (db.updateByIStatus(indiacastChannelName, IStatus, Lcn, Position, CPosition, networkid)) {
-                        updateOnDataChange();
-                    } else {
-
-                    }
+                    db.updateByIStatus(indiacastChannelName, IStatus, Lcn, Position, CPosition, networkid);
+                    updateOnDataChange();
                 }
             }
         });
@@ -101,11 +98,8 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
                         CPosition = indiaCastChannelHolder.edt_indiacastcposition.getText().toString();
                         IStatus = indiaCastChannelHolder.edt_indiacast_status.getText().toString();
                         Position = indiaCastChannelHolder.edt_position.getText().toString();
-                        if (db.updateByIStatus(indiacastChannelName, IStatus, Lcn, Position, CPosition, networkid)) {
+                        db.updateByIStatus(indiacastChannelName, IStatus, Lcn, Position, CPosition, networkid);
                             updateOnDataChange();
-                        } else {
-
-                        }
                     }
                 });
             }

@@ -7,15 +7,10 @@ import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-
-
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -33,7 +28,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.indiacastdemo.Database.DatabaseHelper;
 import com.example.indiacastdemo.Model.AlertDialogModel;
-import com.example.indiacastdemo.Model.Channel;
 import com.example.indiacastdemo.Model.IndiaCastChannel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.trendyol.bubblescrollbarlib.BubbleScrollBar;
@@ -51,8 +45,6 @@ import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
-
-import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
 public class IndiaCastChannelFragment extends Fragment {
 
@@ -163,13 +155,13 @@ public class IndiaCastChannelFragment extends Fragment {
                                 }
                             }
 
-                            TableLayout IndiaCastChannelsTableLayout = (TableLayout) dialogView.findViewById(R.id.IndiaCastChannelsTableLayout);
+                            TableLayout IndiaCastChannelsTableLayout = dialogView.findViewById(R.id.IndiaCastChannelsTableLayout);
                             cursor = db.getIndiaCastChannels(networkId);
                             if (cursor.moveToFirst()) {
                                 while (!cursor.isAfterLast()) {
                                     View tableRow = LayoutInflater.from(getActivity()).inflate(R.layout.indiacastchannels_table_item, null, false);
-                                    TextView channelname = (TextView) tableRow.findViewById(R.id.channelname);
-                                    TextView iStatus = (TextView) tableRow.findViewById(R.id.iStatus);
+                                    TextView channelname =  tableRow.findViewById(R.id.channelname);
+                                    TextView iStatus =  tableRow.findViewById(R.id.iStatus);
                                     channelname.setText(cursor.getString(cursor.getColumnIndex("Channel_Name")));
                                     iStatusValue = cursor.getString(cursor.getColumnIndex("IStatusID"));
                                     if (iStatusValue == null) {
@@ -201,15 +193,15 @@ public class IndiaCastChannelFragment extends Fragment {
                             }
                             db.close();
 
-                            TableLayout tableLayout = (TableLayout) dialogView.findViewById(R.id.tableLayout);
+                            TableLayout tableLayout =  dialogView.findViewById(R.id.tableLayout);
                             cursor = db.getChannelsFromNetwork(networkId);
                             if (cursor.moveToFirst()) {
                                 while (!cursor.isAfterLast()) {
                                     View tableRow = LayoutInflater.from(getActivity()).inflate(R.layout.table_item, null, false);
-                                    TextView channelname = (TextView) tableRow.findViewById(R.id.channelname);
-                                    TextView lcnno = (TextView) tableRow.findViewById(R.id.lcnno);
-                                    TextView position = (TextView) tableRow.findViewById(R.id.position);
-                                    TextView genre = (TextView) tableRow.findViewById(R.id.genre);
+                                    TextView channelname =  tableRow.findViewById(R.id.channelname);
+                                    TextView lcnno =  tableRow.findViewById(R.id.lcnno);
+                                    TextView position =  tableRow.findViewById(R.id.position);
+                                    TextView genre =  tableRow.findViewById(R.id.genre);
                                     channelname.setText(cursor.getString(cursor.getColumnIndex("Channel_Name")));
                                     lcnno.setText(cursor.getString(cursor.getColumnIndex("LCN_No")));
                                     position.setText(cursor.getString(cursor.getColumnIndex("Position")));
@@ -219,12 +211,9 @@ public class IndiaCastChannelFragment extends Fragment {
                                 }
                             }
                             db.close();
-                            btn_cancel.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    progressBar.setVisibility(View.GONE);
-                                    dialogBuilder.dismiss();
-                                }
+                            btn_cancel.setOnClickListener(Zview -> {
+                                progressBar.setVisibility(View.GONE);
+                                dialogBuilder.dismiss();
                             });
                             btn_submit.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -235,9 +224,9 @@ public class IndiaCastChannelFragment extends Fragment {
                                     boolean isConnected = activeNetwork != null &&
                                             activeNetwork.isConnectedOrConnecting();
                                     progressBar.setVisibility(View.VISIBLE);
-                                    radio_goup = (RadioGroup) dialogView.findViewById(R.id.radio_goup);
+                                    radio_goup =  dialogView.findViewById(R.id.radio_goup);
                                     int selectedId = radio_goup.getCheckedRadioButtonId();
-                                    radio_Button = (RadioButton) dialogView.findViewById(selectedId);
+                                    radio_Button =  dialogView.findViewById(selectedId);
                                     String comment = txt_comment.getText().toString();
                                     if (selectedId != -1) {
                                         String radio = radio_Button.getText().toString();
@@ -295,13 +284,23 @@ public class IndiaCastChannelFragment extends Fragment {
                                                         tbl_placement_indiacast_channels_details_lst.add(postICPLData);
                                                         ICPLcrs.moveToNext();
                                                     } catch (JSONException e) {
-//                                            progressBar.setVisibility(View.GONE);
                                                         e.printStackTrace();
                                                     }
                                                 }
                                                 try {
                                                     postRequestICPL(tbl_placement_indiacast_channels_details_lst.toString());
                                                     postRequest(tbl_network_channel_placement.toString());
+                                                    Fragment fragment = null;
+                                                    HomeFragment homeFragment = new HomeFragment();
+                                                    homeFragment.setArguments(bundle);
+                                                    fragment = homeFragment;
+                                                    FragmentManager fm = getFragmentManager();
+                                                    FragmentTransaction ft = fm.beginTransaction();
+                                                    ft.replace(R.id.viewPager, fragment, "FragmentTag");
+                                                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                                                    ft.addToBackStack(null);
+                                                    ft.commit();
+
                                                 } catch (IOException e) {
                                                     progressBar.setVisibility(View.GONE);
                                                     e.printStackTrace();
@@ -368,7 +367,8 @@ public class IndiaCastChannelFragment extends Fragment {
                 else {
                 }
                 db.close();
-                }
+                adapter.notifyDataSetChanged();
+            }
         });
         //endregion
         return v;
