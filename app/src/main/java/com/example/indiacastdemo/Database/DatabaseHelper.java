@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,6 +17,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
+
+import androidx.annotation.RequiresApi;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -63,7 +66,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String IMAGE = "image";
     public static final String Login_ID = "Login_ID";
     public static final String MAC_Address = "MAC_Address";
-
+    SimpleDateFormat df1;
     public String create_tbl_user_details = " create table tbl_user_details " +
             "            (" +
             "[User_ID] text PRIMARY KEY," +
@@ -659,12 +662,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ") as cp GROUP BY Network_ID) as map on nd.Network_ID=map.Network_ID", null);
         return res;
     }
-//    select Network_ID,
-//    count(CASE WHEN Status_ID='STS0005' THEN Status_ID END) AS 'Rejected',
-//    count(CASE WHEN Status_ID='STS0006' THEN Status_ID END) AS 'Completed',
-//    count(CASE WHEN Status_ID='STS0003' THEN Status_ID END) AS 'Submitted',
-//    count(CASE WHEN Status_ID='STS0004' THEN Status_ID END) AS 'Approved'
-//    from (SELECT Network_ID,Status_ID FROM tbl_network_channel_placement GROUP BY Network_ID,Created_date) as cp GROUP BY Network_ID
 
     public Cursor getHomePageNetworkCount() { // getNetworkCount on home page
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1174,13 +1171,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return User_ID;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public boolean submitNetwork(String networkId, String comments, String onCallSite) {
         String User_ID = getUserId();
         String Created_Date = null;
         SQLiteDatabase db = this.getWritableDatabase();
         Date date = Calendar.getInstance().getTime();
-        SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-d H:m:S");
-        SimpleDateFormat df1 = new SimpleDateFormat("YYYY-MM-d");
+        SimpleDateFormat df = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            df1 = new SimpleDateFormat("YYYY-MM-d");
+            df = new SimpleDateFormat("YYYY-MM-d H:m:S");
+        }
         try {
             Cursor cursor = db.rawQuery("Select Created_Date from tbl_network_channel_mapped where Network_ID = " + "'" + networkId + "' group by Network_ID ", null);
             if (cursor.moveToFirst()) {
@@ -1216,7 +1217,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String Created_Date = null;
         SQLiteDatabase db = this.getWritableDatabase();
         Date date = Calendar.getInstance().getTime();
-        SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-d H:m:S");
+        SimpleDateFormat df = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            df = new SimpleDateFormat("YYYY-MM-d H:m:S");
+        }
         ContentValues cv = new ContentValues();
         cv.put("Comments", comments);
         cv.put("On_Call_Site", onCallSite);

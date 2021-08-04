@@ -1,7 +1,7 @@
-com/example/indiacastdemo/HomeFragment.java
- com.example.indiacastdemo.HomeFragment
 com/example/indiacastdemo/SubmitChannelListFragment.java
  com.example.indiacastdemo.SubmitChannelListFragment
+com/example/indiacastdemo/HomeFragment.java
+ com.example.indiacastdemo.HomeFragment
 com/example/indiacastdemo/Database/DatabaseHelper.java
  com.example.indiacastdemo.Database.DatabaseHelper
 com/example/indiacastdemo/HistoryChannelViewAdapter.java
@@ -25,180 +25,6 @@ com/example/indiacastdemo/SpinnerDialog.java
 com/example/indiacastdemo/slider.java
  com.example.indiacastdemo.slider
  com.example.indiacastdemo.slider$1
-com/example/indiacastdemo/cls_tbl_network_channel_mapped.java
- com.example.indiacastdemo.cls_tbl_network_channel_mapped
-com/example/indiacastdemo/Model/History_Network.java
- com.example.indiacastdemo.Model.History_Network
-com/example/indiacastdemo/SwipeControllerChannel.java
- com.example.indiacastdemo.SwipeControllerChannel
- com.example.indiacastdemo.SwipeControllerChannel$1
- com.example.indiacastdemo.SwipeControllerChannel$2
- com.example.indiacastdemo.SwipeControllerChannel$3
- com.example.indiacastdemo.SwipeControllerChannel$3$1
-com/example/indiacastdemo/Model/ConnectionCheck.java
- com.example.indiacastdemo.Model.ConnectionCheck
-com/example/indiacastdemo/Model/cls_tbl_network_channel_mapped.java
- com.example.indiacastdemo.Model.cls_tbl_network_channel_mapped
-com/example/indiacastdemo/ChannelViewAdapter.java
- com.example.indiacastdemo.ChannelViewAdapter
- com.example.indiacastdemo.ChannelViewAdapter$1
- com.example.indiacastdemo.ChannelViewAdapter$1$1
- com.example.indiacastdemo.ChannelViewAdapter$2
- com.example.indiacastdemo.ChannelViewAdapter$3
- com.example.indiacastdemo.ChannelViewAdapter$3$1
- com.example.indiacastdemo.ChannelViewAdapter$4
- com.example.indiacastdemo.ChannelViewAdapter$ChannelViewHolder
-com/example/indiacastdemo/MonitoringPointsFragment.java
- com.example.indiacastdemo.MonitoringPointsFragment
- com.example.indiacastdemo.MonitoringPointsFragment$1
- com.example.indiacastdemo.MonitoringPointsFragment$1$1
- com.example.indiacastdemo.MonitoringPointsFragment$1$2
- com.example.indiacastdemo.MonitoringPointsFragment$2
- com.example.indiacastdemo.MonitoringPointsFragment$2$1
- com.example.indiacastdemo.MonitoringPointsFragment$2$1$1
-com/example/indiacastdemo/HistoryChannelPageFragment.java
- com.example.indiacastdemo.HistoryChannelPageFragment
- com.example.indiacastdemo.HistoryChannelPageFragment$1
- com.example.indiacastdemo.HistoryChannelPageFragment$2
- com.example.indiacastdemo.HistoryChannelPageFragment$2$1
- com.example.indiacastdemo.HistoryChannelPageFragment$2$2
- com.example.indiacastdemo.HistoryChannelPageFragment$2$2$1
- com.example.indiacastdemo.HistoryChannelPageFragment$2$3
- com.example.indiacastdemo.HistoryChannelPageFragment$2$3$1
- com.example.indiacastdemo.HistoryChannelPageFragment$2$4
- com.example.indiacastdemo.HistoryChannelPageFragment$3
- com.example.indiacastdemo.HistoryChannelPageFragment$3$1
- com.example.indiacastdemo.HistoryChannelPageFragment$3$2
- com.example.indiacastdemo.HistoryChannelPageFragment$4
- com.example.indiacastdemo.HistoryChannelPageFragment$5
- com.example.indiacastdemo.HistoryChannelPageFragment$6
- com.example.indiacastdemo.HistoryChannelPageFragment$7
- com.example.indiacastdemo.HistoryChannelPageFragment$7$1
- com.example.indiacastdemo.HistoryChannelPageFragment$8
- com.example.indiacastdemo.HistoryChannelPageFragment$9
- com.example.indiacastdemo.HistoryChannelPageFragment$9$1
- com.example.indiacastdemo.HistoryChannelPageFragment$9$2
-com/example/indiacastdemo/Model/IndiaCastChannel.java
- com.example.indiacastdemo.Model.IndiaCastChannel
-com/example/indiacastdemo/Model/Network.java
- com.example.indiacastdemo.Model.Network
-com/example/indiacastdemo/Model/He_Network.java
- com.example.indiacastdemo.Model.He_Network
-com/example/indiacastdemo/ViewPagerAdapter.java
- com.example.indiacastdemo.ViewPagerAdapter
-com/example/indiacastdemo/IdentifierObjAdapter.java
- com.example.indiacastdemo.IdentifierObjAdapter
- com.example.indiacastdemo.IdentifierObjAdapter$1
- com.example.indiacastdemo.IdentifierObjAdapter$2
-com/example/indiacastdemo/HistoryMappingFragment.java
- com.example.indiacastdemo.HistoryMappingFragment
- com.example.indiacastdemo.HistoryMappingFragment$1
-com/example/indiacastdemo/ProfileFragment.java
- com.example.indiacastdemo.ProfileFragment
- com.example.indiacastdemo.ProfileFragment$1
- com.example.indiacastdemo.ProfileFragment$2
- com.example.indiacastdemo.ProfileFragment$3
-com/example/indiacastdemo/HistoryNetworkAdapter.java
- com.example.indiacastdemo.HistoryNetworkAdapter
- com.example.indiacastdemo.HistoryNetworkAdapter$1
- com.example.indiacastdemo.HistoryNetworkAdapter$MyViewHolder
-com/example/indiacastdemo/MySingleton.java
- com.example.indiacastdemo.MySingleton
-com/example/indiacastdemo/HistoryMonitoringPointsFragment.java
- com.example.indiacastdemo.HistoryMonitoringPointsFragment
- com.example.indiacastdemo.HistoryMonitoringPointsFragment$1
- com.example.indiacastdemo.HistoryMonitoringPointsFragment$1$1
- com.example.indiacastdemo.HistoryMonitoringPointsFragment$1$2
-com/example/indiacastdemo/HistoryFragment.java
- com.example.indiacastdemo.HistoryFragment
- com.example.indiacastdemo.HistoryFragment$1
- com.example.indiacastdemo.HistoryFragment$2
- com.example.indiacastdemo.HistoryFragment$3
- com.example.indiacastdemo.HistoryFragment$4
- com.example.indiacastdemo.HistoryFragment$4$1
- com.example.indiacastdemo.HistoryFragment$4$1$1
- com.example.indiacastdemo.HistoryFragment$4$2
- com.example.indiacastdemo.HistoryFragment$5
- com.example.indiacastdemo.HistoryFragment$5$1
-com/example/indiacastdemo/HistoryLandingPageFragment.java
- com.example.indiacastdemo.HistoryLandingPageFragment
- com.example.indiacastdemo.HistoryLandingPageFragment$1
- com.example.indiacastdemo.HistoryLandingPageFragment$2
- com.example.indiacastdemo.HistoryLandingPageFragment$3
-com/example/indiacastdemo/StatusViewAdapter.java
- com.example.indiacastdemo.StatusViewAdapter
- com.example.indiacastdemo.StatusViewAdapter$StatusViewHolder
-com/example/indiacastdemo/cls_tbl_network_channel_placement.java
- com.example.indiacastdemo.cls_tbl_network_channel_placement
-com/example/indiacastdemo/SwipeControllerNetwork.java
- com.example.indiacastdemo.ButtonsState
- com.example.indiacastdemo.SwipeController
- com.example.indiacastdemo.SwipeController$1
- com.example.indiacastdemo.SwipeController$2
- com.example.indiacastdemo.SwipeController$3
- com.example.indiacastdemo.SwipeController$3$1
-com/example/indiacastdemo/BuildConfig.java
- com.example.indiacastdemo.BuildConfig
-com/example/indiacastdemo/IdentifiableObject.java
- com.example.indiacastdemo.IdentifiableObject
-com/example/indiacastdemo/IdentifiableObjectImpl.java
- com.example.indiacastdemo.IdentifiableObjectImpl
-com/example/indiacastdemo/Model/AlertDialogModel.java
- com.example.indiacastdemo.Model.AlertDialogModel
- com.example.indiacastdemo.Model.AlertDialogModel$1
-com/example/indiacastdemo/ChannelPageFragment.java
- com.example.indiacastdemo.ChannelPageFragment
- com.example.indiacastdemo.ChannelPageFragment$1
- com.example.indiacastdemo.ChannelPageFragment$2
- com.example.indiacastdemo.ChannelPageFragment$2$1
- com.example.indiacastdemo.ChannelPageFragment$2$2
- com.example.indiacastdemo.ChannelPageFragment$2$2$1
- com.example.indiacastdemo.ChannelPageFragment$2$3
- com.example.indiacastdemo.ChannelPageFragment$2$3$1
- com.example.indiacastdemo.ChannelPageFragment$2$4
- com.example.indiacastdemo.ChannelPageFragment$3
- com.example.indiacastdemo.ChannelPageFragment$4
- com.example.indiacastdemo.ChannelPageFragment$5
- com.example.indiacastdemo.ChannelPageFragment$6
- com.example.indiacastdemo.ChannelPageFragment$7
- com.example.indiacastdemo.ChannelPageFragment$7$1
- com.example.indiacastdemo.ChannelPageFragment$8
-com/example/indiacastdemo/Model/cls_tbl_network_channel_placement.java
- com.example.indiacastdemo.Model.cls_tbl_network_channel_placement
-com/example/indiacastdemo/RegisterActivity.java
- com.example.indiacastdemo.RegisterActivity
- com.example.indiacastdemo.RegisterActivity$1
-com/example/indiacastdemo/SplashScreenActivity.java
- com.example.indiacastdemo.SplashScreenActivity
- com.example.indiacastdemo.SplashScreenActivity$1
-com/example/indiacastdemo/Model/Channel.java
- com.example.indiacastdemo.Model.Channel
-com/example/indiacastdemo/StatusFragment.java
- com.example.indiacastdemo.StatusFragment
- com.example.indiacastdemo.StatusFragment$1
- com.example.indiacastdemo.StatusFragment$2
- com.example.indiacastdemo.StatusFragment$2$1
- com.example.indiacastdemo.StatusFragment$2$1$1
- com.example.indiacastdemo.StatusFragment$2$2
-com/example/indiacastdemo/TaskFragment.java
- com.example.indiacastdemo.TaskFragment
- com.example.indiacastdemo.TaskFragment$1
- com.example.indiacastdemo.TaskFragment$1$1
- com.example.indiacastdemo.TaskFragment$1$1$1
- com.example.indiacastdemo.TaskFragment$1$2
-com/example/indiacastdemo/LandingPageFragment.java
- com.example.indiacastdemo.LandingPageFragment
- com.example.indiacastdemo.LandingPageFragment$1
- com.example.indiacastdemo.LandingPageFragment$2
- com.example.indiacastdemo.LandingPageFragment$3
-com/example/indiacastdemo/SwipeControllerActions.java
- com.example.indiacastdemo.SwipeControllerActions
-com/example/indiacastdemo/SendDeviceDetails.java
- com.example.indiacastdemo.SendDeviceDetails
-com/example/indiacastdemo/OnSpinerItemClick.java
- com.example.indiacastdemo.OnSpinerItemClick
-com/example/indiacastdemo/Validation/ConditionCheckClass.java
- com.example.indiacastdemo.Validation.ConditionCheckClass
 com/example/indiacastdemo/Main2Activity.java
  com.example.indiacastdemo.Main2Activity
  com.example.indiacastdemo.Main2Activity$1
@@ -223,18 +49,52 @@ com/example/indiacastdemo/RecyclerViewAdapter.java
  com.example.indiacastdemo.RecyclerViewAdapter
  com.example.indiacastdemo.RecyclerViewAdapter$1
  com.example.indiacastdemo.RecyclerViewAdapter$MyViewHolder
-com/example/indiacastdemo/LoginScreen.java
- com.example.indiacastdemo.LoginScreen
- com.example.indiacastdemo.LoginScreen$1
- com.example.indiacastdemo.LoginScreen$2
- com.example.indiacastdemo.LoginScreen$2$1
- com.example.indiacastdemo.LoginScreen$2$2
- com.example.indiacastdemo.LoginScreen$3
- com.example.indiacastdemo.LoginScreen$3$1
- com.example.indiacastdemo.LoginScreen$3$1$1
- com.example.indiacastdemo.LoginScreen$3$2
-com/example/indiacastdemo/MyFirebaseMessagingService.java
- com.example.indiacastdemo.MyFirebaseMessagingService
+com/example/indiacastdemo/Model/cls_tbl_network_channel_mapped.java
+ com.example.indiacastdemo.Model.cls_tbl_network_channel_mapped
+com/example/indiacastdemo/Model/ConnectionCheck.java
+ com.example.indiacastdemo.Model.ConnectionCheck
+com/example/indiacastdemo/SwipeControllerChannel.java
+ com.example.indiacastdemo.SwipeControllerChannel
+ com.example.indiacastdemo.SwipeControllerChannel$1
+ com.example.indiacastdemo.SwipeControllerChannel$2
+ com.example.indiacastdemo.SwipeControllerChannel$3
+ com.example.indiacastdemo.SwipeControllerChannel$3$1
+com/example/indiacastdemo/MonitoringPointsFragment.java
+ com.example.indiacastdemo.MonitoringPointsFragment
+ com.example.indiacastdemo.MonitoringPointsFragment$1
+ com.example.indiacastdemo.MonitoringPointsFragment$1$1
+ com.example.indiacastdemo.MonitoringPointsFragment$1$2
+ com.example.indiacastdemo.MonitoringPointsFragment$2
+ com.example.indiacastdemo.MonitoringPointsFragment$2$1
+ com.example.indiacastdemo.MonitoringPointsFragment$2$1$1
+com/example/indiacastdemo/Model/IndiaCastChannel.java
+ com.example.indiacastdemo.Model.IndiaCastChannel
+com/example/indiacastdemo/HistoryChannelPageFragment.java
+ com.example.indiacastdemo.HistoryChannelPageFragment
+ com.example.indiacastdemo.HistoryChannelPageFragment$1
+ com.example.indiacastdemo.HistoryChannelPageFragment$2
+ com.example.indiacastdemo.HistoryChannelPageFragment$2$1
+ com.example.indiacastdemo.HistoryChannelPageFragment$2$2
+ com.example.indiacastdemo.HistoryChannelPageFragment$2$2$1
+ com.example.indiacastdemo.HistoryChannelPageFragment$2$3
+ com.example.indiacastdemo.HistoryChannelPageFragment$2$3$1
+ com.example.indiacastdemo.HistoryChannelPageFragment$2$4
+ com.example.indiacastdemo.HistoryChannelPageFragment$3
+ com.example.indiacastdemo.HistoryChannelPageFragment$3$1
+ com.example.indiacastdemo.HistoryChannelPageFragment$3$2
+ com.example.indiacastdemo.HistoryChannelPageFragment$4
+ com.example.indiacastdemo.HistoryChannelPageFragment$5
+ com.example.indiacastdemo.HistoryChannelPageFragment$6
+ com.example.indiacastdemo.HistoryChannelPageFragment$7
+ com.example.indiacastdemo.HistoryChannelPageFragment$7$1
+ com.example.indiacastdemo.HistoryChannelPageFragment$8
+ com.example.indiacastdemo.HistoryChannelPageFragment$9
+ com.example.indiacastdemo.HistoryChannelPageFragment$9$1
+ com.example.indiacastdemo.HistoryChannelPageFragment$9$2
+com/example/indiacastdemo/Model/Network.java
+ com.example.indiacastdemo.Model.Network
+com/example/indiacastdemo/Model/He_Network.java
+ com.example.indiacastdemo.Model.He_Network
 com/example/indiacastdemo/HEFragment.java
  com.example.indiacastdemo.HEFragment
  com.example.indiacastdemo.HEFragment$1
@@ -244,16 +104,26 @@ com/example/indiacastdemo/HEFragment.java
  com.example.indiacastdemo.HEFragment$4$1
  com.example.indiacastdemo.HEFragment$4$1$1
  com.example.indiacastdemo.HEFragment$4$2
-com/example/indiacastdemo/MessagingService.java
- com.example.indiacastdemo.MessagingService
+com/example/indiacastdemo/IdentifierObjAdapter.java
+ com.example.indiacastdemo.IdentifierObjAdapter
+ com.example.indiacastdemo.IdentifierObjAdapter$1
+ com.example.indiacastdemo.IdentifierObjAdapter$2
 com/example/indiacastdemo/MyAdapter.java
  com.example.indiacastdemo.MyAdapter
-com/example/indiacastdemo/MappingFragment.java
- com.example.indiacastdemo.MappingFragment
- com.example.indiacastdemo.MappingFragment$1
+com/example/indiacastdemo/ProfileFragment.java
+ com.example.indiacastdemo.ProfileFragment
+ com.example.indiacastdemo.ProfileFragment$1
+ com.example.indiacastdemo.ProfileFragment$2
+ com.example.indiacastdemo.ProfileFragment$3
 com/example/indiacastdemo/ChannelSubmitFragment.java
  com.example.indiacastdemo.ChannelSubmitFragment
  com.example.indiacastdemo.ChannelSubmitFragment$1
+com/example/indiacastdemo/MySingleton.java
+ com.example.indiacastdemo.MySingleton
+com/example/indiacastdemo/HistoryNetworkAdapter.java
+ com.example.indiacastdemo.HistoryNetworkAdapter
+ com.example.indiacastdemo.HistoryNetworkAdapter$1
+ com.example.indiacastdemo.HistoryNetworkAdapter$MyViewHolder
 com/example/indiacastdemo/IndiaCastChannelFragment.java
  com.example.indiacastdemo.IndiaCastChannelFragment
  com.example.indiacastdemo.IndiaCastChannelFragment$1
@@ -261,10 +131,9 @@ com/example/indiacastdemo/IndiaCastChannelFragment.java
  com.example.indiacastdemo.IndiaCastChannelFragment$2$1
  com.example.indiacastdemo.IndiaCastChannelFragment$2$2
  com.example.indiacastdemo.IndiaCastChannelFragment$2$3
- com.example.indiacastdemo.IndiaCastChannelFragment$2$4
- com.example.indiacastdemo.IndiaCastChannelFragment$2$4$1
- com.example.indiacastdemo.IndiaCastChannelFragment$2$4$2
- com.example.indiacastdemo.IndiaCastChannelFragment$2$4$3
+ com.example.indiacastdemo.IndiaCastChannelFragment$2$3$1
+ com.example.indiacastdemo.IndiaCastChannelFragment$2$3$2
+ com.example.indiacastdemo.IndiaCastChannelFragment$2$3$3
  com.example.indiacastdemo.IndiaCastChannelFragment$3
  com.example.indiacastdemo.IndiaCastChannelFragment$3$1
  com.example.indiacastdemo.IndiaCastChannelFragment$3$1$1
@@ -278,9 +147,135 @@ com/example/indiacastdemo/IndiaCastChannelFragment.java
  com.example.indiacastdemo.IndiaCastChannelFragment$5
  com.example.indiacastdemo.IndiaCastChannelFragment$5$1
  com.example.indiacastdemo.IndiaCastChannelFragment$5$1$1
+com/example/indiacastdemo/StatusViewAdapter.java
+ com.example.indiacastdemo.StatusViewAdapter
+ com.example.indiacastdemo.StatusViewAdapter$StatusViewHolder
+com/example/indiacastdemo/HistoryLandingPageFragment.java
+ com.example.indiacastdemo.HistoryLandingPageFragment
+ com.example.indiacastdemo.HistoryLandingPageFragment$1
+ com.example.indiacastdemo.HistoryLandingPageFragment$2
+ com.example.indiacastdemo.HistoryLandingPageFragment$3
+com/example/indiacastdemo/SwipeControllerNetwork.java
+ com.example.indiacastdemo.ButtonsState
+ com.example.indiacastdemo.SwipeController
+ com.example.indiacastdemo.SwipeController$1
+ com.example.indiacastdemo.SwipeController$2
+ com.example.indiacastdemo.SwipeController$3
+ com.example.indiacastdemo.SwipeController$3$1
+com/example/indiacastdemo/BuildConfig.java
+ com.example.indiacastdemo.BuildConfig
+com/example/indiacastdemo/MessagingService.java
+ com.example.indiacastdemo.MessagingService
+com/example/indiacastdemo/IdentifiableObjectImpl.java
+ com.example.indiacastdemo.IdentifiableObjectImpl
+com/example/indiacastdemo/ChannelPageFragment.java
+ com.example.indiacastdemo.ChannelPageFragment
+ com.example.indiacastdemo.ChannelPageFragment$1
+ com.example.indiacastdemo.ChannelPageFragment$2
+ com.example.indiacastdemo.ChannelPageFragment$2$1
+ com.example.indiacastdemo.ChannelPageFragment$2$2
+ com.example.indiacastdemo.ChannelPageFragment$2$2$1
+ com.example.indiacastdemo.ChannelPageFragment$2$3
+ com.example.indiacastdemo.ChannelPageFragment$2$3$1
+ com.example.indiacastdemo.ChannelPageFragment$2$4
+ com.example.indiacastdemo.ChannelPageFragment$3
+ com.example.indiacastdemo.ChannelPageFragment$4
+ com.example.indiacastdemo.ChannelPageFragment$5
+ com.example.indiacastdemo.ChannelPageFragment$6
+ com.example.indiacastdemo.ChannelPageFragment$7
+ com.example.indiacastdemo.ChannelPageFragment$7$1
+ com.example.indiacastdemo.ChannelPageFragment$8
+com/example/indiacastdemo/RegisterActivity.java
+ com.example.indiacastdemo.RegisterActivity
+ com.example.indiacastdemo.RegisterActivity$1
+com/example/indiacastdemo/Model/cls_tbl_network_channel_placement.java
+ com.example.indiacastdemo.Model.cls_tbl_network_channel_placement
 com/example/indiacastdemo/IndiaCastChannelAdapter.java
  com.example.indiacastdemo.IndiaCastChannelAdapter
  com.example.indiacastdemo.IndiaCastChannelAdapter$1
  com.example.indiacastdemo.IndiaCastChannelAdapter$2
  com.example.indiacastdemo.IndiaCastChannelAdapter$2$1
  com.example.indiacastdemo.IndiaCastChannelAdapter$IndiaCastChannelHolder
+com/example/indiacastdemo/SplashScreenActivity.java
+ com.example.indiacastdemo.SplashScreenActivity
+ com.example.indiacastdemo.SplashScreenActivity$1
+com/example/indiacastdemo/StatusFragment.java
+ com.example.indiacastdemo.StatusFragment
+ com.example.indiacastdemo.StatusFragment$1
+ com.example.indiacastdemo.StatusFragment$2
+ com.example.indiacastdemo.StatusFragment$2$1
+ com.example.indiacastdemo.StatusFragment$2$1$1
+ com.example.indiacastdemo.StatusFragment$2$2
+com/example/indiacastdemo/Model/Channel.java
+ com.example.indiacastdemo.Model.Channel
+com/example/indiacastdemo/LoginScreen.java
+ com.example.indiacastdemo.LoginScreen
+ com.example.indiacastdemo.LoginScreen$1
+ com.example.indiacastdemo.LoginScreen$2
+ com.example.indiacastdemo.LoginScreen$2$1
+ com.example.indiacastdemo.LoginScreen$2$2
+ com.example.indiacastdemo.LoginScreen$3
+ com.example.indiacastdemo.LoginScreen$3$1
+ com.example.indiacastdemo.LoginScreen$3$1$1
+ com.example.indiacastdemo.LoginScreen$3$2
+com/example/indiacastdemo/LandingPageFragment.java
+ com.example.indiacastdemo.LandingPageFragment
+ com.example.indiacastdemo.LandingPageFragment$1
+ com.example.indiacastdemo.LandingPageFragment$2
+ com.example.indiacastdemo.LandingPageFragment$3
+com/example/indiacastdemo/SendDeviceDetails.java
+ com.example.indiacastdemo.SendDeviceDetails
+com/example/indiacastdemo/SwipeControllerActions.java
+ com.example.indiacastdemo.SwipeControllerActions
+com/example/indiacastdemo/OnSpinerItemClick.java
+ com.example.indiacastdemo.OnSpinerItemClick
+com/example/indiacastdemo/Validation/ConditionCheckClass.java
+ com.example.indiacastdemo.Validation.ConditionCheckClass
+com/example/indiacastdemo/ChannelViewAdapter.java
+ com.example.indiacastdemo.ChannelViewAdapter
+ com.example.indiacastdemo.ChannelViewAdapter$1
+ com.example.indiacastdemo.ChannelViewAdapter$1$1
+ com.example.indiacastdemo.ChannelViewAdapter$2
+ com.example.indiacastdemo.ChannelViewAdapter$3
+ com.example.indiacastdemo.ChannelViewAdapter$3$1
+ com.example.indiacastdemo.ChannelViewAdapter$4
+ com.example.indiacastdemo.ChannelViewAdapter$ChannelViewHolder
+com/example/indiacastdemo/IdentifiableObject.java
+ com.example.indiacastdemo.IdentifiableObject
+com/example/indiacastdemo/MappingFragment.java
+ com.example.indiacastdemo.MappingFragment
+ com.example.indiacastdemo.MappingFragment$1
+com/example/indiacastdemo/TaskFragment.java
+ com.example.indiacastdemo.TaskFragment
+ com.example.indiacastdemo.TaskFragment$1
+ com.example.indiacastdemo.TaskFragment$1$1
+ com.example.indiacastdemo.TaskFragment$1$1$1
+ com.example.indiacastdemo.TaskFragment$1$2
+com/example/indiacastdemo/ViewPagerAdapter.java
+ com.example.indiacastdemo.ViewPagerAdapter
+com/example/indiacastdemo/Model/History_Network.java
+ com.example.indiacastdemo.Model.History_Network
+com/example/indiacastdemo/HistoryFragment.java
+ com.example.indiacastdemo.HistoryFragment
+ com.example.indiacastdemo.HistoryFragment$1
+ com.example.indiacastdemo.HistoryFragment$2
+ com.example.indiacastdemo.HistoryFragment$3
+ com.example.indiacastdemo.HistoryFragment$4
+ com.example.indiacastdemo.HistoryFragment$4$1
+ com.example.indiacastdemo.HistoryFragment$4$1$1
+ com.example.indiacastdemo.HistoryFragment$4$2
+ com.example.indiacastdemo.HistoryFragment$5
+ com.example.indiacastdemo.HistoryFragment$5$1
+com/example/indiacastdemo/HistoryMonitoringPointsFragment.java
+ com.example.indiacastdemo.HistoryMonitoringPointsFragment
+ com.example.indiacastdemo.HistoryMonitoringPointsFragment$1
+ com.example.indiacastdemo.HistoryMonitoringPointsFragment$1$1
+ com.example.indiacastdemo.HistoryMonitoringPointsFragment$1$2
+com/example/indiacastdemo/MyFirebaseMessagingService.java
+ com.example.indiacastdemo.MyFirebaseMessagingService
+com/example/indiacastdemo/HistoryMappingFragment.java
+ com.example.indiacastdemo.HistoryMappingFragment
+ com.example.indiacastdemo.HistoryMappingFragment$1
+com/example/indiacastdemo/Model/AlertDialogModel.java
+ com.example.indiacastdemo.Model.AlertDialogModel
+ com.example.indiacastdemo.Model.AlertDialogModel$1
