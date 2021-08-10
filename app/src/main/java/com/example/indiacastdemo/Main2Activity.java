@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.widget.TextView;
@@ -147,6 +149,7 @@ public class Main2Activity extends AppCompatActivity {
                         fragment = new HomeFragment();
                         fragment.setArguments(bundle);
                         customtitle.setText(R.string.home);
+
                         break;
                     case 1:
                         try {
@@ -157,11 +160,13 @@ public class Main2Activity extends AppCompatActivity {
                         fragment = new HEFragment();
                         fragment.setArguments(bundle);
                         customtitle.setText(R.string.mapping);
+
                         break;
                     case 2:
                         fragment = new TaskFragment();
                         fragment.setArguments(bundle);
                         customtitle.setText(R.string.task);
+
                         break;
                     case 3:
                         fragment = new ProfileFragment();
@@ -260,8 +265,11 @@ public class Main2Activity extends AppCompatActivity {
     //-------------------------------------
     @Override
     public void onBackPressed() {
+
+
+
         if (getFragmentManager().getBackStackEntryCount() == 0) {
-            super.onBackPressed();
+                super.onBackPressed();
         } else {
             getFragmentManager().popBackStack();
         }

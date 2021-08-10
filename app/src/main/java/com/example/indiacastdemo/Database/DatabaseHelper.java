@@ -717,12 +717,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    public Cursor tbl_placement_indiacast_channels_details(String network_ID) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("Select * from tbl_placement_indiacast_channels_details where NetworkID = " + "'" + network_ID + "'", null);
-        return res;
-    }
-
     public boolean setIndiaCastChannelsResponse(String jsonData) {
         try {
             JSONArray jsonArray = new JSONArray(jsonData);
@@ -789,8 +783,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT IStatus FROM tbl_indiacast_channels_status WHERE ID= " + "'" + iStatusID + "' ", null);
         return cursor;
+
     }
 
+//    public Cursor tbl_placement_indiacast_channels_details(String network_ID) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        Cursor res = db.rawQuery("Select * from tbl_placement_indiacast_channels_details where NetworkID = " + "'" + network_ID + "'", null);
+//        return res;
+//    }
     public Cursor getIndiaCastChannels(String networkid) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("SELECT * from tbl_placement_indiacast_channels_details where NetworkID = " + "'" + networkid + "' ", null);
@@ -799,7 +799,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getChannelsFromIndiaCastPlacement(String networkid) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM (Select x.IndiaCast, x.Channel_Name,coalesce(y.Network_ID,z.Network_ID) " +
+        Cursor res = db.rawQuery("SELECT * FROM (Select null as CPosition,x.IndiaCast, x.Channel_Name,coalesce(y.Network_ID,z.Network_ID) " +
                 "as Network_ID,coalesce(y.Network_Name,z.Network_Name) as Network_Name,y.LCN_No,y.Position,y.Status_ID ," +
                 "y.Created_date ,null as Others,CASE WHEN LCN_No IS NULL  THEN NULL ELSE (SELECT ID FROM tbl_indiacast_channels_status WHERE IStatus='OK') END as IStatusID " +
                 "from (select a.ChannelID as IndiaCast,b.Channel_ID as Master,b.Channel_Name, NULL as Network_ID," +

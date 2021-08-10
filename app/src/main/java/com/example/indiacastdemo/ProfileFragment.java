@@ -71,9 +71,6 @@ public class ProfileFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        User_ID = getArguments().getString("User_ID");
-//        Login_ID = getArguments().getString("Login_ID");
-//        Token = getArguments().getString("Token");
 
         edt_empid = v.findViewById(R.id.edt_empid);
         edt_empname = v.findViewById(R.id.edt_empname);

@@ -338,7 +338,7 @@ public class HistoryChannelPageFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         progressBar.setVisibility(View.GONE);
-                        radio_goup = (RadioGroup) dialogView.findViewById(R.id.radio_goup);
+                        radio_goup = (RadioGroup) dialogView.findViewById(R.id.radio_group);
                         int selectedId = radio_goup.getCheckedRadioButtonId();
                         radio_Button = (RadioButton) dialogView.findViewById(selectedId);
                         String comment = txt_comment.getText().toString();

@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.indiacastdemo.Database.DatabaseHelper;
@@ -17,6 +18,7 @@ import com.example.indiacastdemo.Model.Channel;
 import com.example.indiacastdemo.Model.IndiaCastChannel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
@@ -53,7 +55,6 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
         indiaCastChannelHolder.edt_indiacastcposition.setText(indiaCastChannel.getCPosition());
         indiaCastChannelHolder.edt_lcn.setText(indiaCastChannel.getLCN());
         indiaCastChannelHolder.edt_position.setText(indiaCastChannel.getPosition());
-        indiaCastChannelHolder.edt_indiacastcposition.setText(indiaCastChannel.getPosition());
         indiaCastChannelHolder.edt_indiacast_status.setText(indiaCastChannel.getIndiacast_status());
         networkid = indiaCastChannel.getNetworkId();
         indiaCastChannelHolder.setIsRecyclable(false);
@@ -81,7 +82,8 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
                 if (cursor.moveToFirst()) {
                     while (!cursor.isAfterLast()) {
                         String name = cursor.getString(cursor.getColumnIndex("IStatus"));
-                        indiaCastchannelist.add(new IdentifiableObjectImpl(name, null, 0, R.drawable.ic_checkbox_marked_circle_outline_white_18dp));
+                        String description = cursor.getString(cursor.getColumnIndex("IStatusDesc"));
+                        indiaCastchannelist.add(new IdentifiableObjectImpl(name, description, 0, R.drawable.ic_checkbox_marked_circle_outline_white_18dp));
                         cursor.moveToNext();
                     }
                 }
@@ -99,7 +101,7 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
                         IStatus = indiaCastChannelHolder.edt_indiacast_status.getText().toString();
                         Position = indiaCastChannelHolder.edt_position.getText().toString();
                         db.updateByIStatus(indiacastChannelName, IStatus, Lcn, Position, CPosition, networkid);
-                            updateOnDataChange();
+                        updateOnDataChange();
                     }
                 });
             }
@@ -138,8 +140,8 @@ public class IndiaCastChannelAdapter extends RecyclerView.Adapter<IndiaCastChann
                 String Channel_Name = cursor.getString(cursor.getColumnIndex("Channel_Name"));
                 String LCN_No = cursor.getString(cursor.getColumnIndex("LCN"));
                 String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
-                String CPosition = cursor.getString(cursor.getColumnIndex("CPosition"));
                 String Position = cursor.getString(cursor.getColumnIndex("Position"));
+                String CPosition = cursor.getString(cursor.getColumnIndex("CPosition"));
                 Cursor IStatusIdcrs = db.getIndiaCastChannelStatusById(IStatusID);
                 if (IStatusIdcrs.moveToFirst()) {
                     IStatusID = IStatusIdcrs.getString(IStatusIdcrs.getColumnIndex("IStatus"));

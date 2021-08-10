@@ -130,10 +130,9 @@ com/example/indiacastdemo/IndiaCastChannelFragment.java
  com.example.indiacastdemo.IndiaCastChannelFragment$2
  com.example.indiacastdemo.IndiaCastChannelFragment$2$1
  com.example.indiacastdemo.IndiaCastChannelFragment$2$2
- com.example.indiacastdemo.IndiaCastChannelFragment$2$3
- com.example.indiacastdemo.IndiaCastChannelFragment$2$3$1
- com.example.indiacastdemo.IndiaCastChannelFragment$2$3$2
- com.example.indiacastdemo.IndiaCastChannelFragment$2$3$3
+ com.example.indiacastdemo.IndiaCastChannelFragment$2$2$1
+ com.example.indiacastdemo.IndiaCastChannelFragment$2$2$2
+ com.example.indiacastdemo.IndiaCastChannelFragment$2$2$3
  com.example.indiacastdemo.IndiaCastChannelFragment$3
  com.example.indiacastdemo.IndiaCastChannelFragment$3$1
  com.example.indiacastdemo.IndiaCastChannelFragment$3$1$1
