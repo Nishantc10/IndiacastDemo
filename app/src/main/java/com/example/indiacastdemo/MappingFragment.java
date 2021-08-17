@@ -3,17 +3,27 @@ package com.example.indiacastdemo;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.example.indiacastdemo.Model.ConnectionCheck;
 import com.google.android.material.tabs.TabLayout;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.example.indiacastdemo.Database.DatabaseHelper;
@@ -26,6 +36,8 @@ public class MappingFragment extends Fragment {
     Bundle bundle;
     private DatabaseHelper db;
     private TextView network_name, txt_townDistrictState;
+    String networkId;
+    String networkName;
 
     public MappingFragment() {
     }
@@ -39,8 +51,8 @@ public class MappingFragment extends Fragment {
         tabLayout = (TabLayout) v.findViewById(R.id.tabslayout);
         network_name = v.findViewById(R.id.network_name);
         txt_townDistrictState = v.findViewById(R.id.txt_townDistrictState);
-        final String networkId = getArguments().getString("networkId");
-        final String networkName = getArguments().getString("networkName");
+        networkId = getArguments().getString("networkId");
+        networkName = getArguments().getString("networkName");
         db = new DatabaseHelper(getContext());
         Cursor cursor = db.getTownName(networkId);
         if (cursor.getCount() == 0) {
@@ -53,7 +65,6 @@ public class MappingFragment extends Fragment {
             }
         }
         db.close();
-//        Log.d( "networkId: ",networkId);
         bundle = new Bundle();
         bundle.putString("networkId", networkId);
         bundle.putString("networkName", networkName);
@@ -70,11 +81,6 @@ public class MappingFragment extends Fragment {
         thirdTab.setText("Monitoring Points"); // set the Text for the first Tab
         tabLayout.addTab(thirdTab); // add  the tab at in the TabLayout
 
-//        TabLayout.Tab forthTab = tabLayout.newTab();
-//        forthTab.setText("Status"); // set the Text for the first Tab
-//        tabLayout.addTab(forthTab); // add  the tab at in the TabLayout
-
-//        tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
         ChannelPageFragment channelPageFragment = new ChannelPageFragment();
         channelPageFragment.setArguments(bundle);
         getFragmentManager().beginTransaction().replace(R.id.viewPager, channelPageFragment).commit();
@@ -101,17 +107,12 @@ public class MappingFragment extends Fragment {
                         fragment = monitoringPointsFragment;
                         break;
 
-//                    case 3:
-//                        fragment = new StatusFragment();
-//                        break;
-
                     default:
                 }
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
                 ft.replace(R.id.viewPager, fragment, "FragmentTag");
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.addToBackStack(null);
                 ft.commit();
             }
 
@@ -124,5 +125,55 @@ public class MappingFragment extends Fragment {
             }
         });
         return v;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.preview_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_preview:
+                final AlertDialog dialogBuilder = new AlertDialog.Builder(getContext()).create();
+                dialogBuilder.setCancelable(false);
+                LayoutInflater inflater = getActivity().getLayoutInflater();
+                final View dialogView = inflater.inflate(R.layout.channel_preview_layout, null);
+                ImageView btn_cancel = (ImageView) dialogView.findViewById(R.id.btn_cancel);
+
+                TableLayout tableLayout = dialogView.findViewById(R.id.ChannelsTableLayout);
+                Cursor cursor = db.getChannelsFromNetwork(networkId);
+                if (cursor.moveToFirst()) {
+                    while (!cursor.isAfterLast()) {
+                        View tableRow = LayoutInflater.from(getActivity()).inflate(R.layout.channel_preview_table_item, null, false);
+                        TextView tbl_channelName = tableRow.findViewById(R.id.tbl_channelName);
+                        TextView tbl_lcn = tableRow.findViewById(R.id.tbl_lcn);
+                        TextView tbl_position = tableRow.findViewById(R.id.tbl_position);
+                        TextView tbl_genreName = tableRow.findViewById(R.id.tbl_genreName);
+                        tbl_channelName.setText(cursor.getString(cursor.getColumnIndex("Channel_Name")));
+                        tbl_lcn.setText(cursor.getString(cursor.getColumnIndex("LCN_No")));
+                        tbl_position.setText(cursor.getString(cursor.getColumnIndex("Position")));
+                        tbl_genreName.setText(cursor.getString(cursor.getColumnIndex("Genre")));
+                        tableLayout.addView(tableRow);
+                        cursor.moveToNext();
+                    }
+                }
+                db.close();
+                btn_cancel.setOnClickListener(view -> {
+                    dialogBuilder.dismiss();
+                });
+                dialogBuilder.setView(dialogView);
+                dialogBuilder.show();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

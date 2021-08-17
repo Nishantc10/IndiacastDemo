@@ -59,6 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position) {
         He_Network he_network = al.get(position);
         myViewHolder.he_network_id.setText(he_network.getNetwork_ID());
+        myViewHolder.he_network_location.setText(he_network.getLocation());
         myViewHolder.he_network_name.setText(he_network.getNetwork_Name());
         myViewHolder.img_networklogo.setImageDrawable(he_network.getPhoto());
         myViewHolder.he_networek_status2.setText(he_network.getStatus());
@@ -72,6 +73,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView he_network_name;
+        private TextView he_network_location;
         private TextView he_network_id;
         private ImageView img_networklogo;
         private TextView he_networek_status2;
@@ -79,6 +81,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             he_network_id = (TextView) itemView.findViewById(R.id.he_network_id);
+            he_network_location = (TextView) itemView.findViewById(R.id.he_network_location);
             he_network_name = (TextView) itemView.findViewById(R.id.he_network_name);
             img_networklogo = (ImageView) itemView.findViewById(R.id.img_network);
             he_networek_status2 = (TextView) itemView.findViewById(R.id.he_networek_status2);

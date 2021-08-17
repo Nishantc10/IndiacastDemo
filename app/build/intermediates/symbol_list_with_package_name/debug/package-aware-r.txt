@@ -1900,6 +1900,7 @@ drawable ic_notification_approved
 drawable ic_notification_rejected
 drawable ic_person
 drawable ic_person1
+drawable ic_preview
 drawable ic_profileactive_18
 drawable ic_refresh
 drawable ic_save
@@ -1970,6 +1971,7 @@ id ALT
 id BOTTOM_END
 id BOTTOM_START
 id CTRL
+id ChannelsTableLayout
 id FUNCTION
 id IndiaCastChannelsTableLayout
 id META
@@ -2072,6 +2074,7 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_preview
 id action_text
 id actions
 id activity_chooser_view_content
@@ -3377,6 +3380,7 @@ id he_fragment_recy
 id he_networek_status
 id he_networek_status2
 id he_network_id
+id he_network_location
 id he_network_name
 id header_title
 id headphones
@@ -3818,6 +3822,8 @@ id needle
 id netflix
 id network
 id networkName
+id network_heading
+id network_linear_layout
 id network_name
 id network_strength_1
 id network_strength_1_alert
@@ -4538,6 +4544,10 @@ id target
 id task_comment
 id task_submit
 id taxi
+id tbl_channelName
+id tbl_genreName
+id tbl_lcn
+id tbl_position
 id teach
 id teamviewer
 id telegram
@@ -5021,6 +5031,8 @@ layout activity_main2
 layout activity_register
 layout activity_splash_screen
 layout channel_master
+layout channel_preview_layout
+layout channel_preview_table_item
 layout custom_add_task
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -5153,6 +5165,7 @@ menu actionbar_menu
 menu filter_menu
 menu history_menu
 menu historyrefresh_menu
+menu preview_menu
 mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round

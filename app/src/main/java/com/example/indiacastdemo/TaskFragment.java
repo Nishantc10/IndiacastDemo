@@ -2,22 +2,32 @@ package com.example.indiacastdemo;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.database.Cursor;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AlertDialog;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.example.indiacastdemo.Database.DatabaseHelper;
 import com.example.indiacastdemo.Model.AlertDialogModel;
+import com.example.indiacastdemo.Model.He_Network;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,6 +49,9 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
     CheckBox checkBox, checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6, checkBox7, checkBox8, checkBox9, checkBox10, checkBox11, checkBox12, checkBox13, checkBox14, checkBox15, checkBox16, checkBox17, checkBox18;
     final ArrayList<String> selchkboxlist = new ArrayList<String>();
     String User_ID;
+    LinearLayout network_linear_layout;
+    DatabaseHelper db;
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -49,6 +62,40 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_task, container, false);
+        network_linear_layout = v.findViewById(R.id.network_linear_layout);
+        db = new DatabaseHelper(getContext());
+        Cursor cursor = db.getAllNetworks();
+        if (cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+                String network_id = cursor.getString(cursor.getColumnIndex("Network_ID"));
+                String network_name = cursor.getString(cursor.getColumnIndex("Network_Name"));
+                CheckBox checkBox = new CheckBox(getContext());
+                checkBox.setText(network_name);
+                checkBox.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                        String msg = "You have " + (isChecked ? "checked" : "unchecked")+" "+buttonView.getText()+ " this Check it Checkbox.";
+//                        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+                        if (buttonView.isChecked()) {
+                            String checkbox = buttonView.getText().toString();
+                            selchkboxlist.add(checkbox);
+                        } else {
+                            String checkbox = buttonView.getText().toString();
+                            selchkboxlist.remove(checkbox);
+                        }
+                    }
+                });
+                // Add Checkbox to LinearLayout
+                if (network_linear_layout != null) {
+                    network_linear_layout.addView(checkBox);
+                }
+                cursor.moveToNext();
+            }
+        }
+        cursor.close();
+        db.close();
+
 
         try {
             User_ID = getArguments().getString("User_ID");
@@ -94,7 +141,7 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
             checkBox18.setOnClickListener(this);
             task_submit.setOnClickListener(this);
             task_comment.setOnClickListener(this);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 //        boolean IntStatus = connectionCheck.getConnectivityStatusString(getContext());
@@ -244,7 +291,7 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
                             getActivity().runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
-                                        AlertDialogModel.generateAlertDialog(getActivity(),"Alert!","Server connection lost!");
+                                        AlertDialogModel.generateAlertDialog(getActivity(), "Alert!", "Server connection lost!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -269,7 +316,7 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
                                 getActivity().runOnUiThread(new Runnable() {
                                     public void run() {
                                         try {
-                                            AlertDialogModel.generateAlertDialog(getActivity(),"Alert!","Task submitted Successfully");
+                                            AlertDialogModel.generateAlertDialog(getActivity(), "Alert!", "Task submitted Successfully");
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
@@ -284,7 +331,7 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
             });
         } else {
             try {
-                AlertDialogModel.generateAlertDialog(getActivity(),"Alert!","No internet connection!!!");
+                AlertDialogModel.generateAlertDialog(getActivity(), "Alert!", "No internet connection!!!");
             } catch (Exception e) {
                 e.printStackTrace();
             }

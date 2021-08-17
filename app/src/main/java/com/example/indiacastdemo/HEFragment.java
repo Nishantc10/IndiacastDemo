@@ -25,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.example.indiacastdemo.Database.DatabaseHelper;
@@ -50,6 +51,7 @@ public class HEFragment extends Fragment {
     private LinearLayoutManager linearLayoutManager;
     private DividerItemDecoration dividerItemDecoration;
     private RecyclerView.Adapter adapter;
+    String he_network_location;
     DatabaseHelper db;
     Cursor cursor;
     String Token, Login_ID, User_ID;
@@ -136,7 +138,7 @@ public class HEFragment extends Fragment {
                 HistoryMappingFragment historyMappingFragment = new HistoryMappingFragment();
                 historyMappingFragment.setArguments(bundle);
                 Fragment fragment = historyMappingFragment;
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null). commit();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -181,11 +183,21 @@ public class HEFragment extends Fragment {
                         if (createdDate.equals("null")) {
                             createdDate = "No Submission Yet!";
                         }
+                       Cursor res = db.getTownName(network_id);
+                        if (res.getCount() == 0) {
+                            he_network_location = "";
+                        } else {
+                            res.moveToFirst();
+                            while (!res.isAfterLast()) {
+                                he_network_location = (res.getString(0));
+                                res.moveToNext();
+                            }
+                        }
                         String number_of_channels = cursor.getString(cursor.getColumnIndex("Number_of_channels"));
                         String a = network_name.substring(0, 1);
                         TextDrawable drawable = TextDrawable.builder()
                                 .buildRoundRect(a, Color.BLACK, 60);
-                        lst_HE_Network.add(new He_Network(network_id, network_name, createdDate, number_of_channels, drawable));
+                        lst_HE_Network.add(new He_Network(network_id, network_name, createdDate, number_of_channels, drawable, he_network_location));
                         cursor.moveToNext();
                     }
                 }
@@ -216,6 +228,16 @@ public class HEFragment extends Fragment {
                 if (created_date.equals("null")) {
                     created_date = "No Submission Yet!";
                 }
+                Cursor res = db.getTownName(network_id);
+                if (res.getCount() == 0) {
+                    he_network_location = "";
+                } else {
+                    res.moveToFirst();
+                    while (!res.isAfterLast()) {
+                        he_network_location = (res.getString(0));
+                        res.moveToNext();
+                    }
+                }
                 try {
                     String a = network_name.substring(0, 1);
                     drawable = TextDrawable.builder()
@@ -223,7 +245,7 @@ public class HEFragment extends Fragment {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                lst_HE_Network.add(new He_Network(network_id, network_name, created_date, "", drawable));
+                lst_HE_Network.add(new He_Network(network_id, network_name, created_date, "", drawable, he_network_location));
                 cursor.moveToNext();
             }
         }

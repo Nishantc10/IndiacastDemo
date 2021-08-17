@@ -7,14 +7,24 @@ public class He_Network {
     private String Network_ID;
     private String Network_Name;
     private Drawable Photo;
+    private String location;
     private String count;
     private String Status;
 
-    public He_Network(String network_ID, String network_Name, String created_date, String count, Drawable photo) {
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public He_Network(String network_ID, String network_Name, String created_date, String count, Drawable photo, String location) {
         Network_ID = network_ID;
         Network_Name = network_Name;
         Status = created_date;
         this.count = count;
+        this.location = location;
         Photo = photo;
 
     }
