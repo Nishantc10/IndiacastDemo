@@ -1,27 +1,10 @@
 package com.example.indiacastdemo;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.graphics.Canvas;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-
-import com.example.indiacastdemo.Model.AlertDialogModel;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.ItemTouchHelper;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -33,33 +16,30 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.indiacastdemo.Database.DatabaseHelper;
+import com.example.indiacastdemo.Model.AlertDialogModel;
 import com.example.indiacastdemo.Model.Channel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.trendyol.bubblescrollbarlib.BubbleScrollBar;
 import com.trendyol.bubblescrollbarlib.BubbleTextProvider;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.RequestBody;
-
-import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
 public class ChannelPageFragment extends Fragment {
 
@@ -79,15 +59,15 @@ public class ChannelPageFragment extends Fragment {
     SwipeControllerChannel swipeControllerChannel = null;
     BubbleScrollBar scrollBar;
     EditText edt_search, edt_position, edt_lcn;
-    TextView edt_channelName, edt_genreName, txt_comment, network_name;
-    String networkId, networkName, Login_ID, Token, User_ID, Network_ID, Channel_name;
-    RadioGroup radio_goup;
-    RadioButton radio_Button;
-    String LCN_No = null;
+    TextView edt_channelName, edt_genreName, network_name;
+    String networkId, networkName, Login_ID, Token, User_ID, Network_ID;
+//    RadioGroup radio_goup;
+//    RadioButton radio_Button;
+//    String LCN_No = null;
     ProgressBar progressBar;
-    private ProgressDialog progress;
+//    private ProgressDialog progress;
     Bundle bundle;
-    boolean flag = false;
+//    boolean flag = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -206,8 +186,8 @@ public class ChannelPageFragment extends Fragment {
                         String genrename = edt_genreName.getText().toString();
                         String lcn = edt_lcn.getText().toString();
                         String position = edt_position.getText().toString();
-                        SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-d H:m:S");
-                        Date date = Calendar.getInstance().getTime();
+//                        SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-d H:m:S");
+//                        Date date = Calendar.getInstance().getTime();
                         if ((channelname.equals("")) || (genrename.equals("")) || (lcn.equals("")) || (position.equals(""))) {
                             try {
                                 AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "All Fields are Mandatory!");
@@ -486,24 +466,104 @@ public class ChannelPageFragment extends Fragment {
     }
 
     private void getChannelsFromIndiaCastPlacement(String NetworkID) {
-        Cursor cursor = db.getChannelsFromIndiaCastPlacement(NetworkID);
-        if (cursor.moveToFirst()) {
-            while (!cursor.isAfterLast()) {
-                Network_ID = cursor.getString(cursor.getColumnIndex("Network_ID"));
-                String Channel_Name = cursor.getString(cursor.getColumnIndex("Channel_Name"));
-                String ChannelID = cursor.getString(cursor.getColumnIndex("IndiaCast"));
-                String LCN = cursor.getString(cursor.getColumnIndex("LCN_No"));
-                String Status_ID = cursor.getString(cursor.getColumnIndex("Status_ID"));
-                String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
-                String Created_date = cursor.getString(cursor.getColumnIndex("Created_date"));
-                String Position = cursor.getString(cursor.getColumnIndex("Position"));
-                String CPosition = cursor.getString(cursor.getColumnIndex("CPosition"));
-                db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
-                cursor.moveToNext();
+//        Cursor cursor = db.getChannelsFromIndiaCastPlacement(NetworkID);
+////        db.deleteIndiaCastChannelsByNetworkID(NetworkID);
+//        if (cursor.moveToFirst()) {
+//            while (!cursor.isAfterLast()) {
+//                Network_ID = cursor.getString(cursor.getColumnIndex("Network_ID"));
+//                String Channel_Name = cursor.getString(cursor.getColumnIndex("Channel_Name"));
+//                String ChannelID = cursor.getString(cursor.getColumnIndex("IndiaCast"));
+//                String LCN = cursor.getString(cursor.getColumnIndex("LCN_No"));
+//                String Status_ID = cursor.getString(cursor.getColumnIndex("Status_ID"));
+//                String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
+//                String Created_date = cursor.getString(cursor.getColumnIndex("Created_date"));
+//                String Position = cursor.getString(cursor.getColumnIndex("Position"));
+//                String CPosition = cursor.getString(cursor.getColumnIndex("CPosition"));
+//                db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
+//                cursor.moveToNext();
+//            }
+//        }
+//        cursor.close();
+//        db.close();
+
+        Cursor curAllreadyEICC = db.getAllreadyExistsIndiaCastChannels(NetworkID);
+        String LCN = null;
+        if(curAllreadyEICC.moveToFirst()) {
+            while (!curAllreadyEICC.isAfterLast()) {
+//                Network_ID = cursor.getString(cursor.getColumnIndex("Network_ID"));
+//                String Channel_Name = cursor.getString(cursor.getColumnIndex("Channel_Name"));
+//                String ChannelID = cursor.getString(cursor.getColumnIndex("IndiaCast"));
+                    if(curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("LCN_No")) != null)
+                       LCN = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("LCN_No"));
+//                String Status_ID = cursor.getString(cursor.getColumnIndex("Status_ID"));
+//                String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
+//                String Created_date = cursor.getString(cursor.getColumnIndex("Created_date"));
+//                String Position = cursor.getString(cursor.getColumnIndex("Position"));
+//                String CPosition = cursor.getString(cursor.getColumnIndex("CPosition"));
+//                db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
+                curAllreadyEICC.moveToNext();
+            }
+            if(LCN != null)
+            {
+                db.deleteIndiaCastChannelsByNetworkID(NetworkID);
+                if (curAllreadyEICC.moveToFirst()) {
+                    while (!curAllreadyEICC.isAfterLast()) {
+                        Network_ID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Network_ID"));
+                        String Channel_Name = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Channel_Name"));
+                        String ChannelID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("IndiaCast"));
+                        LCN = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("LCN_No"));
+                        String Status_ID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Status_ID"));
+                        String IStatusID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("IStatusID"));
+                        String Created_date = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Created_date"));
+                        String Position = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Position"));
+                        String CPosition = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("CPosition"));
+                        db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
+                        curAllreadyEICC.moveToNext();
+                    }
+                }
+
+            }
+            else
+            {
+                Cursor cursor = db.getChannelsFromIndiaCastPlacement(NetworkID);
+                db.deleteIndiaCastChannelsByNetworkID(NetworkID);
+                if (cursor.moveToFirst()) {
+                    while (!cursor.isAfterLast()) {
+                        Network_ID = cursor.getString(cursor.getColumnIndex("Network_ID"));
+                        String Channel_Name = cursor.getString(cursor.getColumnIndex("Channel_Name"));
+                        String ChannelID = cursor.getString(cursor.getColumnIndex("IndiaCast"));
+                        LCN = cursor.getString(cursor.getColumnIndex("LCN_No"));
+                        String Status_ID = cursor.getString(cursor.getColumnIndex("Status_ID"));
+                        String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
+                        String Created_date = cursor.getString(cursor.getColumnIndex("Created_date"));
+                        String Position = cursor.getString(cursor.getColumnIndex("Position"));
+                        String CPosition = cursor.getString(cursor.getColumnIndex("CPosition"));
+                        db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
+                        cursor.moveToNext();
+                    }
+                }
+                cursor.close();
+                curAllreadyEICC = db.getAllreadyExistsIndiaCastChannels(NetworkID);
+                db.deleteIndiaCastChannelsByNetworkID(NetworkID);
+                if (curAllreadyEICC.moveToFirst()) {
+                    while (!curAllreadyEICC.isAfterLast()) {
+                        Network_ID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Network_ID"));
+                        String Channel_Name = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Channel_Name"));
+                        String ChannelID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("IndiaCast"));
+                        LCN = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("LCN_No"));
+                        String Status_ID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Status_ID"));
+                        String IStatusID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("IStatusID"));
+                        String Created_date = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Created_date"));
+                        String Position = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Position"));
+                        String CPosition = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("CPosition"));
+                        db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
+                        curAllreadyEICC.moveToNext();
+                    }
+                }
+                curAllreadyEICC.close();
+
             }
         }
-        cursor.close();
-        db.close();
     }
 
     private void setupRecyclerView() {
@@ -559,7 +619,7 @@ public class ChannelPageFragment extends Fragment {
         }
     }
 
-    public void getChannelsFromNetwork() {
+    public void  getChannelsFromNetwork() {
         cursor = db.getChannelsFromNetwork(networkId);
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {

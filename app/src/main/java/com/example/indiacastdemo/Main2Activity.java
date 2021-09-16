@@ -173,30 +173,30 @@ public class Main2Activity extends AppCompatActivity {
                         fragment.setArguments(bundle);
 
                         //firebase notification
-//                        try {
-//                            Cursor cursor = db.getUserDetails();
-//                            if (cursor.moveToFirst()) {
-//                                Login_ID = cursor.getString(cursor.getColumnIndex("Login_ID"));
-//                                Token = cursor.getString(cursor.getColumnIndex("Token"));
-//                                User_ID = cursor.getString(cursor.getColumnIndex("User_ID"));
-////
+                        try {
+                            Cursor cursor = db.getUserDetails();
+                            if (cursor.moveToFirst()) {
+                                Login_ID = cursor.getString(cursor.getColumnIndex("Login_ID"));
+                                Token = cursor.getString(cursor.getColumnIndex("Token"));
+                                User_ID = cursor.getString(cursor.getColumnIndex("User_ID"));
+//
 //                                ABCD = bundle.getString("ABCD");
-//                            }
-//                            TOPIC = "/topics/" + Login_ID.toLowerCase(); //topic has to match what the receiver subscribed to
-//                            NOTIFICATION_TITLE = "IndiaCast";
-//                            NOTIFICATION_MESSAGE = "Firebase Notification";
-//
-//                            JSONObject notification = new JSONObject();
-//                            JSONObject notifcationBody = new JSONObject();
-//                            notifcationBody.put("title", NOTIFICATION_TITLE);
-//                            notifcationBody.put("message", NOTIFICATION_MESSAGE);
-//
-//                            notification.put("to", TOPIC);
-//                            notification.put("data", notifcationBody);
-//                            sendNotification(notification);
-//                        } catch (JSONException e) {
-//                            Log.e(TAG, "onCreate: " + e.getMessage());
-//                        }
+                            }
+                            TOPIC = "/topics/" + Login_ID.toLowerCase(); //topic has to match what the receiver subscribed to
+                            NOTIFICATION_TITLE = "IndiaCast";
+                            NOTIFICATION_MESSAGE = "Firebase Notification";
+
+                            JSONObject notification = new JSONObject();
+                            JSONObject notifcationBody = new JSONObject();
+                            notifcationBody.put("title", NOTIFICATION_TITLE);
+                            notifcationBody.put("message", NOTIFICATION_MESSAGE);
+
+                            notification.put("to", TOPIC);
+                            notification.put("data", notifcationBody);
+                            sendNotification(notification);
+                        } catch (JSONException e) {
+                            Log.e(TAG, "onCreate: " + e.getMessage());
+                        }
 //                        //------------------------------------------
                         customtitle.setText(R.string.profile);
                         break;

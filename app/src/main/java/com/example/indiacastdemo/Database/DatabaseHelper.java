@@ -16,8 +16,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
-
 import androidx.annotation.RequiresApi;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -657,7 +655,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "count(CASE WHEN Status='Approved' THEN Status END) AS 'Approved' \n" +
                 "from (SELECT Network_ID,Network_Name,Status FROM \n" +
                 "tbl_network_channel_placement ncp left join tbl_status_master sm on ncp.Status_ID=sm.id \n" +
-                "where Created_Date between datetime('now', '-90 days') AND datetime('now', 'localtime') \n"+
+                "where Created_Date between datetime('now', '-90 days') AND datetime('now', 'localtime') \n" +
                 "GROUP BY Network_ID,Created_date\t\n" +
                 ") as cp GROUP BY Network_ID) as map on nd.Network_ID=map.Network_ID", null);
         return res;
@@ -786,14 +784,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-//    public Cursor tbl_placement_indiacast_channels_details(String network_ID) {
+    //    public Cursor tbl_placement_indiacast_channels_details(String network_ID) {
 //        SQLiteDatabase db = this.getWritableDatabase();
 //        Cursor res = db.rawQuery("Select * from tbl_placement_indiacast_channels_details where NetworkID = " + "'" + network_ID + "'", null);
 //        return res;
 //    }
     public Cursor getIndiaCastChannels(String networkid) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("SELECT * from tbl_placement_indiacast_channels_details where NetworkID = " + "'" + networkid + "' ", null);
+        Cursor res = db.rawQuery("SELECT * from tbl_placement_indiacast_channels_details where NetworkID = " + "'" + networkid + "' order by LCN", null);
         return res;
     }
 
@@ -811,6 +809,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "where c.Network_ID = " + " '" + networkid + "')as y on x.IndiaCast = y.IndiaCast left join " +
                 "tbl_network_details z where z.Network_ID = " + " '" + networkid + "')A ORDER BY LCN_No ", null);
         return res;
+    }
+
+    public Cursor getAllreadyExistsIndiaCastChannels(String networkid) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select mappedtable.Cposition,ticd.ChannelID as IndiaCast," +
+                "case when mappedtable.Channel_Name is null then (select Channel_Name from tbl_channel_master where Channel_ID = ticd.ChannelID) else (mappedtable.Channel_Name) end as Channel_Name," +
+                "case when mappedtable.Network_ID is null then (select Network_ID from  tbl_network_channel_mapped where Network_ID = " + " '" + networkid + "') else (mappedtable.Network_ID) end as Network_ID," +
+                "case when mappedtable.Network_Name is null then (select Network_Name from  tbl_network_channel_mapped where Network_ID = " + " '" + networkid + "') else (mappedtable.Network_Name) end as Network_Name," +
+                "mappedtable.LCN_No," +
+                "mappedtable.Position,'STS002' as Status_ID," +
+                "case when mappedtable.Created_date is null then (select Created_date from  tbl_network_channel_mapped where Network_ID = " + " '" + networkid + "') else (mappedtable.Created_date) end as Created_date," +
+                "mappedtable.Others,mappedtable.IStatusID from tbl_indiacast_channels_details ticd " +
+                "left join " +
+                "(select * from (select tpicd.CPosition,tpicd.ChannelID as IndiaCast,tpicd.Channel_Name,tncm.Network_ID,tncm.Network_Name,tncm.LCN_No," +
+                "tncm.Position,tpicd.Status_ID,tpicd.Created_date,null as Others,tpicd.IStatusID from tbl_placement_indiacast_channels_details tpicd " +
+                "left join tbl_network_channel_mapped tncm on tpicd.Channel_Name = tncm.Channel_Name and tpicd.NetworkID = tncm.Network_ID and tpicd.LCN = tncm.LCN_No " +
+                "where tpicd.NetworkID = " + " '" + networkid + "' and " +
+                "tpicd.Channel_Name in (select Channel_Name from tbl_channel_master where Channel_ID in (select ChannelID from tbl_indiacast_channels_details)))mappedtable)mappedtable " +
+                "on mappedtable.IndiaCast = ticd.ChannelID ", null);
+        return res;
+    }
+
+    public void deleteIndiaCastChannelsByNetworkID(String NetworkID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(tbl_placement_indiacast_channels_details, "NetworkID = " + "'" + NetworkID + "'", null);
     }
 
     public boolean AddplacementIndiacastChannelsDetails(String Channel_Name, String ChannelID, String LCN, String Position, String CPosition, String IStatusID, String NetworkID, String Others, String Created_date, String Status_ID) {
@@ -845,17 +868,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put("Created_date", Created_date);
         cv.put("Status_ID", Status_ID);
 
-        Cursor cursor = db.rawQuery("select * from tbl_placement_indiacast_channels_details where ChannelID = " + "'" + ChannelID + "' " + "and NetworkID = " + "'" + NetworkID + "' ", null);
+        Cursor cursor = db.rawQuery("select * from tbl_placement_indiacast_channels_details where ChannelID = " + "'" + ChannelID + "' " + "and NetworkID = " + "'" + NetworkID + "' " + " and LCN = " + "'" + LCN + "' ", null);
+//        Cursor cursor = db.rawQuery("select * from tbl_placement_indiacast_channels_details where ChannelID = " + "'" + ChannelID + "' " + "and NetworkID = " + "'" + NetworkID + "' ", null);
         if (cursor.getCount() <= 0) {
             db.insertOrThrow(DatabaseHelper.tbl_placement_indiacast_channels_details, null, cv);
+
         } else {
-            db.update(tbl_placement_indiacast_channels_details, cv, "NetworkID = " + "'" + NetworkID + "' and ChannelID = " + "'" + ChannelID + "'", null);  // number 1 is the _id here, update to variable for your code
+//            db.update(tbl_placement_indiacast_channels_details, cv, "NetworkID = " + "'" + NetworkID + "' and ChannelID = " + "'" + ChannelID + "'", null);  // number 1 is the _id here, update to variable for your code
+            db.update(tbl_placement_indiacast_channels_details, cv, "NetworkID = " + "'" + NetworkID + "' and ChannelID = " + "'" + ChannelID + "' and LCN = " + "'" + LCN + "'", null);  // number 1 is the _id here, update to variable for your code
         }
+        cursor.close();
         return true;
 //        }
     }
 
-    public Boolean updateByIStatus(String indiacastChannelName, String iStatus, String lcn, String position,String CPosition, String networkid) {
+    public Boolean updateByIStatus(String indiacastChannelName, String iStatus, String lcn, String position, String CPosition, String networkid) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("LCN", lcn); //These Fields should be your String values of actual column names
@@ -869,8 +896,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             iStatus = null;
         }
         cv.put("IStatusID", iStatus);
-        db.update(tbl_placement_indiacast_channels_details, cv, "NetworkID = " + "'" + networkid + "'and Channel_Name = " + "'" + indiacastChannelName + "' ", null);
+        db.close();
+        db = this.getWritableDatabase();
+        if (isNotNull(lcn))
+            db.update(tbl_placement_indiacast_channels_details, cv, "NetworkID = " + "'" + networkid + "' and LCN = " + "'" + lcn + "' and Channel_Name = " + "'" + indiacastChannelName + "' ", null);
+        else
+            db.update(tbl_placement_indiacast_channels_details, cv, "NetworkID = " + "'" + networkid + "' and Channel_Name = " + "'" + indiacastChannelName + "' ", null);
+        db.close();
         return true;
+    }
+
+    //for checking the value is null or not
+    public boolean isNotNull(String str) {
+        if (str != null && !str.isEmpty() && !str.equals("null"))
+            return true;
+        return false;
     }
 
     public boolean updateByLcn(String channelname, String gnr, String prv_lcn, String Chgd_lcn, String pos, String networkId) {

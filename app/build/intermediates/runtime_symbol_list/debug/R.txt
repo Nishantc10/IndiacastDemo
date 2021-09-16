@@ -4543,10 +4543,10 @@ int id target 0x7f090a0d
 int id task_comment 0x7f090a0e
 int id task_submit 0x7f090a0f
 int id taxi 0x7f090a10
-int id tbl_channelName 0x7f090baf
-int id tbl_genreName 0x7f090bb0
-int id tbl_lcn 0x7f090bb1
-int id tbl_position 0x7f090bb2
+int id tbl_channelName 0x7f090a11
+int id tbl_genreName 0x7f090a12
+int id tbl_lcn 0x7f090a13
+int id tbl_position 0x7f090a14
 int id teach 0x7f090a15
 int id teamviewer 0x7f090a16
 int id telegram 0x7f090a17
