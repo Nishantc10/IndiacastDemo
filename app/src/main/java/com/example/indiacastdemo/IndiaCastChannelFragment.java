@@ -103,6 +103,7 @@ public class IndiaCastChannelFragment extends Fragment {
         dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), linearLayoutManager.getOrientation());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
+
         scrollBar = v.findViewById(R.id.bubbleScrollBar);
         scrollBar.attachToRecyclerView(recyclerView);
         scrollBar.setBubbleTextProvider(new BubbleTextProvider() {
@@ -371,6 +372,9 @@ public class IndiaCastChannelFragment extends Fragment {
 
     public void getIndiaCastChannelsFromNetwork() {
         cursor = db.getIndiaCastChannels(networkId);
+        if (cursor.getCount() <= 0) {
+            Log.d("IndiaCastChannels: ", "NO indiacast channels");
+        }
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
                 Network_ID = cursor.getString(cursor.getColumnIndex("NetworkID"));
@@ -390,6 +394,11 @@ public class IndiaCastChannelFragment extends Fragment {
             }
         }
         db.close();
+        Fragment currentFragment = getFragmentManager().findFragmentByTag("ICCF");
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, currentFragment,"ICCF");
+//        fragmentTransaction.attach(currentFragment);
+        fragmentTransaction.commit();
     }
 
     void postRequest(String postBody) throws IOException {
@@ -715,5 +724,4 @@ public class IndiaCastChannelFragment extends Fragment {
             }
         }
     }
-
 }

@@ -10,6 +10,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,6 +18,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -45,6 +50,7 @@ import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 
+
 public class Main2Activity extends AppCompatActivity {
     TextView customtitle;
     Toolbar toolbar;
@@ -52,6 +58,7 @@ public class Main2Activity extends AppCompatActivity {
     DatabaseHelper db;
     ConnectionCheck connectionCheck;
     private ProgressDialog progress;
+    private ProgressBar progressBar;
     Bundle bundle;
     String Login_ID, User_ID, Token, ABCD = null;
     //Firebase notification
@@ -64,7 +71,6 @@ public class Main2Activity extends AppCompatActivity {
     String TOPIC;
     String networkCount;
     Fragment fragment;
-
 
     //------------------------
     @SuppressLint("WrongConstant")
@@ -109,6 +115,7 @@ public class Main2Activity extends AppCompatActivity {
             networkCount = cursor.getString(0);
         }
         db.close();
+
         getIndiaCastChannelsStatus();
         getIndiaCastChannels();
         bundle = new Bundle();
@@ -265,11 +272,8 @@ public class Main2Activity extends AppCompatActivity {
     //-------------------------------------
     @Override
     public void onBackPressed() {
-
-
-
         if (getFragmentManager().getBackStackEntryCount() == 0) {
-                super.onBackPressed();
+            super.onBackPressed();
         } else {
             getFragmentManager().popBackStack();
         }
@@ -346,11 +350,16 @@ public class Main2Activity extends AppCompatActivity {
             }
         }
     }
+
     //endregion
     //region get indiacast channel master
     private void getIndiaCastChannels() {
         JSONObject postData = new JSONObject();
         try {
+            progress = new ProgressDialog(Main2Activity.this);
+            progress.setCancelable(false);
+            progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progress.show();
             postData.put("loginid", Login_ID);
             indiacastChannelsPostRequest(postData.toString());
         } catch (JSONException e) {
@@ -385,7 +394,6 @@ public class Main2Activity extends AppCompatActivity {
                             Main2Activity.this.runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
-                                        progress.dismiss();
                                         AlertDialogModel.generateAlertDialog(getApplicationContext(), "Alert!", "Server connection lost!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
@@ -401,7 +409,7 @@ public class Main2Activity extends AppCompatActivity {
                 public void onResponse(Call call, okhttp3.Response response) throws IOException {
                     try {
                         if (db.setIndiaCastChannelsResponse(response.body().string())) {
-//                            progress.dismiss();
+                            progress.dismiss();
                         } else {
 //                            progress.dismiss();
                         }
@@ -422,12 +430,12 @@ public class Main2Activity extends AppCompatActivity {
     //endregion
     // region Token Authentication
     void postRequest(String postBody) throws IOException {
-        progress = new ProgressDialog(Main2Activity.this);
-        progress.setCancelable(false);
-        progress.setTitle("Please wait....");
-        progress.setMessage("Fetching details");
-        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progress.show();
+//        progress = new ProgressDialog(Main2Activity.this);
+//        progress.setCancelable(false);
+//        progress.setTitle("Please wait....");
+//        progress.setMessage("Fetching details");
+//        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//        progress.show();
         ConnectivityManager cm =
                 (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();

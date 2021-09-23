@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -74,7 +75,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
             LoginScreen.this.runOnUiThread(new Runnable() {
                 public void run() {
                     try {
-                        AlertDialogModel.generateAlertDialog(context,"Alert!","No Internet Connection!");
+                        AlertDialogModel.generateAlertDialog(context, "Alert!", "No Internet Connection!");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -120,7 +121,6 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                         username = et_username.getText().toString();
                         password = et_password.getText().toString();
                         if (IntStatus) {
-
                             JSONObject postData = new JSONObject();
                             try {
                                 postData.put("username", username);
@@ -138,7 +138,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                             LoginScreen.this.runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
-                                        AlertDialogModel.generateAlertDialog(context,"Alert!","Username or Password is incorrect!");
+                                        AlertDialogModel.generateAlertDialog(context, "Alert!", "Username or Password is incorrect!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -148,7 +148,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                             LoginScreen.this.runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
-                                        AlertDialogModel.generateAlertDialog(context,"Alert!","No Internet Connection!");
+                                        AlertDialogModel.generateAlertDialog(context, "Alert!", "No Internet Connection!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -189,7 +189,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                             LoginScreen.this.runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
-                                        AlertDialogModel.generateAlertDialog(context,"Alert!","Error while connecting server please try again!");
+                                        AlertDialogModel.generateAlertDialog(context, "Alert!", "Error while connecting server please try again!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -207,7 +207,6 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                     JSONObject jsonObject = null;
                     try {
                         jsonData = response.body().string();
-                        Log.d("jsondata: ", jsonData);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -237,7 +236,6 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                                 Updated_Date = jsonObject.getString("Updated_Date");
                                 Token = jsonObject.getString("Token");
                                 Login_ID = jsonObject.getString("Login_ID");
-//                            Log.d("onResponselogin: ", Login_ID + "$" + Token);
                                 MAC_Address = jsonObject.getString("MAC_Address");
                                 insert_tbl_user_details();
                                 Intent intent = new Intent(context, Main2Activity.class);
@@ -255,7 +253,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                             LoginScreen.this.runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
-                                        AlertDialogModel.generateAlertDialog(context,"Alert!","Username or Password is incorrect!");
+                                        AlertDialogModel.generateAlertDialog(context, "Alert!", "Username or Password is incorrect!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -285,7 +283,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
         } else {
             try {
                 progress.dismiss();
-                AlertDialogModel.generateAlertDialog(context,"Alert!","No internet connection!!!");
+                AlertDialogModel.generateAlertDialog(context, "Alert!", "No internet connection!!!");
             } catch (Exception e) {
                 e.printStackTrace();
             }

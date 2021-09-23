@@ -77,7 +77,6 @@ public class HEFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_he, container, false);
         ((Main2Activity) getActivity()).customtitle.setText(R.string.mapping);
-
 //        try {
 //            Cursor cursor = db.getUserDetails();
 //            if (cursor.moveToFirst()) {
@@ -95,7 +94,6 @@ public class HEFragment extends Fragment {
 //        User_ID = getArguments().getString("User_ID");
 //        Login_ID = getArguments().getString("Login_ID");
 //        Token = getArguments().getString("Token");
-
         try {
             db = new DatabaseHelper(getContext());
             Cursor cursor = db.getUserDetails();

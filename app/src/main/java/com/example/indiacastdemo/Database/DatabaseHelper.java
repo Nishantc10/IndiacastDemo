@@ -558,7 +558,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //    }
 //
 //    //endregion
-//// region insert_tbl_network_details
+ //// region insert_tbl_network_details
 //    public void insert_tbl_network_details(String Network_ID, String Network_Name, String MSO_Name, String Town, String CRN_No,
 //                                           String Area_Mapping_Code, String HE_FEED_Flag, String IC_NON_IC_Flag, String Status_ID, String Landing_Page_Flag,
 //                                           String Landing_Page_ID, String Created_Date, String Updated_Date) {
@@ -784,11 +784,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    //    public Cursor tbl_placement_indiacast_channels_details(String network_ID) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        Cursor res = db.rawQuery("Select * from tbl_placement_indiacast_channels_details where NetworkID = " + "'" + network_ID + "'", null);
-//        return res;
-//    }
     public Cursor getIndiaCastChannels(String networkid) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("SELECT * from tbl_placement_indiacast_channels_details where NetworkID = " + "'" + networkid + "' order by LCN", null);
@@ -811,7 +806,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    public Cursor getAllreadyExistsIndiaCastChannels(String networkid) {
+    public Cursor getAllreadyExistsIndiaCastChannelsLCN(String networkid) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("select mappedtable.Cposition,ticd.ChannelID as IndiaCast," +
                 "case when mappedtable.Channel_Name is null then (select Channel_Name from tbl_channel_master where Channel_ID = ticd.ChannelID) else (mappedtable.Channel_Name) end as Channel_Name," +
@@ -827,7 +822,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "left join tbl_network_channel_mapped tncm on tpicd.Channel_Name = tncm.Channel_Name and tpicd.NetworkID = tncm.Network_ID and tpicd.LCN = tncm.LCN_No " +
                 "where tpicd.NetworkID = " + " '" + networkid + "' and " +
                 "tpicd.Channel_Name in (select Channel_Name from tbl_channel_master where Channel_ID in (select ChannelID from tbl_indiacast_channels_details)))mappedtable)mappedtable " +
-                "on mappedtable.IndiaCast = ticd.ChannelID ", null);
+                "on mappedtable.IndiaCast = ticd.ChannelID order by mappedtable.Channel_Name asc ", null);
+        return res;
+    }
+    public Cursor getAllreadyExistsIndiaCastChannels(String networkid) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select mappedtable.Cposition,ticd.ChannelID as IndiaCast," +
+                "case when mappedtable.Channel_Name is null then (select Channel_Name from tbl_channel_master where Channel_ID = ticd.ChannelID) else (mappedtable.Channel_Name) end as Channel_Name," +
+                "case when mappedtable.Network_ID is null then (select Network_ID from  tbl_network_channel_mapped where Network_ID = " + " '" + networkid + "') else (mappedtable.Network_ID) end as Network_ID," +
+                "case when mappedtable.Network_Name is null then (select Network_Name from  tbl_network_channel_mapped where Network_ID = " + " '" + networkid + "') else (mappedtable.Network_Name) end as Network_Name," +
+                "mappedtable.LCN_No," +
+                "mappedtable.Position,'STS002' as Status_ID," +
+                "case when mappedtable.Created_date is null then (select Created_date from  tbl_network_channel_mapped where Network_ID = " + " '" + networkid + "') else (mappedtable.Created_date) end as Created_date," +
+                "mappedtable.Others,mappedtable.IStatusID from tbl_indiacast_channels_details ticd " +
+                "left join " +
+                "(select * from (select tpicd.CPosition,tpicd.ChannelID as IndiaCast,tpicd.Channel_Name,tncm.Network_ID,tncm.Network_Name,tncm.LCN_No," +
+                "tncm.Position,tpicd.Status_ID,tpicd.Created_date,null as Others,tpicd.IStatusID from tbl_placement_indiacast_channels_details tpicd " +
+                "left join tbl_network_channel_mapped tncm on tpicd.Channel_Name = tncm.Channel_Name and tpicd.NetworkID = tncm.Network_ID " +
+                "where tpicd.NetworkID = " + " '" + networkid + "' and " +
+                "tpicd.Channel_Name in (select Channel_Name from tbl_channel_master where Channel_ID in (select ChannelID from tbl_indiacast_channels_details)))mappedtable)mappedtable " +
+                "on mappedtable.IndiaCast = ticd.ChannelID order by mappedtable.Channel_Name asc ", null);
         return res;
     }
 
