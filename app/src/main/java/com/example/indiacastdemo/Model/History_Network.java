@@ -10,13 +10,33 @@ public class History_Network {
     private Drawable Photo;
     private String count;
     private String Status;
+    private String MSO_name;
+    private String CRN_no;
 
-    public  History_Network(String network_ID, String network_Name, String created_Date, Drawable photo, String status) {
+    public  History_Network(String network_ID, String network_Name, String created_Date, Drawable photo, String status,String MSO_name, String CRN_no) {
         Network_ID = network_ID;
         Network_Name = network_Name;
         Created_Date = created_Date;
         Photo = photo;
         Status = status;
+        this.MSO_name = MSO_name;
+        this.CRN_no =CRN_no;
+    }
+
+    public String getMSO_name() {
+        return MSO_name;
+    }
+
+    public void setMSO_name(String MSO_name) {
+        this.MSO_name = MSO_name;
+    }
+
+    public String getCRN_no() {
+        return CRN_no;
+    }
+
+    public void setCRN_no(String CRN_no) {
+        this.CRN_no = CRN_no;
     }
 
     public String getNetwork_ID() {

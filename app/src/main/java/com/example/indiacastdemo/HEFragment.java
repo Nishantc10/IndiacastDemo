@@ -51,7 +51,7 @@ public class HEFragment extends Fragment {
     private LinearLayoutManager linearLayoutManager;
     private DividerItemDecoration dividerItemDecoration;
     private RecyclerView.Adapter adapter;
-    String he_network_location;
+    String he_network_location,he_network_MSO_name,he_network_CRN_no;
     DatabaseHelper db;
     Cursor cursor;
     String Token, Login_ID, User_ID;
@@ -187,7 +187,9 @@ public class HEFragment extends Fragment {
                         } else {
                             res.moveToFirst();
                             while (!res.isAfterLast()) {
-                                he_network_location = (res.getString(0));
+                                he_network_location = res.getString(res.getColumnIndex("Town"));
+                                he_network_MSO_name = res.getString(res.getColumnIndex("MSO_Name"));
+                                he_network_CRN_no = res.getString(res.getColumnIndex("CRN_No"));
                                 res.moveToNext();
                             }
                         }
@@ -195,7 +197,7 @@ public class HEFragment extends Fragment {
                         String a = network_name.substring(0, 1);
                         TextDrawable drawable = TextDrawable.builder()
                                 .buildRoundRect(a, Color.BLACK, 60);
-                        lst_HE_Network.add(new He_Network(network_id, network_name, createdDate, number_of_channels, drawable, he_network_location));
+                        lst_HE_Network.add(new He_Network(network_id, network_name, createdDate, number_of_channels, drawable, he_network_location,he_network_MSO_name,he_network_CRN_no));
                         cursor.moveToNext();
                     }
                 }
@@ -232,7 +234,9 @@ public class HEFragment extends Fragment {
                 } else {
                     res.moveToFirst();
                     while (!res.isAfterLast()) {
-                        he_network_location = (res.getString(0));
+                        he_network_location = res.getString(res.getColumnIndex("Town"));
+                        he_network_MSO_name = res.getString(res.getColumnIndex("MSO_Name"));
+                        he_network_CRN_no = res.getString(res.getColumnIndex("CRN_No"));
                         res.moveToNext();
                     }
                 }
@@ -243,7 +247,7 @@ public class HEFragment extends Fragment {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                lst_HE_Network.add(new He_Network(network_id, network_name, created_date, "", drawable, he_network_location));
+                lst_HE_Network.add(new He_Network(network_id, network_name, created_date, "", drawable, he_network_location,he_network_MSO_name,he_network_CRN_no));
                 cursor.moveToNext();
             }
         }

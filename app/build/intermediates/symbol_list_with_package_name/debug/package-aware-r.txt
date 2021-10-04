@@ -3379,6 +3379,8 @@ id harddisk
 id he_fragment_recy
 id he_networek_status
 id he_networek_status2
+id he_network_CRN_no
+id he_network_MSO_name
 id he_network_id
 id he_network_location
 id he_network_name
@@ -3415,6 +3417,8 @@ id high_definition_box
 id highway
 id history
 id history_fragment_recy
+id history_network_CRN_no
+id history_network_MSO_name
 id history_network_date
 id history_network_date2
 id history_network_id
@@ -4701,8 +4705,10 @@ id twitter
 id twitter_box
 id twitter_circle
 id twitter_retweet
+id txt_CRN_no
 id txt_Grd
 id txt_LCN
+id txt_MSO_name
 id txt_Tec
 id txt_address
 id txt_at
@@ -4715,6 +4721,8 @@ id txt_email
 id txt_empid
 id txt_empname
 id txt_genreName
+id txt_history_CRN_no
+id txt_history_MSO_name
 id txt_lcn
 id txt_msg
 id txt_position

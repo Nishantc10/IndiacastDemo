@@ -10,6 +10,8 @@ public class He_Network {
     private String location;
     private String count;
     private String Status;
+    private String MSO_name;
+    private String CRN_no;
 
     public String getLocation() {
         return location;
@@ -19,13 +21,15 @@ public class He_Network {
         this.location = location;
     }
 
-    public He_Network(String network_ID, String network_Name, String created_date, String count, Drawable photo, String location) {
+    public He_Network(String network_ID, String network_Name, String created_date, String count, Drawable photo, String location,String MSO_name, String CRN_no) {
         Network_ID = network_ID;
         Network_Name = network_Name;
         Status = created_date;
         this.count = count;
         this.location = location;
         Photo = photo;
+        this.MSO_name = MSO_name;
+        this.CRN_no = CRN_no;
 
     }
 
@@ -75,4 +79,19 @@ public class He_Network {
         Status = status;
     }
 
+    public String getMSO_name() {
+        return MSO_name;
+    }
+
+    public void setMSO_name(String MSO_name) {
+        this.MSO_name = MSO_name;
+    }
+
+    public String getCRN_no() {
+        return CRN_no;
+    }
+
+    public void setCRN_no(String CRN_no) {
+        this.CRN_no = CRN_no;
+    }
 }

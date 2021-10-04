@@ -63,6 +63,7 @@ public class HistoryFragment extends Fragment {
     EditText edt_search;
     String Token, Login_ID, User_ID;
     private ProgressDialog progress;
+    String history_network_MSO_name,history_network_CRN_no;
 
     public HistoryFragment() {
         // Required empty public constructor
@@ -293,10 +294,22 @@ public class HistoryFragment extends Fragment {
                         String status = cursor.getString(cursor.getColumnIndex("Status"));
                         String createdDate = cursor.getString(cursor.getColumnIndex("Created_Date"));
 //                        String number_of_channels = cursor.getString(cursor.getColumnIndex("Number_of_channels"));
+                        Cursor res = db.getTownName(network_id);
+                        if (res.getCount() == 0) {
+                            history_network_MSO_name = "";
+                            history_network_CRN_no = "";
+                        } else {
+                            res.moveToFirst();
+                            while (!res.isAfterLast()) {
+                                history_network_MSO_name = res.getString(res.getColumnIndex("MSO_Name"));
+                                history_network_CRN_no = res.getString(res.getColumnIndex("CRN_No"));
+                                res.moveToNext();
+                            }
+                        }
                         String a = network_name.substring(0, 1);
                         TextDrawable drawable = TextDrawable.builder()
                                 .buildRoundRect(a, Color.BLACK, 60);
-                        lst_History_Network.add(new History_Network(network_id, network_name, createdDate, drawable, status));
+                        lst_History_Network.add(new History_Network(network_id, network_name, createdDate, drawable, status, history_network_MSO_name,history_network_CRN_no));
                         cursor.moveToNext();
                     }
                 }
@@ -317,10 +330,22 @@ public class HistoryFragment extends Fragment {
                 String status = cursor.getString(cursor.getColumnIndex("Status"));
                 String created_date = cursor.getString(cursor.getColumnIndex("Created_Date"));
 //                String number_of_channels = cursor.getString(cursor.getColumnIndex("Number_of_channels"));
+                Cursor res = db.getTownName(network_id);
+                if (res.getCount() == 0) {
+                    history_network_MSO_name = "";
+                    history_network_CRN_no = "";
+                } else {
+                    res.moveToFirst();
+                    while (!res.isAfterLast()) {
+                        history_network_MSO_name = res.getString(res.getColumnIndex("MSO_Name"));
+                        history_network_CRN_no = res.getString(res.getColumnIndex("CRN_No"));
+                        res.moveToNext();
+                    }
+                }
                 String a = network_name.substring(0, 1);
                 TextDrawable drawable = TextDrawable.builder()
                         .buildRoundRect(a, Color.BLACK, 60);
-                lst_History_Network.add(new History_Network(network_id, network_name, created_date, drawable, status));
+                lst_History_Network.add(new History_Network(network_id, network_name, created_date, drawable, status,history_network_MSO_name,history_network_CRN_no));
                 cursor.moveToNext();
             }
         }

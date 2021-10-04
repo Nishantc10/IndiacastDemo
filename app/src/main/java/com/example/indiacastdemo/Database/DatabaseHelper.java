@@ -792,19 +792,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getChannelsFromIndiaCastPlacement(String networkid) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM (Select null as CPosition,x.IndiaCast, x.Channel_Name,coalesce(y.Network_ID,z.Network_ID) " +
-                "as Network_ID,coalesce(y.Network_Name,z.Network_Name) as Network_Name,y.LCN_No,y.Position,y.Status_ID ," +
-                "y.Created_date ,null as Others,CASE WHEN LCN_No IS NULL  THEN NULL ELSE (SELECT ID FROM tbl_indiacast_channels_status WHERE IStatus='OK') END as IStatusID " +
-                "from (select a.ChannelID as IndiaCast,b.Channel_ID as Master,b.Channel_Name, NULL as Network_ID," +
-                "NULL as Network_Name from tbl_indiacast_channels_details a inner join tbl_channel_master b " +
-                "on a.ChannelID = b.Channel_ID) x LEFT JOIN (select a.ChannelID as IndiaCast, b.Channel_ID as Master, " +
-                "b.Channel_Name,c.Network_ID, c.Network_Name, c.LCN_No, c.Position, c.Status_ID, c.Created_date " +
-                "from tbl_indiacast_channels_details a left join tbl_channel_master b " +
-                "on a.ChannelID = b.Channel_ID left join tbl_network_channel_mapped c on c.Channel_Name = b.Channel_Name " +
-                "where c.Network_ID = " + " '" + networkid + "')as y on x.IndiaCast = y.IndiaCast left join " +
-                "tbl_network_details z where z.Network_ID = " + " '" + networkid + "')A ORDER BY LCN_No ", null);
+        Cursor res = db.rawQuery("SELECT * FROM (Select " +
+                "CASE WHEN (Select CPosition from tbl_placement_indiacast_channels_details where NetworkID = " + " '" + networkid + "' and ChannelID = x.IndiaCast and LCN =  y.LCN_No) IS NULL  " +
+                "THEN (Select CPosition from tbl_placement_indiacast_channels_details where NetworkID = " + " '" + networkid + "' and ChannelID = x.IndiaCast) " +
+                "ELSE (Select CPosition from tbl_placement_indiacast_channels_details where NetworkID = " + " '" + networkid + "' and ChannelID = x.IndiaCast and LCN =  y.LCN_No) END as CPosition " +
+                ",x.IndiaCast, x.Channel_Name,coalesce(y.Network_ID,z.Network_ID) " +
+                "                as Network_ID,coalesce(y.Network_Name,z.Network_Name) as Network_Name,y.LCN_No,y.Position,y.Status_ID , " +
+                "case when y.Created_date is null then (select Created_date from  tbl_network_channel_mapped where Network_ID = " + " '" + networkid + "') else (y.Created_date) end as Created_date, " +
+                "                null as Others, " +
+                "CASE WHEN (Select IStatusID from tbl_placement_indiacast_channels_details where NetworkID = " + " '" + networkid + "' and ChannelID = x.IndiaCast and LCN =  y.LCN_No) IS NULL  " +
+                "THEN (Select IStatusID from tbl_placement_indiacast_channels_details where NetworkID = " + " '" + networkid + "' and ChannelID = x.IndiaCast) " +
+                "ELSE (Select IStatusID from tbl_placement_indiacast_channels_details where NetworkID = " + " '" + networkid + "' and ChannelID = x.IndiaCast and LCN =  y.LCN_No) END as IStatusID " +
+                "                from (select a.ChannelID as IndiaCast,b.Channel_ID as Master,b.Channel_Name, NULL as Network_ID, " +
+                "                NULL as Network_Name from tbl_indiacast_channels_details a inner join tbl_channel_master b " +
+                "                on a.ChannelID = b.Channel_ID) x LEFT JOIN (select a.ChannelID as IndiaCast, b.Channel_ID as Master, " +
+                "                b.Channel_Name,c.Network_ID, c.Network_Name, c.LCN_No, c.Position, c.Status_ID, c.Created_date " +
+                "                from tbl_indiacast_channels_details a left join tbl_channel_master b " +
+                "                on a.ChannelID = b.Channel_ID left join tbl_network_channel_mapped c on c.Channel_Name = b.Channel_Name " +
+                "                where c.Network_ID = " + " '" + networkid + "')as y on x.IndiaCast = y.IndiaCast left join " +
+                "                tbl_network_details z where z.Network_ID =   " + " '" + networkid + "')A ORDER BY LCN_No", null);
         return res;
     }
+    //Jason
+// public Cursor getChannelsFromIndiaCastPlacement(String networkid) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor res = db.rawQuery("SELECT * FROM (Select null as CPosition,x.IndiaCast, x.Channel_Name,coalesce(y.Network_ID,z.Network_ID) " +
+//                "as Network_ID,coalesce(y.Network_Name,z.Network_Name) as Network_Name,y.LCN_No,y.Position,y.Status_ID ," +
+//                "y.Created_date ,null as Others,CASE WHEN LCN_No IS NULL  THEN NULL ELSE (SELECT ID FROM tbl_indiacast_channels_status WHERE IStatus='OK') END as IStatusID " +
+//                "from (select a.ChannelID as IndiaCast,b.Channel_ID as Master,b.Channel_Name, NULL as Network_ID," +
+//                "NULL as Network_Name from tbl_indiacast_channels_details a inner join tbl_channel_master b " +
+//                "on a.ChannelID = b.Channel_ID) x LEFT JOIN (select a.ChannelID as IndiaCast, b.Channel_ID as Master, " +
+//                "b.Channel_Name,c.Network_ID, c.Network_Name, c.LCN_No, c.Position, c.Status_ID, c.Created_date " +
+//                "from tbl_indiacast_channels_details a left join tbl_channel_master b " +
+//                "on a.ChannelID = b.Channel_ID left join tbl_network_channel_mapped c on c.Channel_Name = b.Channel_Name " +
+//                "where c.Network_ID = " + " '" + networkid + "')as y on x.IndiaCast = y.IndiaCast left join " +
+//                "tbl_network_details z where z.Network_ID = " + " '" + networkid + "')A ORDER BY LCN_No ", null);
+//        return res;
+//    }
 
     public Cursor getAllreadyExistsIndiaCastChannelsLCN(String networkid) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1306,7 +1330,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getTownName(String network_ID) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("Select Town From tbl_network_details where Network_ID =  " + "'" + network_ID + "' ", null);
+        Cursor cursor = db.rawQuery("Select Town,MSO_Name,CRN_No From tbl_network_details where Network_ID =  " + "'" + network_ID + "' ", null);
         return cursor;
     }
 

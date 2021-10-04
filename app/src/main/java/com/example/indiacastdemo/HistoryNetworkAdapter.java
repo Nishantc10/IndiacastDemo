@@ -91,6 +91,8 @@ public class HistoryNetworkAdapter extends RecyclerView.Adapter<HistoryNetworkAd
         myViewHolder.img_network.setImageDrawable(history_network.getPhoto());
         myViewHolder.history_network_status2.setText(history_network.getStatus());
         myViewHolder.history_network_date2.setText(history_network.getCreated_Date());
+        myViewHolder.history_network_MSO_name.setText(history_network.getMSO_name());
+        myViewHolder.history_network_CRN_no.setText(history_network.getCRN_no());
     }
 
     @Override
@@ -100,7 +102,7 @@ public class HistoryNetworkAdapter extends RecyclerView.Adapter<HistoryNetworkAd
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView history_network_name, history_network_date2, history_network_status2, history_network_id;
+        private TextView history_network_name, history_network_date2, history_network_status2, history_network_id,history_network_MSO_name,history_network_CRN_no;
         private ImageView img_network;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -110,6 +112,8 @@ public class HistoryNetworkAdapter extends RecyclerView.Adapter<HistoryNetworkAd
             img_network = (ImageView) itemView.findViewById(R.id.img_network);
             history_network_status2 = (TextView) itemView.findViewById(R.id.history_network_status2);
             history_network_date2 = (TextView) itemView.findViewById(R.id.history_network_date2);
+            history_network_MSO_name = (TextView) itemView.findViewById(R.id.history_network_MSO_name);
+            history_network_CRN_no = (TextView) itemView.findViewById(R.id.history_network_CRN_no);
         }
     }
 }

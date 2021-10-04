@@ -246,7 +246,7 @@ public class IndiaCastChannelFragment extends Fragment {
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                         if (db.submitNetwork(networkId, comment, radio)) {
                                             Cursor res = db.tbl_network_channel_mapping();
-                                            Cursor ICPLcrs = db.getIndiaCastChannels(networkId);
+                                        Cursor ICPLcrs = db.getIndiaCastChannels(networkId);
                                             tbl_network_channel_placement.clear();
                                             tbl_placement_indiacast_channels_details_lst.clear();
                                             res.moveToFirst();

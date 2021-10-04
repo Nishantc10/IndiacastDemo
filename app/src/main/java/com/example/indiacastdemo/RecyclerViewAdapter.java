@@ -63,6 +63,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         myViewHolder.he_network_name.setText(he_network.getNetwork_Name());
         myViewHolder.img_networklogo.setImageDrawable(he_network.getPhoto());
         myViewHolder.he_networek_status2.setText(he_network.getStatus());
+        myViewHolder.he_network_MSO_name.setText(he_network.getMSO_name());
+        myViewHolder.he_network_CRN_no.setText(he_network.getCRN_no());
     }
 
     @Override
@@ -77,6 +79,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private TextView he_network_id;
         private ImageView img_networklogo;
         private TextView he_networek_status2;
+        private TextView he_network_MSO_name;
+        private TextView he_network_CRN_no;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -85,6 +89,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             he_network_name = (TextView) itemView.findViewById(R.id.he_network_name);
             img_networklogo = (ImageView) itemView.findViewById(R.id.img_network);
             he_networek_status2 = (TextView) itemView.findViewById(R.id.he_networek_status2);
+            he_network_MSO_name = (TextView) itemView.findViewById(R.id.he_network_MSO_name);
+            he_network_CRN_no = (TextView) itemView.findViewById(R.id.he_network_CRN_no);
         }
     }
 }

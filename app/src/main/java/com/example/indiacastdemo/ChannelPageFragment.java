@@ -507,92 +507,114 @@ public class ChannelPageFragment extends Fragment {
 //        }
 //        cursor.close();
 //        db.close();
-        Cursor curAllreadyEICC = db.getAllreadyExistsIndiaCastChannels(NetworkID);
+
         String LCN = null;
-        if (curAllreadyEICC.moveToFirst()) {
-            while (!curAllreadyEICC.isAfterLast()) {
-//                Network_ID = cursor.getString(cursor.getColumnIndex("Network_ID"));
-//                String Channel_Name = cursor.getString(cursor.getColumnIndex("Channel_Name"));
-//                String ChannelID = cursor.getString(cursor.getColumnIndex("IndiaCast"));
-                if (isNotNull(curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("LCN_No")))){
-                    LCN = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("LCN_No"));
-                    break;
-                }
-//                String Status_ID = cursor.getString(cursor.getColumnIndex("Status_ID"));
-//                String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
-//                String Created_date = cursor.getString(cursor.getColumnIndex("Created_date"));
-//                String Position = cursor.getString(cursor.getColumnIndex("Position"));
-//                String CPosition = cursor.getString(cursor.getColumnIndex("CPosition"));
-//                db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
-                curAllreadyEICC.moveToNext();
-            }
-            if (isNotNull(LCN)) {
-                if (curAllreadyEICC.moveToFirst()) {
-                    db.deleteIndiaCastChannelsByNetworkID(NetworkID);
-                    while (!curAllreadyEICC.isAfterLast()) {
-                        Network_ID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Network_ID"));
-                        String Channel_Name = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Channel_Name"));
-                        String ChannelID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("IndiaCast"));
-                        LCN = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("LCN_No"));
-                        if(!isNotNull(LCN))
-                            LCN = null;
-                        String Status_ID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Status_ID"));
-                        String IStatusID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("IStatusID"));
-                        String Created_date = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Created_date"));
-                        String Position = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Position"));
-                        String CPosition = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("CPosition"));
-                        db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
-                        curAllreadyEICC.moveToNext();
-                    }
-                }
-            } else {
-                Cursor cursor = db.getChannelsFromIndiaCastPlacement(NetworkID);
-                if (cursor.moveToFirst()) {
-                    db.deleteIndiaCastChannelsByNetworkID(NetworkID);
-                    while (!cursor.isAfterLast()) {
-                        Network_ID = cursor.getString(cursor.getColumnIndex("Network_ID"));
-                        String Channel_Name = cursor.getString(cursor.getColumnIndex("Channel_Name"));
-                        String ChannelID = cursor.getString(cursor.getColumnIndex("IndiaCast"));
-                        LCN = cursor.getString(cursor.getColumnIndex("LCN_No"));
-                        if(!isNotNull(LCN))
-                            LCN = null;
-                        String Status_ID = cursor.getString(cursor.getColumnIndex("Status_ID"));
-                        String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
-                        String Created_date = cursor.getString(cursor.getColumnIndex("Created_date"));
-                        String Position = cursor.getString(cursor.getColumnIndex("Position"));
-                        String CPosition = cursor.getString(cursor.getColumnIndex("CPosition"));
-                        db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
-                        cursor.moveToNext();
-                    }
-                }
-                cursor.close();
-                curAllreadyEICC.close();
-                Cursor curAllreadyEICC1 = db.getAllreadyExistsIndiaCastChannels(NetworkID);
-//                db.deleteIndiaCastChannelsByNetworkID(NetworkID);
-                if (curAllreadyEICC1.moveToFirst()) {
-                    db.deleteIndiaCastChannelsByNetworkID(NetworkID);
-                    while (!curAllreadyEICC1.isAfterLast()) {
-                        Network_ID = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("Network_ID"));
-                        String Channel_Name = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("Channel_Name"));
-                        String ChannelID = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("IndiaCast"));
-                        LCN = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("LCN_No"));
-                        if(!isNotNull(LCN))
-                            LCN = null;
-                        String Status_ID = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("Status_ID"));
-                        String IStatusID = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("IStatusID"));
-                        String Created_date = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("Created_date"));
-                        String Position = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("Position"));
-                        String CPosition = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("CPosition"));
-                        db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
-                        //db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
-                        curAllreadyEICC1.moveToNext();
-                    }
-                }
-                curAllreadyEICC1.close();
-                db.close();
-//                adapter.notifyDataSetChanged();
+//        Cursor curAllreadyEICC = db.getAllreadyExistsIndiaCastChannels(NetworkID);
+//        if (curAllreadyEICC.moveToFirst()) {
+//            while (!curAllreadyEICC.isAfterLast()) {
+////                Network_ID = cursor.getString(cursor.getColumnIndex("Network_ID"));
+////                String Channel_Name = cursor.getString(cursor.getColumnIndex("Channel_Name"));
+////                String ChannelID = cursor.getString(cursor.getColumnIndex("IndiaCast"));
+//                if (isNotNull(curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("LCN_No")))){
+//                    LCN = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("LCN_No"));
+//                    break;
+//                }
+////                String Status_ID = cursor.getString(cursor.getColumnIndex("Status_ID"));
+////                String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
+////                String Created_date = cursor.getString(cursor.getColumnIndex("Created_date"));
+////                String Position = cursor.getString(cursor.getColumnIndex("Position"));
+////                String CPosition = cursor.getString(cursor.getColumnIndex("CPosition"));
+////                db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
+//                curAllreadyEICC.moveToNext();
+//            }
+//            if (isNotNull(LCN)) {
+//                curAllreadyEICC = db.getAllreadyExistsIndiaCastChannelsLCN(NetworkID);
+//                if (curAllreadyEICC.moveToFirst()) {
+//                    db.deleteIndiaCastChannelsByNetworkID(NetworkID);
+//                    while (!curAllreadyEICC.isAfterLast()) {
+//                        Network_ID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Network_ID"));
+//                        String Channel_Name = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Channel_Name"));
+//                        String ChannelID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("IndiaCast"));
+//                        LCN = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("LCN_No"));
+//                        if(!isNotNull(LCN))
+//                            LCN = null;
+//                        String Status_ID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Status_ID"));
+//                        String IStatusID = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("IStatusID"));
+//                        String Created_date = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Created_date"));
+//                        String Position = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("Position"));
+//                        String CPosition = curAllreadyEICC.getString(curAllreadyEICC.getColumnIndex("CPosition"));
+//                        db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
+//                        curAllreadyEICC.moveToNext();
+//                    }
+//                }
+//            } else {
+//                Cursor cursor = db.getChannelsFromIndiaCastPlacement(NetworkID);
+//                if (cursor.moveToFirst()) {
+//                    db.deleteIndiaCastChannelsByNetworkID(NetworkID);
+//                    while (!cursor.isAfterLast()) {
+//                        Network_ID = cursor.getString(cursor.getColumnIndex("Network_ID"));
+//                        String Channel_Name = cursor.getString(cursor.getColumnIndex("Channel_Name"));
+//                        String ChannelID = cursor.getString(cursor.getColumnIndex("IndiaCast"));
+//                        LCN = cursor.getString(cursor.getColumnIndex("LCN_No"));
+//                        if(!isNotNull(LCN))
+//                            LCN = null;
+//                        String Status_ID = cursor.getString(cursor.getColumnIndex("Status_ID"));
+//                        String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
+//                        String Created_date = cursor.getString(cursor.getColumnIndex("Created_date"));
+//                        String Position = cursor.getString(cursor.getColumnIndex("Position"));
+//                        String CPosition = cursor.getString(cursor.getColumnIndex("CPosition"));
+//                        db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
+//                        cursor.moveToNext();
+//                    }
+//                }
+//                cursor.close();
+//                curAllreadyEICC.close();
+//                Cursor curAllreadyEICC1 = db.getAllreadyExistsIndiaCastChannels(NetworkID);
+////                db.deleteIndiaCastChannelsByNetworkID(NetworkID);
+//                if (curAllreadyEICC1.moveToFirst()) {
+//                    db.deleteIndiaCastChannelsByNetworkID(NetworkID);
+//                    while (!curAllreadyEICC1.isAfterLast()) {
+//                        Network_ID = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("Network_ID"));
+//                        String Channel_Name = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("Channel_Name"));
+//                        String ChannelID = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("IndiaCast"));
+//                        LCN = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("LCN_No"));
+//                        if(!isNotNull(LCN))
+//                            LCN = null;
+//                        String Status_ID = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("Status_ID"));
+//                        String IStatusID = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("IStatusID"));
+//                        String Created_date = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("Created_date"));
+//                        String Position = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("Position"));
+//                        String CPosition = curAllreadyEICC1.getString(curAllreadyEICC1.getColumnIndex("CPosition"));
+//                        db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
+//                        //db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
+//                        curAllreadyEICC1.moveToNext();
+//                    }
+//                }
+//                curAllreadyEICC1.close();
+//                db.close();
+////                adapter.notifyDataSetChanged();
+//            }
+//        }
+        Cursor cursor = db.getChannelsFromIndiaCastPlacement(NetworkID);
+        if (cursor.moveToFirst()) {
+            db.deleteIndiaCastChannelsByNetworkID(NetworkID);
+            while (!cursor.isAfterLast()) {
+                Network_ID = cursor.getString(cursor.getColumnIndex("Network_ID"));
+                String Channel_Name = cursor.getString(cursor.getColumnIndex("Channel_Name"));
+                String ChannelID = cursor.getString(cursor.getColumnIndex("IndiaCast"));
+                LCN = cursor.getString(cursor.getColumnIndex("LCN_No"));
+                if(!isNotNull(LCN))
+                    LCN = null;
+                String Status_ID = cursor.getString(cursor.getColumnIndex("Status_ID"));
+                String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
+                String Created_date = cursor.getString(cursor.getColumnIndex("Created_date"));
+                String Position = cursor.getString(cursor.getColumnIndex("Position"));
+                String CPosition = cursor.getString(cursor.getColumnIndex("CPosition"));
+                db.AddplacementIndiacastChannelsDetails(Channel_Name, ChannelID, LCN, Position, CPosition, IStatusID, Network_ID, "Others", Created_date, Status_ID);
+                cursor.moveToNext();
             }
         }
+        cursor.close();
         adapter.notifyDataSetChanged();
         return true;
     }
