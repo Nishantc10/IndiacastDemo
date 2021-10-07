@@ -517,7 +517,9 @@ public class HistoryFragment extends Fragment {
                                         progress.dismiss();
                                     }
                                 });
-                                builder.show();//            setupRecyclerView();
+                                builder.show();
+
+                                //            setupRecyclerView();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

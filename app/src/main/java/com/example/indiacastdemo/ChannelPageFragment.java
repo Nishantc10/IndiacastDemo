@@ -480,6 +480,7 @@ public class ChannelPageFragment extends Fragment {
                     }
                 }
                 db.close();
+                adapter.notifyDataSetChanged();
             }
         });
         setupRecyclerView();
@@ -603,7 +604,7 @@ public class ChannelPageFragment extends Fragment {
                 String Channel_Name = cursor.getString(cursor.getColumnIndex("Channel_Name"));
                 String ChannelID = cursor.getString(cursor.getColumnIndex("IndiaCast"));
                 LCN = cursor.getString(cursor.getColumnIndex("LCN_No"));
-                if(!isNotNull(LCN))
+                if (!isNotNull(LCN))
                     LCN = null;
                 String Status_ID = cursor.getString(cursor.getColumnIndex("Status_ID"));
                 String IStatusID = cursor.getString(cursor.getColumnIndex("IStatusID"));
