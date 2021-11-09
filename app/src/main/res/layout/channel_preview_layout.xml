@@ -26,20 +26,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/table_border"
-            android:paddingLeft="15dp"
             android:orientation="vertical"
+            android:paddingLeft="15dp"
             android:scrollbars="vertical">
 
             <TableRow>
 
                 <TextView
+                    android:id="@+id/netwrok_name_prv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:hint="Network name"
                     android:paddingLeft="2dp"
-                    android:text="Channels preview"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </TableRow>
 

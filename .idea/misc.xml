@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/drawable/bg_ui.xml" value="0.2203125" />
         <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/drawable/table_border.xml" value="0.2203125" />
         <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/activity_main2.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/channel_preview_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/channel_preview_table_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/fragment_channel_page.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/fragment_channel_submit.xml" value="0.1" />
         <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/fragment_he.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/fragment_history_mapping.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
@@ -20,7 +22,9 @@
         <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/item_he_network.xml" value="0.33" />
         <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/item_history_network.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/item_indiacast_channel.xml" value="0.11594202898550725" />
+        <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/items_view.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/network_sumbit.xml" value="0.22" />
+        <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/statuscard.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/layout/table_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/menu/history_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/nishant.chaudhari/Desktop/IndiacastDemo/app/src/main/res/menu/historyrefresh_menu.xml" value="0.20416666666666666" />

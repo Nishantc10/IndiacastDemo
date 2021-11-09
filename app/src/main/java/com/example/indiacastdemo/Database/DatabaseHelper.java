@@ -18,6 +18,8 @@ import java.util.Date;
 
 import androidx.annotation.RequiresApi;
 
+import com.example.indiacastdemo.Model.Channel;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     JSONArray channelmasterarray = null;
@@ -558,7 +560,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //    }
 //
 //    //endregion
- //// region insert_tbl_network_details
+    //// region insert_tbl_network_details
 //    public void insert_tbl_network_details(String Network_ID, String Network_Name, String MSO_Name, String Town, String CRN_No,
 //                                           String Area_Mapping_Code, String HE_FEED_Flag, String IC_NON_IC_Flag, String Status_ID, String Landing_Page_Flag,
 //                                           String Landing_Page_ID, String Created_Date, String Updated_Date) {
@@ -849,6 +851,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "on mappedtable.IndiaCast = ticd.ChannelID order by mappedtable.Channel_Name asc ", null);
         return res;
     }
+
     public Cursor getAllreadyExistsIndiaCastChannels(String networkid) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("select mappedtable.Cposition,ticd.ChannelID as IndiaCast," +
@@ -1683,4 +1686,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert(tbl_user_details, null, cv);
     }
 
+    public boolean isCheckIndiaCastChannel(String channelname) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select tcm.Channel_Name from tbl_indiacast_channels_details ticd inner join tbl_channel_master tcm on ticd.ChannelID = tcm.Channel_ID where tcm.Channel_Name = " + "'" + channelname + "' ", null);
+        if (res.moveToFirst()) {
+            while (!res.isAfterLast()) {
+                String Channel_Name = res.getString(res.getColumnIndex("Channel_Name"));
+                res.moveToNext();
+                if (channelname.equals(Channel_Name)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

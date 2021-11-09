@@ -511,7 +511,7 @@ public class IndiaCastChannelFragment extends Fragment {
                                 public void run() {
                                     try {
                                         progressBar.setVisibility(View.GONE);
-                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Error occurred during submission!");
+                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Error occurred during Channel submission!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -642,7 +642,7 @@ public class IndiaCastChannelFragment extends Fragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
-                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Error occurred during ICPL submission!");
+                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Error occurred during IndiaCast Channel submission!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }

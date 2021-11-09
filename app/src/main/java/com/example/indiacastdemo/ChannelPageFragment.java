@@ -65,14 +65,14 @@ public class ChannelPageFragment extends Fragment {
     BubbleScrollBar scrollBar;
     EditText edt_search, edt_position, edt_lcn;
     TextView edt_channelName, edt_genreName, network_name;
-    String networkId, networkName, Login_ID, Token, User_ID, Network_ID;
     //    RadioGroup radio_goup;
 //    RadioButton radio_Button;
 //    String LCN_No = null;
-    ProgressBar progressBar;
     //    private ProgressDialog progress;
+    //    boolean flag = false;
+    ProgressBar progressBar;
+    String networkId, networkName, Login_ID, Token, User_ID, Network_ID;
     Bundle bundle;
-//    boolean flag = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -193,13 +193,27 @@ public class ChannelPageFragment extends Fragment {
                         String position = edt_position.getText().toString();
 //                        SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-d H:m:S");
 //                        Date date = Calendar.getInstance().getTime();
-                        if ((channelname.equals("")) || (genrename.equals("")) || (lcn.equals("")) || (position.equals(""))) {
+//                        if ((channelname.equals("")) || (genrename.equals("")) || (lcn.equals("")) || (position.equals(""))) {
+
+                       boolean isChannelAvailable = db.isCheckIndiaCastChannel(channelname);
+
+
+                        if ((channelname.equals("")) || (lcn.equals(""))) {
                             try {
                                 AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "All Fields are Mandatory!");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                        } else {
+                        }
+                        else if (isChannelAvailable && (genrename.equals("")))
+                        {
+                            try {
+                                AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Genre is Mandatory for IndiaCast Channels!");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        else {
                             if (db.insert_newChannel_tbl_network_channel_mapped(Network_ID, networkName, channelname, lcn, genrename, position, "false", "false", "false", 0, Calendar.getInstance().get(Calendar.YEAR), "On Call", "10:10:10", "", "", "", "", "", "", "")) {
                                 lst_channel.clear();
                                 getChannelsFromNetwork();
@@ -225,7 +239,7 @@ public class ChannelPageFragment extends Fragment {
             }
         });
         //endregion
-        //region FAB Send\
+        //region FAB next
 
         fab_next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -509,7 +523,6 @@ public class ChannelPageFragment extends Fragment {
 //        cursor.close();
 //        db.close();
 
-        String LCN = null;
 //        Cursor curAllreadyEICC = db.getAllreadyExistsIndiaCastChannels(NetworkID);
 //        if (curAllreadyEICC.moveToFirst()) {
 //            while (!curAllreadyEICC.isAfterLast()) {
@@ -596,6 +609,7 @@ public class ChannelPageFragment extends Fragment {
 ////                adapter.notifyDataSetChanged();
 //            }
 //        }
+        String LCN = null;
         Cursor cursor = db.getChannelsFromIndiaCastPlacement(NetworkID);
         if (cursor.moveToFirst()) {
             db.deleteIndiaCastChannelsByNetworkID(NetworkID);

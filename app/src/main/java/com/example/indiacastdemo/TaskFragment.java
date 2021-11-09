@@ -323,6 +323,17 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
                                     }
                                 });
                             }
+                            else {
+                                getActivity().runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        try {
+                                            AlertDialogModel.generateAlertDialog(getActivity(), "Alert!", "something went wrong.");
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                            }
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

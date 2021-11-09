@@ -251,6 +251,7 @@ com/example/indiacastdemo/TaskFragment.java
  com.example.indiacastdemo.TaskFragment$2$1
  com.example.indiacastdemo.TaskFragment$2$1$1
  com.example.indiacastdemo.TaskFragment$2$2
+ com.example.indiacastdemo.TaskFragment$2$3
 com/example/indiacastdemo/ViewPagerAdapter.java
  com.example.indiacastdemo.ViewPagerAdapter
 com/example/indiacastdemo/Model/History_Network.java

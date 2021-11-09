@@ -148,7 +148,9 @@ public class MappingFragment extends Fragment {
                 LayoutInflater inflater = getActivity().getLayoutInflater();
                 final View dialogView = inflater.inflate(R.layout.channel_preview_layout, null);
                 ImageView btn_cancel = (ImageView) dialogView.findViewById(R.id.btn_cancel);
-
+                TextView netwrok_name_prv = dialogView.findViewById(R.id.netwrok_name_prv);
+                netwrok_name_prv.setText(networkName.toString()
+                );
                 TableLayout tableLayout = dialogView.findViewById(R.id.ChannelsTableLayout);
                 Cursor cursor = db.getChannelsFromNetwork(networkId);
                 if (cursor.moveToFirst()) {

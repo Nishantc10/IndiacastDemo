@@ -7,48 +7,6 @@
     tools:context=".ChannelSubmitFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
-
-<!--    <RadioGroup-->
-<!--        android:id="@+id/radio_group"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:orientation="horizontal"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-
-<!--        <RadioButton-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="On Call"-->
-<!--            android:textSize="18sp" />-->
-
-<!--        <RadioButton-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="25dp"-->
-<!--            android:text="On Site"-->
-<!--            android:textSize="18sp" />-->
-<!--    </RadioGroup>-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/txt_comment"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/circlebackgroundpink"-->
-<!--        android:hint="Comment..."-->
-<!--        android:maxLines="7"-->
-<!--        android:paddingLeft="10dp"-->
-<!--        android:paddingTop="5dp"-->
-<!--        android:paddingBottom="5dp"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="16sp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/radio_group" />-->
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabslayout"
         android:layout_width="match_parent"
@@ -56,7 +14,7 @@
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_comment"
+        app:layout_constraintTop_toTopOf="parent"
         app:tabGravity="center"
         app:tabTextColor="@color/white">
 
@@ -94,7 +52,7 @@
         android:paddingRight="10dp"
         android:text="Submit"
         android:textColor="@color/white"
-        android:textSize="18dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
