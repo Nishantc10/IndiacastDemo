@@ -143,6 +143,8 @@ com/example/indiacastdemo/IndiaCastChannelFragment.java
  com.example.indiacastdemo.IndiaCastChannelFragment$4$1
  com.example.indiacastdemo.IndiaCastChannelFragment$4$1$1
  com.example.indiacastdemo.IndiaCastChannelFragment$4$2
+ com.example.indiacastdemo.IndiaCastChannelFragment$4$2$1
+ com.example.indiacastdemo.IndiaCastChannelFragment$4$3
  com.example.indiacastdemo.IndiaCastChannelFragment$5
  com.example.indiacastdemo.IndiaCastChannelFragment$5$1
  com.example.indiacastdemo.IndiaCastChannelFragment$5$1$1

@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.Trendyol.BubbleScrollBar:bubblescrollbarlib:0.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a4a41e37a980cbd79c4f5f399ea316ab/transformed/jetified-bubblescrollbarlib-0.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a4a41e37a980cbd79c4f5f399ea316ab/transformed/jetified-bubblescrollbarlib-0.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a4a41e37a980cbd79c4f5f399ea316ab/transformed/jetified-bubblescrollbarlib-0.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/95786b05a596e789f3d7b8e39732cc90/transformed/jetified-bubblescrollbarlib-0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/95786b05a596e789f3d7b8e39732cc90/transformed/jetified-bubblescrollbarlib-0.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/95786b05a596e789f3d7b8e39732cc90/transformed/jetified-bubblescrollbarlib-0.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

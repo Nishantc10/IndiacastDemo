@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:node="replace"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+       >
         <activity
             android:name=".SplashScreenActivity"
             android:screenOrientation="portrait"

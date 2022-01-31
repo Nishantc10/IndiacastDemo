@@ -23,7 +23,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -308,7 +307,8 @@ public class IndiaCastChannelFragment extends Fragment {
                                             }
                                             dialogBuilder.dismiss();
                                         } else {
-                                            try {
+                                            try {                                                progressBar.setVisibility(View.GONE);
+                                                progressBar.setVisibility(View.GONE);
                                                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                                                 builder.setTitle("Alert!");
                                                 builder.setMessage("Network can not be submitted twice in a day!");
@@ -427,7 +427,7 @@ public class IndiaCastChannelFragment extends Fragment {
                                 public void run() {
                                     try {
                                         progressBar.setVisibility(View.GONE);
-                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Server connection lost!");
+                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Server connection lost placement!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -454,7 +454,7 @@ public class IndiaCastChannelFragment extends Fragment {
                                         progressBar.setVisibility(View.GONE);
                                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                                         builder.setTitle("Alert!");
-                                        builder.setMessage("Submitted");
+                                        builder.setMessage("Mapping Submitted");
                                         builder.setCancelable(false);
                                         builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                                             @Override
@@ -557,8 +557,8 @@ public class IndiaCastChannelFragment extends Fragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
-                                        progressBar.setVisibility(View.GONE);
-                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Server connection lost!");
+                                         progressBar.setVisibility(View.GONE);
+                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Server connection lost indiacastcannels!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -579,65 +579,65 @@ public class IndiaCastChannelFragment extends Fragment {
                         JSONObject Name = jsonArray.getJSONObject(0);
                         name = Name.getString("Name");
                         if (name.equals("Data Updated Successfully")) {
-//                            getActivity().runOnUiThread(new Runnable() {
-//                                public void run() {
-//                                    try {
-//                                        progressBar.setVisibility(View.GONE);
-//                                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-//                                        builder.setTitle("Alert!");
-//                                        builder.setMessage("Submitted");
-//                                        builder.setCancelable(false);
-//                                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-//                                            @Override
-//                                            public void onClick(DialogInterface dialog, int which) {
-//                                                progress = new ProgressDialog(getActivity());
-//                                                progress.setCancelable(false);
-//                                                progress.setTitle("Please wait....");
-//                                                progress.setMessage("Fetching details");
-//                                                progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-//                                                progress.show();
-//                                                try {
-//                                                    db = new DatabaseHelper(getContext());
-//                                                    Cursor cursor = db.getUserDetails();
-//                                                    if (cursor.moveToFirst()) {
-//                                                        while (!cursor.isAfterLast()) {
-//                                                            Login_ID = cursor.getString(cursor.getColumnIndex("Login_ID"));
-//                                                            Token = cursor.getString(cursor.getColumnIndex("Token"));
-//                                                            User_ID = cursor.getString(cursor.getColumnIndex("User_ID"));
-//                                                            cursor.moveToNext();
-//                                                        }
-//                                                    }
-//                                                } catch (Exception e) {
-//                                                    e.printStackTrace();
-//                                                }
-//                                                ConnectivityManager cm =
-//                                                        (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-//                                                NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-//                                                final boolean isConnected = activeNetwork != null &&
-//                                                        activeNetwork.isConnectedOrConnecting();
-//                                                if (isConnected) {
-//                                                    JSONObject postData = new JSONObject();
-//                                                    try {
-//                                                        postData.put("loginid", Login_ID);
-//                                                        postData.put("token", Token);
-//                                                        networkCountPostRequest(postData.toString());
-//                                                    } catch (JSONException e) {
-//                                                        e.printStackTrace();
-//                                                    } catch (Exception e) {
-//                                                        e.printStackTrace();
-//                                                    }
-//                                                } else {
-//
-//                                                }
-//
-//                                            }
-//                                        });
-//                                        builder.show();
-//                                    } catch (Exception e) {
-//                                        e.printStackTrace();
-//                                    }
-//                                }
-//                            })
+                            getActivity().runOnUiThread(new Runnable() {
+                                public void run() {
+                                    try {
+                                        progressBar.setVisibility(View.GONE);
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                                        builder.setTitle("Alert!");
+                                        builder.setMessage("IndiaCast Channels Submitted");
+                                        builder.setCancelable(false);
+                                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                progress = new ProgressDialog(getActivity());
+                                                progress.setCancelable(false);
+                                                progress.setTitle("Please wait....");
+                                                progress.setMessage("Fetching details");
+                                                progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                                                progress.show();
+                                                try {
+                                                    db = new DatabaseHelper(getContext());
+                                                    Cursor cursor = db.getUserDetails();
+                                                    if (cursor.moveToFirst()) {
+                                                        while (!cursor.isAfterLast()) {
+                                                            Login_ID = cursor.getString(cursor.getColumnIndex("Login_ID"));
+                                                            Token = cursor.getString(cursor.getColumnIndex("Token"));
+                                                            User_ID = cursor.getString(cursor.getColumnIndex("User_ID"));
+                                                            cursor.moveToNext();
+                                                        }
+                                                    }
+                                                } catch (Exception e) {
+                                                    e.printStackTrace();
+                                                }
+                                                ConnectivityManager cm =
+                                                        (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                                                NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+                                                final boolean isConnected = activeNetwork != null &&
+                                                        activeNetwork.isConnectedOrConnecting();
+                                                if (isConnected) {
+                                                    JSONObject postData = new JSONObject();
+                                                    try {
+                                                        postData.put("loginid", Login_ID);
+                                                        postData.put("token", Token);
+                                                        networkCountPostRequest(postData.toString());
+                                                    } catch (JSONException e) {
+                                                        e.printStackTrace();
+                                                    } catch (Exception e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                } else {
+
+                                                }
+
+                                            }
+                                        });
+                                        builder.show();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
                         } else {
                             getActivity().runOnUiThread(new Runnable() {
                                 public void run() {
@@ -689,7 +689,7 @@ public class IndiaCastChannelFragment extends Fragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
-                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Server connection lost!");
+                                        AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Server connection lost placement count!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }

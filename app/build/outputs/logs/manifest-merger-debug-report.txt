@@ -1,15 +1,15 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-75:12
-INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-75:12
-INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-75:12
-INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-75:12
+ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-76:12
+INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-76:12
+INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-76:12
+INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-76:12
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\a4d7ebb8343bd38135825a22af62742f\transformed\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\f8dbeb9283faa3005342a78f79860a7b\transformed\material-1.4.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\a469c4fd4d648c473e73fee31936a8d9\transformed\constraintlayout-2.1.1\AndroidManifest.xml:2:1-11:12
-MERGED from [com.github.iammert:ReadableBottomBar:0.2] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\230b841b9b201ce0bd796359e7933bc6\transformed\jetified-ReadableBottomBar-0.2\AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.iammert:ReadableBottomBar:0.2] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\d7c666a6d597a4b7723f2d90a8e59efd\transformed\jetified-ReadableBottomBar-0.2\AndroidManifest.xml:2:1-11:12
 MERGED from [com.github.MdFarhanRaja:SearchableSpinner:1.2] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\94b6b098b31f3c22f0bb12340dea2e20\transformed\jetified-SearchableSpinner-1.2\AndroidManifest.xml:2:1-17:12
-MERGED from [com.github.Trendyol.BubbleScrollBar:bubblescrollbarlib:0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\a4a41e37a980cbd79c4f5f399ea316ab\transformed\jetified-bubblescrollbarlib-0.1\AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.Trendyol.BubbleScrollBar:bubblescrollbarlib:0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\95786b05a596e789f3d7b8e39732cc90\transformed\jetified-bubblescrollbarlib-0.1\AndroidManifest.xml:2:1-11:12
 MERGED from [com.github.Trendyol.BubbleScrollBar:common:0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\7abf167194ff6bc65a7c329374cac170\transformed\jetified-common-0.1\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.3.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\5ff1b1d4ace47a2bd1d39ec0230b6661\transformed\appcompat-1.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\f7c6176718d1bd03dfe4b9b1367c0d56\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -23,7 +23,7 @@ MERGED from [net.steamcrafted:materialiconlib:1.1.5] C:\Users\nishant.chaudhari\
 MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\fc34c625b6c9c2a6c971aef7c7d3cf15\transformed\jetified-circleimageview-3.1.0\AndroidManifest.xml:2:1-11:12
 MERGED from [com.github.channguyen:rsv:1.0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\d681438e910c40bfc7ed30e2883bb864\transformed\jetified-rsv-1.0.1\AndroidManifest.xml:2:1-15:12
 MERGED from [com.amulyakhare:com.amulyakhare.textdrawable:1.0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\a972ac231eeeba1c490f715ea7e2334d\transformed\jetified-com.amulyakhare.textdrawable-1.0.1\AndroidManifest.xml:2:1-14:12
-MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.2.15] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\46101fda9d43bc82cec8cb53c01f2247\transformed\jetified-android-gif-drawable-1.2.15\AndroidManifest.xml:2:1-10:12
+MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.2.15] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\76f1fc24506eb1fd9ee51b6439b1e067\transformed\jetified-android-gif-drawable-1.2.15\AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\f101b4bde9012904bdf847b450905310\transformed\jetified-play-services-cloud-messaging-17.0.0\AndroidManifest.xml:2:1-13:12
 MERGED from [com.google.firebase:firebase-analytics:20.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\0f976bc9c0960659988b04ddc8e9525e\transformed\jetified-firebase-analytics-20.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-measurement:20.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\d2c68147513c98fc1c4a9d054fc2e6a2\transformed\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:17:1-46:12
@@ -81,22 +81,22 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\nishant.chaudhari\.gradle\cach
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\d1604368651e33aecc7c4699e2a0b832\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\dd0535b6a2c762932d9feae07914af0e\transformed\jetified-firebase-encoders-json-18.0.0\AndroidManifest.xml:15:1-23:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\87432fe1a274e9f7ac02f3067d45061b\transformed\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-75:12
-INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-75:12
-INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-75:12
+INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-76:12
+INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-76:12
+INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-76:12
 	package
 		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:4:5-40
 		INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-75:12
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-76:12
 		INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-75:12
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:1-76:12
 		INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:2:11-69
@@ -167,7 +167,7 @@ ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\Android
 	android:name
 		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:14:22-73
 application
-ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:16:5-73:19
+ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:16:5-74:19
 REJECTED from [com.google.android.material:material:1.4.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\f8dbeb9283faa3005342a78f79860a7b\transformed\material-1.4.0\AndroidManifest.xml:22:5-20
 REJECTED from [androidx.constraintlayout:constraintlayout:2.1.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\a469c4fd4d648c473e73fee31936a8d9\transformed\constraintlayout-2.1.1\AndroidManifest.xml:9:5-20
 REJECTED from [com.github.MdFarhanRaja:SearchableSpinner:1.2] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\94b6b098b31f3c22f0bb12340dea2e20\transformed\jetified-SearchableSpinner-1.2\AndroidManifest.xml:11:5-15:19
@@ -215,83 +215,83 @@ REJECTED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\
 	android:usesCleartextTraffic
 		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:25:9-44
 activity#com.example.indiacastdemo.SplashScreenActivity
-ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:26:9-36:20
+ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:27:9-37:20
 	android:screenOrientation
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:29:13-49
+	android:windowSoftInputMode
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:31:13-54
+	android:theme
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:30:13-55
+	android:name
 		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:28:13-49
-	android:windowSoftInputMode
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:30:13-54
-	android:theme
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:29:13-55
-	android:name
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:27:13-49
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:31:13-35:29
+ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:32:13-36:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:32:17-69
+ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:33:17-69
 	android:name
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:32:25-66
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:33:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:34:17-77
+ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:35:17-77
 	android:name
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:34:27-74
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:35:27-74
 activity#com.example.indiacastdemo.RegisterActivity
-ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:37:9-41:57
+ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:38:9-42:57
 	android:screenOrientation
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:39:13-49
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:40:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:41:13-54
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:42:13-54
 	android:theme
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:40:13-55
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:41:13-55
 	android:name
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:38:13-45
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:39:13-45
 activity#com.example.indiacastdemo.Main2Activity
-ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:42:9-46:58
+ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:43:9-47:58
 	android:screenOrientation
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:44:13-49
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:45:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:46:13-55
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:47:13-55
 	android:theme
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:45:13-56
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:46:13-56
 	android:name
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:43:13-42
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:44:13-42
 activity#com.example.indiacastdemo.LoginScreen
-ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:47:9-51:66
+ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:48:9-52:66
 	android:screenOrientation
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:49:13-49
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:50:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:51:13-54
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:52:13-54
 	android:theme
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:50:13-55
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:51:13-55
 	android:name
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:48:13-40
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:49:13-40
 service#com.example.indiacastdemo.MyFirebaseMessagingService
-ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:59:9-66:19
+ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:60:9-67:19
 	android:permission
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:61:13-73
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:62:13-73
 	android:name
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:60:13-55
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:61:13-55
 intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:62:13-65:29
+ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:63:13-66:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:63:17-78
+ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:64:17-78
 	android:name
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:63:25-75
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:64:25-75
 action#com.google.android.c2dm.intent.RECEIVE
-ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:64:17-81
+ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:65:17-81
 	android:name
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:64:25-78
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:65:25-78
 meta-data#com.google.firebase.messaging.default_notification_icon
-ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:67:9-69:57
+ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:68:9-70:57
 	android:resource
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:69:13-54
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:70:13-54
 	android:name
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:68:13-83
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:69:13-83
 meta-data#com.google.firebase.messaging.default_notification_color
-ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:70:9-72:53
+ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:71:9-73:53
 	android:resource
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:72:13-50
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:73:13-50
 	android:name
-		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:71:13-84
+		ADDED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:72:13-84
 uses-sdk
 INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml
@@ -302,12 +302,12 @@ MERGED from [com.google.android.material:material:1.4.0] C:\Users\nishant.chaudh
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\f8dbeb9283faa3005342a78f79860a7b\transformed\material-1.4.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\a469c4fd4d648c473e73fee31936a8d9\transformed\constraintlayout-2.1.1\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\a469c4fd4d648c473e73fee31936a8d9\transformed\constraintlayout-2.1.1\AndroidManifest.xml:5:5-7:41
-MERGED from [com.github.iammert:ReadableBottomBar:0.2] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\230b841b9b201ce0bd796359e7933bc6\transformed\jetified-ReadableBottomBar-0.2\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.iammert:ReadableBottomBar:0.2] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\230b841b9b201ce0bd796359e7933bc6\transformed\jetified-ReadableBottomBar-0.2\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.iammert:ReadableBottomBar:0.2] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\d7c666a6d597a4b7723f2d90a8e59efd\transformed\jetified-ReadableBottomBar-0.2\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.iammert:ReadableBottomBar:0.2] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\d7c666a6d597a4b7723f2d90a8e59efd\transformed\jetified-ReadableBottomBar-0.2\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.MdFarhanRaja:SearchableSpinner:1.2] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\94b6b098b31f3c22f0bb12340dea2e20\transformed\jetified-SearchableSpinner-1.2\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.MdFarhanRaja:SearchableSpinner:1.2] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\94b6b098b31f3c22f0bb12340dea2e20\transformed\jetified-SearchableSpinner-1.2\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.Trendyol.BubbleScrollBar:bubblescrollbarlib:0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\a4a41e37a980cbd79c4f5f399ea316ab\transformed\jetified-bubblescrollbarlib-0.1\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.Trendyol.BubbleScrollBar:bubblescrollbarlib:0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\a4a41e37a980cbd79c4f5f399ea316ab\transformed\jetified-bubblescrollbarlib-0.1\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.Trendyol.BubbleScrollBar:bubblescrollbarlib:0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\95786b05a596e789f3d7b8e39732cc90\transformed\jetified-bubblescrollbarlib-0.1\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.Trendyol.BubbleScrollBar:bubblescrollbarlib:0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\95786b05a596e789f3d7b8e39732cc90\transformed\jetified-bubblescrollbarlib-0.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.Trendyol.BubbleScrollBar:common:0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\7abf167194ff6bc65a7c329374cac170\transformed\jetified-common-0.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.Trendyol.BubbleScrollBar:common:0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\7abf167194ff6bc65a7c329374cac170\transformed\jetified-common-0.1\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.appcompat:appcompat:1.3.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\5ff1b1d4ace47a2bd1d39ec0230b6661\transformed\appcompat-1.3.1\AndroidManifest.xml:20:5-22:41
@@ -334,8 +334,8 @@ MERGED from [com.github.channguyen:rsv:1.0.1] C:\Users\nishant.chaudhari\.gradle
 MERGED from [com.github.channguyen:rsv:1.0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\d681438e910c40bfc7ed30e2883bb864\transformed\jetified-rsv-1.0.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.amulyakhare:com.amulyakhare.textdrawable:1.0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\a972ac231eeeba1c490f715ea7e2334d\transformed\jetified-com.amulyakhare.textdrawable-1.0.1\AndroidManifest.xml:8:5-10:41
 MERGED from [com.amulyakhare:com.amulyakhare.textdrawable:1.0.1] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\a972ac231eeeba1c490f715ea7e2334d\transformed\jetified-com.amulyakhare.textdrawable-1.0.1\AndroidManifest.xml:8:5-10:41
-MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.2.15] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\46101fda9d43bc82cec8cb53c01f2247\transformed\jetified-android-gif-drawable-1.2.15\AndroidManifest.xml:6:5-8:41
-MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.2.15] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\46101fda9d43bc82cec8cb53c01f2247\transformed\jetified-android-gif-drawable-1.2.15\AndroidManifest.xml:6:5-8:41
+MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.2.15] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\76f1fc24506eb1fd9ee51b6439b1e067\transformed\jetified-android-gif-drawable-1.2.15\AndroidManifest.xml:6:5-8:41
+MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.2.15] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\76f1fc24506eb1fd9ee51b6439b1e067\transformed\jetified-android-gif-drawable-1.2.15\AndroidManifest.xml:6:5-8:41
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\f101b4bde9012904bdf847b450905310\transformed\jetified-play-services-cloud-messaging-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\f101b4bde9012904bdf847b450905310\transformed\jetified-play-services-cloud-messaging-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:20.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\0f976bc9c0960659988b04ddc8e9525e\transformed\jetified-firebase-analytics-20.0.0\AndroidManifest.xml:5:5-44

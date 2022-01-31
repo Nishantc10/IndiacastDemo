@@ -1,4 +1,4 @@
-#Tue Nov 09 22:47:07 IST 2021
+#Mon Jan 31 11:22:45 IST 2022
 base.1=C\:\\Users\\nishant.chaudhari\\Desktop\\IndiacastDemo\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
 path.1=classes2.dex
 base.0=C\:\\Users\\nishant.chaudhari\\Desktop\\IndiacastDemo\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex

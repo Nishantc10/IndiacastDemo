@@ -480,6 +480,7 @@ public class ChannelPageFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
                 String text = s.toString();
+//                if(text.equals(""))
                 cursor = db.getChannelsFromNetworkBySearch(networkId, text);
                 lst_channel.clear();
                 if (cursor.moveToFirst()) {

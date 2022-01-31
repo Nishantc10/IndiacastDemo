@@ -14,6 +14,7 @@
     <string name="serverKey">key=" + "AAAAtWF-790:APA91bFURgz3Xb4WoYGSWlzbolradwXQrSDbe2M3mI3PacC0HH-c92Ea2sUiQCgGVSE2MVEABLDQCJOSFWdEmrR7DW3XuFDaBfqAn96xIMV0-WjJI_SI7SS58cloLwcrow9eOvXK788s"</string>
     <string name="cancel">Cancel</string>
     <string name="fcm_token">FCM Token: %s</string>
+    <string name="version_number">v1.11.0</string>
 
     <!-- <string name="api">http://122.179.136.81:8975</string>-->
     <!-- <string name="api">http://10.102.32.221:8975</string>-->
