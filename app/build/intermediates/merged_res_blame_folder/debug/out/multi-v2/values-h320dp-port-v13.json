@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\nishant.chaudhari\\Desktop\\IndiacastDemo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
+            "outputFile": "C:\\Users\\nishant.chaudhari\\Desktop\\New folder (3)\\IndiacastDemo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\nishant.chaudhari\\.gradle\\caches\\transforms-3\\f8dbeb9283faa3005342a78f79860a7b\\transformed\\material-1.4.0\\res\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
+                    "source": "C:\\Users\\nishant.chaudhari\\.gradle\\caches\\transforms-3\\30beb082c7476a4b5944a13c6b32cb60\\transformed\\material-1.4.0\\res\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

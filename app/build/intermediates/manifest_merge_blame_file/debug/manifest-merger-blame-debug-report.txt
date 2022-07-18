@@ -6,150 +6,156 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="19"
-8-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml
+8-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="30" />
-9-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml
+9-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:6:5-67
-11-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:6:22-64
+11-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:6:5-67
+11-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:6:22-64
 12    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-12-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:7:5-82
-12-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:7:22-79
+12-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:7:5-82
+12-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:7:22-79
 13    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-13-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:8:5-80
-13-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:8:22-77
+13-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:8:5-80
+13-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:8:22-77
 14
 15    <uses-feature
-15-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:9:5-11:35
+15-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:9:5-11:35
 16        android:name="android.hardware.camera"
-16-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:10:9-47
+16-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:10:9-47
 17        android:required="true" />
-17-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:11:9-32
+17-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:11:9-32
 18
 19    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-19-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:12:5-81
-19-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:12:22-78
+19-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:12:5-81
+19-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:12:22-78
 20    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-20-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:13:5-79
-20-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:13:22-76
+20-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:13:5-79
+20-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:13:22-76
 21    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-21-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:14:5-76
-21-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:14:22-73
-22    <uses-permission android:name="android.permission.WAKE_LOCK" />
-22-->[com.google.firebase:firebase-messaging:23.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\93b58dc3c7977402e1141e0433c95448\transformed\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:23:5-68
-22-->[com.google.firebase:firebase-messaging:23.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\93b58dc3c7977402e1141e0433c95448\transformed\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:23:22-65
-23    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-23-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\d2c68147513c98fc1c4a9d054fc2e6a2\transformed\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:26:5-110
-23-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\d2c68147513c98fc1c4a9d054fc2e6a2\transformed\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:26:22-107
-24
-25    <application
-25-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:16:5-74:19
-26        android:name="androidx.multidex.MultiDexApplication"
-27        android:allowBackup="true"
-27-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:17:9-35
-28        android:debuggable="true"
-29        android:icon="@mipmap/ic_launcher_foreground"
-29-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:18:9-54
-30        android:label="@string/app_name"
-30-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:19:9-41
-31        android:roundIcon="@mipmap/ic_launcher_foreground"
-31-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:20:9-59
-32        android:screenOrientation="portrait"
-32-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:21:9-45
-33        android:supportsRtl="true"
-33-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:22:9-35
-34        android:theme="@style/AppTheme"
-34-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:23:9-40
-35        android:usesCleartextTraffic="true" >
-35-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:25:9-44
-36        <activity
-36-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:27:9-37:20
-37            android:name="com.example.indiacastdemo.SplashScreenActivity"
-37-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:28:13-49
-38            android:screenOrientation="portrait"
-38-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:29:13-49
-39            android:theme="@style/AppTheme.FullScreen"
-39-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:30:13-55
-40            android:windowSoftInputMode="stateHidden" >
-40-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:31:13-54
-41            <intent-filter>
-41-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:32:13-36:29
-42                <action android:name="android.intent.action.MAIN" />
-42-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:33:17-69
-42-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:33:25-66
-43
-44                <category android:name="android.intent.category.LAUNCHER" />
-44-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:35:17-77
-44-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:35:27-74
-45            </intent-filter>
-46        </activity>
-47        <activity
-47-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:38:9-42:57
-48            android:name="com.example.indiacastdemo.RegisterActivity"
-48-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:39:13-45
-49            android:screenOrientation="portrait"
-49-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:40:13-49
-50            android:theme="@style/AppTheme.FullScreen"
-50-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:41:13-55
-51            android:windowSoftInputMode="stateHidden" />
-51-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:42:13-54
-52        <activity
-52-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:43:9-47:58
-53            android:name="com.example.indiacastdemo.Main2Activity"
-53-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:44:13-42
-54            android:screenOrientation="portrait"
-54-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:45:13-49
-55            android:theme="@style/AppTheme.NoActionBar"
-55-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:46:13-56
-56            android:windowSoftInputMode="adjustResize" />
-56-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:47:13-55
-57        <activity
-57-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:48:9-52:66
-58            android:name="com.example.indiacastdemo.LoginScreen"
-58-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:49:13-40
-59            android:screenOrientation="portrait"
-59-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:50:13-49
-60            android:theme="@style/AppTheme.FullScreen"
-60-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:51:13-55
-61            android:windowSoftInputMode="stateHidden" />
-61-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:52:13-54
-62        <!-- <service -->
-63        <!-- android:name=".MyFirebaseInstanceIDService"> -->
-64        <!-- <intent-filter> -->
-65        <!-- <action android:name="com.google.firebase.INSTANCE_ID_EVENT" /> -->
-66        <!-- </intent-filter> -->
-67        <!-- </service> -->
-68
-69        <service
-69-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:60:9-67:19
-70            android:name="com.example.indiacastdemo.MyFirebaseMessagingService"
-70-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:61:13-55
-71            android:permission="com.google.android.c2dm.permission.SEND" >
-71-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:62:13-73
-72            <intent-filter>
-72-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:63:13-66:29
-73                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-73-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:64:17-78
-73-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:64:25-75
-74                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-74-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:65:17-81
-74-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:65:25-78
-75            </intent-filter>
-76        </service>
-77
-78        <meta-data
-78-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:68:9-70:57
-79            android:name="com.google.firebase.messaging.default_notification_icon"
-79-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:69:13-83
-80            android:resource="@drawable/ic_stat_name" />
-80-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:70:13-54
-81        <meta-data
-81-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:71:9-73:53
-82            android:name="com.google.firebase.messaging.default_notification_color"
-82-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:72:13-84
-83            android:resource="@color/colorAccent" />
-83-->C:\Users\nishant.chaudhari\Desktop\IndiacastDemo\app\src\main\AndroidManifest.xml:73:13-50
-84    </application>
-85
-86</manifest>
+21-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:14:5-76
+21-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:14:22-73
+22    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+22-->[com.google.firebase:firebase-messaging:23.0.6] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\4beb2a4a1093616421ec33a2b7636553\transformed\jetified-firebase-messaging-23.0.6\AndroidManifest.xml:26:5-77
+22-->[com.google.firebase:firebase-messaging:23.0.6] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\4beb2a4a1093616421ec33a2b7636553\transformed\jetified-firebase-messaging-23.0.6\AndroidManifest.xml:26:22-74
+23    <uses-permission android:name="android.permission.WAKE_LOCK" />
+23-->[com.google.firebase:firebase-messaging:23.0.6] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\4beb2a4a1093616421ec33a2b7636553\transformed\jetified-firebase-messaging-23.0.6\AndroidManifest.xml:27:5-68
+23-->[com.google.firebase:firebase-messaging:23.0.6] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\4beb2a4a1093616421ec33a2b7636553\transformed\jetified-firebase-messaging-23.0.6\AndroidManifest.xml:27:22-65
+24    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+24-->[com.google.android.gms:play-services-measurement:21.1.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\3c83303c91f384ac335b767a63733afb\transformed\jetified-play-services-measurement-21.1.0\AndroidManifest.xml:26:5-110
+24-->[com.google.android.gms:play-services-measurement:21.1.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\3c83303c91f384ac335b767a63733afb\transformed\jetified-play-services-measurement-21.1.0\AndroidManifest.xml:26:22-107
+25    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+25-->[com.google.android.gms:play-services-measurement-impl:21.1.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\273b2f16cc87490d096253b8523ac0d8\transformed\jetified-play-services-measurement-impl-21.1.0\AndroidManifest.xml:27:5-79
+25-->[com.google.android.gms:play-services-measurement-impl:21.1.0] C:\Users\nishant.chaudhari\.gradle\caches\transforms-3\273b2f16cc87490d096253b8523ac0d8\transformed\jetified-play-services-measurement-impl-21.1.0\AndroidManifest.xml:27:22-76
+26
+27    <application
+27-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:16:5-74:19
+28        android:name="androidx.multidex.MultiDexApplication"
+29        android:allowBackup="true"
+29-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:17:9-35
+30        android:debuggable="true"
+31        android:icon="@mipmap/ic_launcher_foreground"
+31-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:18:9-54
+32        android:label="@string/app_name"
+32-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:19:9-41
+33        android:roundIcon="@mipmap/ic_launcher_foreground"
+33-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:20:9-59
+34        android:screenOrientation="portrait"
+34-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:21:9-45
+35        android:supportsRtl="true"
+35-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:22:9-35
+36        android:theme="@style/AppTheme"
+36-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:23:9-40
+37        android:usesCleartextTraffic="true" >
+37-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:25:9-44
+38        <activity
+38-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:27:9-37:20
+39            android:name="com.example.indiacastdemo.SplashScreenActivity"
+39-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:28:13-49
+40            android:screenOrientation="portrait"
+40-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:29:13-49
+41            android:theme="@style/AppTheme.FullScreen"
+41-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:30:13-55
+42            android:windowSoftInputMode="stateHidden" >
+42-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:31:13-54
+43            <intent-filter>
+43-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:32:13-36:29
+44                <action android:name="android.intent.action.MAIN" />
+44-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:33:17-69
+44-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:33:25-66
+45
+46                <category android:name="android.intent.category.LAUNCHER" />
+46-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:35:17-77
+46-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:35:27-74
+47            </intent-filter>
+48        </activity>
+49        <activity
+49-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:38:9-42:57
+50            android:name="com.example.indiacastdemo.RegisterActivity"
+50-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:39:13-45
+51            android:screenOrientation="portrait"
+51-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:40:13-49
+52            android:theme="@style/AppTheme.FullScreen"
+52-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:41:13-55
+53            android:windowSoftInputMode="stateHidden" />
+53-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:42:13-54
+54        <activity
+54-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:43:9-47:58
+55            android:name="com.example.indiacastdemo.Main2Activity"
+55-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:44:13-42
+56            android:screenOrientation="portrait"
+56-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:45:13-49
+57            android:theme="@style/AppTheme.NoActionBar"
+57-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:46:13-56
+58            android:windowSoftInputMode="adjustResize" />
+58-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:47:13-55
+59        <activity
+59-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:48:9-52:56
+60            android:name="com.example.indiacastdemo.LoginScreen"
+60-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:49:13-40
+61            android:screenOrientation="portrait"
+61-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:50:13-49
+62            android:theme="@style/AppTheme.FullScreen"
+62-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:51:13-55
+63            android:windowSoftInputMode="stateHidden" />
+63-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:52:13-54
+64        <!-- <service -->
+65        <!-- android:name=".MyFirebaseInstanceIDService"> -->
+66        <!-- <intent-filter> -->
+67        <!-- <action android:name="com.google.firebase.INSTANCE_ID_EVENT" /> -->
+68        <!-- </intent-filter> -->
+69        <!-- </service> -->
+70
+71        <service
+71-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:60:9-67:19
+72            android:name="com.example.indiacastdemo.MyFirebaseMessagingService"
+72-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:61:13-55
+73            android:permission="com.google.android.c2dm.permission.SEND" >
+73-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:62:13-73
+74            <intent-filter>
+74-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:63:13-66:29
+75                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+75-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:64:17-78
+75-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:64:25-75
+76                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+76-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:65:17-81
+76-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:65:25-78
+77            </intent-filter>
+78        </service>
+79
+80        <meta-data
+80-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:68:9-70:57
+81            android:name="com.google.firebase.messaging.default_notification_icon"
+81-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:69:13-83
+82            android:resource="@drawable/ic_stat_name" />
+82-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:70:13-54
+83        <meta-data
+83-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:71:9-73:53
+84            android:name="com.google.firebase.messaging.default_notification_color"
+84-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:72:13-84
+85            android:resource="@color/colorAccent" />
+85-->C:\Users\nishant.chaudhari\Desktop\New folder (3)\IndiacastDemo\app\src\main\AndroidManifest.xml:73:13-50
+86    </application>
+87
+88</manifest>

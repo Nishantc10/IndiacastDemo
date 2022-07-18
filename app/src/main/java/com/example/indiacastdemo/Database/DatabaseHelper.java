@@ -7,6 +7,7 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -320,6 +321,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "    Comments text" +
             ")";
     //endregion
+
+    //region tbl_temp_network_channel_mapped
+    public String create_tbl_temp_network_channel_mapped = " create table tbl_network_channel_mapped" +
+            "            (" +
+            "[ID] INTEGER Primary Key NOT NULL," +
+            "Network_ID text References tbl_network_details(Network_ID)," +
+            "    Network_Name text," +
+            "    Channel_Name text," +
+            "    LCN_No integer," +
+            "    Genre text," +
+            "    Position integer," +
+            "[Landing_Page_Flag] text," +
+            "            [Dual_LCN_Flag] text," +
+            "            [Triple_LCN_Flag] text," +
+            "            [Multiple_LCN] integer," +
+            "            [Status_ID] text References tbl_status_master([ID])," +
+            "            [Week_no] integer," +
+            "            [Year] integer," +
+            "            [On_Call_Site_Flag] text," +
+            "            [Location] text," +
+            "    Entered_By text References tbl_user_details([User_ID])," +
+            "    Created_Date text," +
+            "    Updated_Date text," +
+            "    Uploaded_At text," +
+            "    Uploaded_By text References tbl_user_details([User_ID])," +
+            "    Uploaded_Date text," +
+            "    Comments text" +
+            ")";
+    //endregion
     //region tbl_network_channel_placement
     public static final String tbl_network_channel_placement = "tbl_network_channel_placement";
     public static final String On_Call_Site = "On_Call_Site";
@@ -376,6 +406,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(create_tbl_tasks);
         db.execSQL(create_tbl_network_monitors);
         db.execSQL(create_tbl_network_channel_mapped);
+//        db.execSQL(create_tbl_temp_network_channel_mapped);
         db.execSQL(create_tbl_network_channel_placement);
         db.execSQL(create_tbl_user_details);
         db.execSQL(create_tbl_update_checker_phone);
@@ -1256,8 +1287,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean submitNetwork(String networkId, String comments, String onCallSite) {
         String User_ID = getUserId();
         String Created_Date = null;
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int weekNo = calendar.get(Calendar.WEEK_OF_YEAR);
+
         SQLiteDatabase db = this.getWritableDatabase();
-        Date date = Calendar.getInstance().getTime();
+            Date date = Calendar.getInstance().getTime();
         SimpleDateFormat df = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             df1 = new SimpleDateFormat("YYYY-MM-d");
@@ -1276,12 +1311,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         ContentValues cv = new ContentValues();
         ContentValues ICPL = new ContentValues();
         cv.put("Comments", comments);
         cv.put("On_Call_Site_Flag", onCallSite);
         cv.put("Status_ID", "STS0003");
+        cv.put("Year",year);
+        cv.put("Week_no",weekNo);
         cv.put("Entered_By", User_ID);
         cv.put("Updated_Date", df.format(date));
         cv.put("Created_Date", df.format(date));
@@ -1291,6 +1327,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("insert into tbl_network_channel_placement (ID,Network_ID,Network_Name,Channel_Name,LCN_No,Genre,Position,Landing_Page_Flag,Dual_LCN_Flag,Triple_LCN_Flag,Multiple_LCN,Year,Status_ID,Week_no,On_Call_Site,Location,Entered_By,Created_date,Updated_Date,Comments) select ID,Network_ID,Network_Name,Channel_Name,LCN_No,Genre,Position,Landing_Page_Flag,Dual_LCN_Flag,Triple_LCN_Flag,Multiple_LCN,Year,Status_ID,Week_no,On_Call_Site_Flag,Location,Entered_By,Created_date,Updated_Date,Comments from tbl_network_channel_mapped where Network_ID = " + "'" + networkId + "'");
         db.update(tbl_placement_indiacast_channels_details, ICPL, "NetworkID = " + "'" + networkId + "'", null);
         return true;
+    }
+    public void updateAfterFailureWhileSubmitting(String networkId) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        SimpleDateFormat dateFormat = null;
+        android.icu.util.Calendar cal = android.icu.util.Calendar.getInstance();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            dateFormat = new SimpleDateFormat("YYYY-MM-d H:m:S");
+            cal.add(android.icu.util.Calendar.DATE, -1);
+//            String abcd = dateFormat.format(cal.getTime());
+        }
+
+        ContentValues cv = new ContentValues();
+        cv.put("Created_Date", dateFormat.format(cal.getTime()));
+
+        db.update(tbl_network_channel_mapped, cv, "Network_ID = " + "'" + networkId + "'", null);
+//        db.delete(tbl_network_channel_placement, null, null);
+//        db.execSQL("insert into tbl_network_channel_placement (ID,Network_ID,Network_Name,Channel_Name,LCN_No,Genre,Position,Landing_Page_Flag,Dual_LCN_Flag,Triple_LCN_Flag,Multiple_LCN,Year,Status_ID,Week_no,On_Call_Site,Location,Entered_By,Created_date,Updated_Date,Comments) select ID,Network_ID,Network_Name,Channel_Name,LCN_No,Genre,Position,Landing_Page_Flag,Dual_LCN_Flag,Triple_LCN_Flag,Multiple_LCN,Year,Status_ID,Week_no,On_Call_Site_Flag,Location,Entered_By,Created_date,Updated_Date,Comments from tbl_network_channel_mapped where Network_ID = " + "'" + networkId + "'");
+//        db.update(tbl_placement_indiacast_channels_details, ICPL, "NetworkID = " + "'" + networkId + "'", null);
     }
 
     public boolean submitNetworkFromPlacement(String networkId, String comments, String onCallSite, String createdDate) {

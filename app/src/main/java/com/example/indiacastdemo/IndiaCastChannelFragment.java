@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.icu.util.Calendar;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -40,6 +41,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -245,7 +247,7 @@ public class IndiaCastChannelFragment extends Fragment {
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                         if (db.submitNetwork(networkId, comment, radio)) {
                                             Cursor res = db.tbl_network_channel_mapping();
-                                        Cursor ICPLcrs = db.getIndiaCastChannels(networkId);
+                                            Cursor ICPLcrs = db.getIndiaCastChannels(networkId);
                                             tbl_network_channel_placement.clear();
                                             tbl_placement_indiacast_channels_details_lst.clear();
                                             res.moveToFirst();
@@ -256,15 +258,15 @@ public class IndiaCastChannelFragment extends Fragment {
                                                     postData.put("Network_ID", res.getString(res.getColumnIndex("Network_ID")));
                                                     postData.put("Network_Name", res.getString(res.getColumnIndex("Network_Name")));
                                                     postData.put("Channel_Name", res.getString(res.getColumnIndex("Channel_Name")));
-                                                    postData.put("LCN_No", res.getString(res.getColumnIndex("LCN_No")));
+                                                    postData.put("LCN_No", res.getInt(res.getColumnIndex("LCN_No")));
                                                     postData.put("Genre", res.getString(res.getColumnIndex("Genre")));
-                                                    postData.put("Position", res.getString(res.getColumnIndex("Position")));
+                                                    postData.put("Position", res.getInt(res.getColumnIndex("Position")));
                                                     postData.put("Landing_Page_Flag", res.getString(res.getColumnIndex("Landing_Page_Flag")));
                                                     postData.put("Dual_LCN_Flag", res.getString(res.getColumnIndex("Dual_LCN_Flag")));
                                                     postData.put("Triple_LCN_Flag", res.getString(res.getColumnIndex("Triple_LCN_Flag")));
-                                                    postData.put("Multiple_LCN", res.getString(res.getColumnIndex("Multiple_LCN")));
-                                                    postData.put("Week_no", res.getString(res.getColumnIndex("Week_no")));
-                                                    postData.put("Year", res.getString(res.getColumnIndex("Year")));
+                                                    postData.put("Multiple_LCN", res.getInt(res.getColumnIndex("Multiple_LCN")));
+                                                    postData.put("Week_no", res.getInt(res.getColumnIndex("Week_no")));
+                                                    postData.put("Year", res.getInt(res.getColumnIndex("Year")));
                                                     postData.put("On_Call_Site", res.getString(res.getColumnIndex("On_Call_Site")));
                                                     postData.put("Location", res.getString(res.getColumnIndex("Location")));
                                                     postData.put("Entered_By", res.getString(res.getColumnIndex("Entered_By")));
@@ -285,10 +287,10 @@ public class IndiaCastChannelFragment extends Fragment {
                                                     JSONObject postICPLData = new JSONObject();
                                                     postICPLData.put("ICPID", ICPLcrs.getString(ICPLcrs.getColumnIndex("ICPID")));
                                                     postICPLData.put("ChannelID", ICPLcrs.getString(ICPLcrs.getColumnIndex("ChannelID")));
-                                                    postICPLData.put("LCN", ICPLcrs.getString(ICPLcrs.getColumnIndex("LCN")));
-                                                    postICPLData.put("Position", ICPLcrs.getString(ICPLcrs.getColumnIndex("Position")));
-                                                    postICPLData.put("CPosition", ICPLcrs.getString(ICPLcrs.getColumnIndex("CPosition")));
-                                                    postICPLData.put("StatusID", ICPLcrs.getString(ICPLcrs.getColumnIndex("IStatusID")));
+                                                    postICPLData.put("LCN", ICPLcrs.getInt(ICPLcrs.getColumnIndex("LCN")));
+                                                    postICPLData.put("Position", ICPLcrs.getInt(ICPLcrs.getColumnIndex("Position")));
+                                                    postICPLData.put("CPosition", ICPLcrs.getInt(ICPLcrs.getColumnIndex("CPosition")));
+                                                    postICPLData.put("StatusID", ICPLcrs.getInt(ICPLcrs.getColumnIndex("IStatusID")));
                                                     postICPLData.put("Network_ID", ICPLcrs.getString(ICPLcrs.getColumnIndex("NetworkID")));
                                                     postICPLData.put("Created_Date", ICPLcrs.getString(ICPLcrs.getColumnIndex("Created_Date")));
                                                     postICPLData.put("Others", ICPLcrs.getString(ICPLcrs.getColumnIndex("Others")));
@@ -307,7 +309,7 @@ public class IndiaCastChannelFragment extends Fragment {
                                             }
                                             dialogBuilder.dismiss();
                                         } else {
-                                            try {                                                progressBar.setVisibility(View.GONE);
+                                            try {
                                                 progressBar.setVisibility(View.GONE);
                                                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                                                 builder.setTitle("Alert!");
@@ -396,7 +398,7 @@ public class IndiaCastChannelFragment extends Fragment {
         db.close();
         Fragment currentFragment = getFragmentManager().findFragmentByTag("ICCF");
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, currentFragment,"ICCF");
+        fragmentTransaction.replace(R.id.fragment_container, currentFragment, "ICCF");
 //        fragmentTransaction.attach(currentFragment);
         fragmentTransaction.commit();
     }
@@ -426,8 +428,10 @@ public class IndiaCastChannelFragment extends Fragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
+                                        db.updateAfterFailureWhileSubmitting(networkId);
                                         progressBar.setVisibility(View.GONE);
                                         AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Server connection lost placement!");
+
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -510,6 +514,7 @@ public class IndiaCastChannelFragment extends Fragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
+                                        db.updateAfterFailureWhileSubmitting(networkId);
                                         progressBar.setVisibility(View.GONE);
                                         AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Error occurred during Channel submission!");
                                     } catch (Exception e) {
@@ -525,6 +530,7 @@ public class IndiaCastChannelFragment extends Fragment {
             });
         } else {
             try {
+                db.updateAfterFailureWhileSubmitting(networkId);
                 AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "No internet connection!!!");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -557,7 +563,9 @@ public class IndiaCastChannelFragment extends Fragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 public void run() {
                                     try {
-                                         progressBar.setVisibility(View.GONE);
+                                        db.updateAfterFailureWhileSubmitting(networkId);
+
+                                        progressBar.setVisibility(View.GONE);
                                         AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Server connection lost indiacastcannels!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
@@ -641,7 +649,8 @@ public class IndiaCastChannelFragment extends Fragment {
                         } else {
                             getActivity().runOnUiThread(new Runnable() {
                                 public void run() {
-                                    try {
+                                    try {                db.updateAfterFailureWhileSubmitting(networkId);
+
                                         AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "Error occurred during IndiaCast Channel submission!");
                                     } catch (Exception e) {
                                         e.printStackTrace();
@@ -655,7 +664,8 @@ public class IndiaCastChannelFragment extends Fragment {
                 }
             });
         } else {
-            try {
+            try {                db.updateAfterFailureWhileSubmitting(networkId);
+
                 AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "No internet connection!!!");
             } catch (Exception e) {
                 e.printStackTrace();

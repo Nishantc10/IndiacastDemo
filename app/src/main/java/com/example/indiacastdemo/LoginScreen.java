@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 
 import com.example.indiacastdemo.Database.DatabaseHelper;
@@ -44,6 +45,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
     DatabaseHelper db;
     ScrollView sv;
     ConnectionCheck connectionCheck;
+    ProgressBar login_progressBar;
     private ProgressDialog progress;
     String macAddress = "12345";
 
@@ -57,6 +59,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
         et_username = findViewById(R.id.et_username);
         et_password = findViewById(R.id.et_password);
         btn_login.setOnClickListener(this);
+        login_progressBar = findViewById(R.id.login_progressBar);
         progress = new ProgressDialog(context);
         progress.setCancelable(false);
         progress.setTitle("Login");
@@ -111,7 +114,6 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(final View v) {
-
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -185,6 +187,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                 public void onFailure(Call call, IOException e) {
                     runOnUiThread(new Runnable() {
                         public void run() {
+                            login_progressBar.setVisibility(View.GONE);
                             progress.dismiss();
                             LoginScreen.this.runOnUiThread(new Runnable() {
                                 public void run() {
@@ -239,11 +242,6 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                                 MAC_Address = jsonObject.getString("MAC_Address");
                                 insert_tbl_user_details();
                                 Intent intent = new Intent(context, Main2Activity.class);
-//                                Bundle bundle = new Bundle();
-//                                bundle.putString("Login_ID", Login_ID);
-//                                bundle.putString("User_ID", User_ID);
-//                                bundle.putString("Token", Token);
-//                                intent.putExtras(bundle);
                                 startActivity(intent);
                                 finish();
                             } catch (JSONException e) {
@@ -277,11 +275,14 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                    login_progressBar.setVisibility(View.GONE);
                     progress.dismiss();
                 }
             });
         } else {
             try {
+                login_progressBar.setVisibility(View.GONE);
+
                 progress.dismiss();
                 AlertDialogModel.generateAlertDialog(context, "Alert!", "No internet connection!!!");
             } catch (Exception e) {

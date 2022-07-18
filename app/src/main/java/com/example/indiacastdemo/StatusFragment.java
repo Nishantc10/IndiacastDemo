@@ -7,11 +7,13 @@ import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +30,11 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import okhttp3.Call;
@@ -98,7 +104,7 @@ public class StatusFragment extends Fragment {
                             getStatusResponse();
                         } else {
                             try {
-                                AlertDialogModel.generateAlertDialog(getActivity(),"Alert!","No internet connection!!!");
+                                AlertDialogModel.generateAlertDialog(getActivity(), "Alert!", "No internet connection!!!");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -169,7 +175,7 @@ public class StatusFragment extends Fragment {
                                     public void run() {
                                         try {
                                             progress.dismiss();
-                                            AlertDialogModel.generateAlertDialog(getActivity(),"Alert!","Server connection lost!");
+                                            AlertDialogModel.generateAlertDialog(getActivity(), "Alert!", "Server connection lost!");
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
@@ -184,6 +190,33 @@ public class StatusFragment extends Fragment {
                     call.cancel();
                 }
 
+                public JSONArray sortJsonArray(JSONArray array) {
+                    List<JSONObject> jsons = new ArrayList<JSONObject>();
+                    for (int i = 0; i < array.length(); i++) {
+                        try {
+                            jsons.add(array.getJSONObject(i));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    Collections.sort(jsons, new Comparator<JSONObject>() {
+                        @Override
+                        public int compare(JSONObject lhs, JSONObject rhs) {
+                            String lid = null;
+                            String rid = null;
+                            try {
+                                lid = lhs.getString("Updated_Date");
+                                rid = rhs.getString("Updated_Date");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            // Here you could parse string id to integer and then compare.
+                            return lid.compareTo(rid);
+                        }
+                    });
+                    return new JSONArray(jsons);
+                }
+
                 @Override
                 public void onResponse(Call call, okhttp3.Response response) throws IOException {
                     String jsonData = response.body().string();
@@ -192,7 +225,9 @@ public class StatusFragment extends Fragment {
                     try {
                         JSONArray jsonArray = new JSONArray(jsonData);
                         JSONArray statusArray = jsonArray.getJSONArray(0);
+                        statusArray = sortJsonArray(statusArray);
                         JSONObject statusObject = null;
+
                         Drawable statusDrawable = null;
                         for (int i = 0; i < statusArray.length(); i++) {
                             StringTokenizer tk = null;
@@ -209,7 +244,7 @@ public class StatusFragment extends Fragment {
                             String Network_Name = statusObject.getString("Network_Name");
                             String Entered_By_Username = statusObject.getString("Entered_By_Username");
                             if (Status_ID.equals("STS0003")) {
-                                tk = new StringTokenizer(Created_Date);
+                                tk = new StringTokenizer(Updated_Date);
                             } else {
                                 tk = new StringTokenizer(Updated_Date);
                             }
@@ -268,7 +303,7 @@ public class StatusFragment extends Fragment {
         } else {
             try {
                 progress.dismiss();
-                AlertDialogModel.generateAlertDialog(getContext(),"Alert!","No internet connection!!!");
+                AlertDialogModel.generateAlertDialog(getContext(), "Alert!", "No internet connection!!!");
             } catch (Exception e) {
                 e.printStackTrace();
             }

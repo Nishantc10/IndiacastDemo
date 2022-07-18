@@ -368,7 +368,7 @@ public class HistoryFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_historyrefresh:
-                refreshManu();
+                refreshMenu();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -418,6 +418,7 @@ public class HistoryFragment extends Fragment {
                     try {
                         if (db.getPlacement(response.body().string())) {
 //                        Log.d( "Into If: ","Into If");
+                            getStaticData();
                             Fragment frg = null;
                             frg = getFragmentManager().findFragmentByTag("HistoryFragment");
                             final FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -453,7 +454,7 @@ public class HistoryFragment extends Fragment {
         }
     }
 
-    public void refreshManu() {
+    public void refreshMenu() {
         progress = new ProgressDialog(getContext());
         progress.setCancelable(false);
         progress.setTitle("Please wait....");
@@ -518,15 +519,13 @@ public class HistoryFragment extends Fragment {
                                     }
                                 });
                                 builder.show();
-
-                                //            setupRecyclerView();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
                     }
                 });
-                builder.show();//            setupRecyclerView();
+                builder.show();//
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -6,9 +6,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -21,9 +23,8 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:node="replace"
         android:usesCleartextTraffic="true"
-       >
+        tools:node="replace">
         <activity
             android:name=".SplashScreenActivity"
             android:screenOrientation="portrait"
@@ -49,13 +50,13 @@
             android:name=".LoginScreen"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullScreen"
-            android:windowSoftInputMode="stateHidden"></activity>
-<!--        <service-->
-<!--            android:name=".MyFirebaseInstanceIDService">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />-->
-<!--            </intent-filter>-->
-<!--        </service>-->
+            android:windowSoftInputMode="stateHidden" />
+        <!--        <service-->
+        <!--            android:name=".MyFirebaseInstanceIDService">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />-->
+        <!--            </intent-filter>-->
+        <!--        </service>-->
 
         <service
             android:name=".MyFirebaseMessagingService"
@@ -65,6 +66,7 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_stat_name" />

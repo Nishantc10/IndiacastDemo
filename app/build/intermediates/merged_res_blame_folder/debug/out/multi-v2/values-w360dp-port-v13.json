@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\nishant.chaudhari\\Desktop\\IndiacastDemo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w360dp-port-v13\\values-w360dp-port-v13.xml",
+            "outputFile": "C:\\Users\\nishant.chaudhari\\Desktop\\New folder (3)\\IndiacastDemo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w360dp-port-v13\\values-w360dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\nishant.chaudhari\\.gradle\\caches\\transforms-3\\f8dbeb9283faa3005342a78f79860a7b\\transformed\\material-1.4.0\\res\\values-w360dp-port-v13\\values-w360dp-port-v13.xml",
+                    "source": "C:\\Users\\nishant.chaudhari\\.gradle\\caches\\transforms-3\\30beb082c7476a4b5944a13c6b32cb60\\transformed\\material-1.4.0\\res\\values-w360dp-port-v13\\values-w360dp-port-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

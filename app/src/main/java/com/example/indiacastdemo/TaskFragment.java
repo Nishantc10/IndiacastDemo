@@ -34,7 +34,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -44,7 +47,7 @@ import okhttp3.RequestBody;
 
 public class TaskFragment extends Fragment implements View.OnClickListener {
     EditText task_comment;
-    String comment, task;
+    String comment, task , created_date;
     Button task_submit;
     CheckBox checkBox, checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6, checkBox7, checkBox8, checkBox9, checkBox10, checkBox11, checkBox12, checkBox13, checkBox14, checkBox15, checkBox16, checkBox17, checkBox18;
     final ArrayList<String> selchkboxlist = new ArrayList<String>();
@@ -65,6 +68,7 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
         network_linear_layout = v.findViewById(R.id.network_linear_layout);
         db = new DatabaseHelper(getContext());
         Cursor cursor = db.getAllNetworks();
+
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
                 String network_id = cursor.getString(cursor.getColumnIndex("Network_ID"));
@@ -247,11 +251,17 @@ public class TaskFragment extends Fragment implements View.OnClickListener {
                 comment = task_comment.getText().toString();
                 task = selchkboxlist + "," + comment;
                 selchkboxlist.add("&" + comment);
+                Date date = Calendar.getInstance().getTime();
+                SimpleDateFormat df = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                    df = new SimpleDateFormat("YYYY-MM-d H:m:S");
+                    created_date = df.format(date);
+                }
                 JSONObject postData = new JSONObject();
                 try {
                     postData.put("Tasks", selchkboxlist);
                     postData.put("User_ID", User_ID);
-                    postData.put("Created_Date", "");
+                    postData.put("Created_Date", created_date);
                     postRequest(postData.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
